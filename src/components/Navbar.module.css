@@ -10,7 +10,7 @@
   --animation-default-long: var(--duration-default-long) var(--cubic-default);
   --animation-default-half: var(--duration-default-half) var(--cubic-default);
 
-  z-index: 100;
+  z-index: 200;
   pointer-events: none;
   position: fixed;
   inset: 0;
@@ -54,7 +54,7 @@
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  max-width: 48em;
+  max-width: 70em;
   padding-top: 1.25em;
   padding-left: 1.25em;
   padding-right: 1.25em;
@@ -65,9 +65,9 @@
 
 .bar {
   pointer-events: auto;
-  color: var(--color-black);
+  color: var(--color-white);
   width: 100%;
-  max-width: 25em;
+  max-width: 30em;
   position: relative;
   transition: max-width var(--animation-default-long) 0.2s;
 }
@@ -91,7 +91,7 @@
 }
 
 .backBg {
-  background-color: var(--color-cream);
+  background-color: var(--color-black);
   border-radius: 0.5em;
   width: 100%;
   height: 100%;
@@ -115,7 +115,7 @@
 
 .topLine {
   z-index: 2;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: var(--white-light);
   height: 1px;
   position: absolute;
   bottom: 0;
@@ -133,7 +133,10 @@
 /* ========================= Logo ========================= */
 
 .logo {
-  justify-content: flex-start;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  justify-content: center;
   align-items: center;
   height: 100%;
   display: flex;
@@ -143,13 +146,9 @@
 .logoText {
   font-family: var(--font-primary);
   font-size: 1.25em;
-  font-weight: 700;
-  color: var(--color-black);
-  text-transform: uppercase;
-}
-
-.logoSvg {
-  height: 100%;
+  font-weight: 400;
+  color: var(--color-white);
+  letter-spacing: -0.03em;
 }
 
 /* ========================= Toggle Button ========================= */
@@ -170,7 +169,7 @@
 }
 
 .toggleBar {
-  background-color: var(--color-black);
+  background-color: var(--color-white);
   width: 1.875em;
   height: 0.125em;
   position: absolute;
@@ -196,6 +195,25 @@
 
 [data-nav-status="active"] .toggleBar:nth-child(2) {
   transform: translateY(0) rotate(-45deg);
+}
+
+/* ========================= CTA Button ========================= */
+
+.cta {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  font-family: var(--font-primary);
+  font-size: 0.75em;
+  font-weight: 400;
+  padding: 0.75em 1.25em;
+  border-radius: 0.25em;
+  text-decoration: none;
+  letter-spacing: -0.02em;
+  transition: background-color 0.3s ease;
+}
+
+.cta:hover {
+  background-color: #0033cc;
 }
 
 /* ========================= Bottom Section ========================= */
@@ -326,11 +344,10 @@
   font-weight: 400;
   line-height: 1;
   letter-spacing: -0.04em;
-  text-transform: uppercase;
 }
 
 .linkEyebrow {
-  font-family: var(--font-secondary);
+  font-family: var(--font-primary);
   font-size: 1em;
   font-weight: 400;
   line-height: 1;
@@ -383,5 +400,10 @@
   [data-nav-status="active"] .bottom {
     transition: grid-template-rows var(--animation-default-long) 0.25s, transform var(--animation-default) 0.25s;
     transform: translateY(0);
+  }
+
+  .cta {
+    font-size: 0.65em;
+    padding: 0.6em 1em;
   }
 }

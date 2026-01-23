@@ -1,0 +1,73 @@
+/* Circle Container */
+.circleWrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.circle {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Wheel Rim */
+.rim {
+  position: absolute;
+  width: 2900px;
+  height: 2900px;
+  left: -1450px;
+  top: calc(250px + 1250px - 1450px);
+  color: var(--color-black);
+  opacity: 0.1;
+  pointer-events: none;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+/* Cards */
+.card {
+  position: absolute;
+  width: 22rem;
+  aspect-ratio: 4/3;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background: var(--color-white);
+  transform-origin: center center;
+  will-change: transform;
+  left: -11rem;
+  top: -8.25rem;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Tablet */
+@media screen and (max-width: 991px) {
+  .card {
+    width: 14rem;
+    left: -7rem;
+    top: -5.25rem;
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 767px) {
+  .circleWrap {
+    height: 30rem;
+  }
+
+  .card {
+    width: 9rem;
+    left: -4.5rem;
+    top: -3.375rem;
+  }
+}

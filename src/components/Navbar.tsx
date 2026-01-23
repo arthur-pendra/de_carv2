@@ -4,11 +4,7 @@ import { useState, useEffect } from 'react';
 import styles from './Navbar.module.css';
 import Link from 'next/link';
 
-interface NavbarProps {
-  logo?: React.ReactNode;
-}
-
-export default function Navbar({ logo }: NavbarProps) {
+export default function Navbar() {
   const [isActive, setIsActive] = useState(false);
 
   const openNav = () => {
@@ -56,12 +52,7 @@ export default function Navbar({ logo }: NavbarProps) {
 
             {/* Top bar */}
             <div className={styles.top}>
-              <Link href="/" className={styles.logo}>
-                {logo || (
-                  <span className={styles.logoText}>GD CARCARE</span>
-                )}
-              </Link>
-
+              {/* Left - Hamburger */}
               <button
                 className={styles.toggle}
                 onClick={toggleNav}
@@ -70,6 +61,16 @@ export default function Navbar({ logo }: NavbarProps) {
                 <div className={styles.toggleBar} />
                 <div className={styles.toggleBar} />
               </button>
+
+              {/* Center - Logo */}
+              <Link href="/" className={styles.logo}>
+                <span className={styles.logoText}>GD Carcare</span>
+              </Link>
+
+              {/* Right - Button */}
+              <a href="#contact" className={styles.cta}>
+                Start nu
+              </a>
 
               <div className={styles.topLine} />
             </div>
@@ -89,18 +90,23 @@ export default function Navbar({ logo }: NavbarProps) {
                             </Link>
                           </li>
                           <li className={styles.li}>
+                            <Link href="/diensten" className={styles.link} onClick={closeNav}>
+                              <span className={styles.linkSpan}>Diensten</span>
+                            </Link>
+                          </li>
+                          <li className={styles.li}>
                             <Link href="/portfolio" className={styles.link} onClick={closeNav}>
                               <span className={styles.linkSpan}>Portfolio</span>
                             </Link>
                           </li>
                           <li className={styles.li}>
-                            <Link href="/about" className={styles.link} onClick={closeNav}>
+                            <Link href="/over-ons" className={styles.link} onClick={closeNav}>
                               <span className={styles.linkSpan}>Over ons</span>
                             </Link>
                           </li>
                           <li className={styles.li}>
-                            <Link href="/services" className={styles.link} onClick={closeNav}>
-                              <span className={styles.linkSpan}>Diensten</span>
+                            <Link href="/contact" className={styles.link} onClick={closeNav}>
+                              <span className={styles.linkSpan}>Contact</span>
                             </Link>
                           </li>
                         </ul>
@@ -124,7 +130,7 @@ export default function Navbar({ logo }: NavbarProps) {
                     <div className={`${styles.bottomCol} ${styles.bottomColVisual}`}>
                       <div className={styles.visual}>
                         <img
-                          src="/img/nav-visual.jpg"
+                          src="https://images.unsplash.com/photo-1607860108855-64acf2078ed9?q=80&w=2071&auto=format&fit=crop"
                           alt="GD Carcare"
                           className={styles.visualImg}
                         />
