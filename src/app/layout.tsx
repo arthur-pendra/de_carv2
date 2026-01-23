@@ -3,8 +3,8 @@ import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 
 export const metadata: Metadata = {
-  title: "MAE",
-  description: "MAE Website",
+  title: "GD Carcare",
+  description: "GD Carcare Website",
 };
 
 export default function RootLayout({

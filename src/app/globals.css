@@ -1,11 +1,14 @@
-
-
-
-/* ------------------------- Fonts -------------------------  */
+/* ========================= Fonts ========================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-/* ------------------------- Lenis Smooth Scroll -------------------------  */
+@font-face {
+  font-family: 'Gd Car';
+  src: url('/fonts/Gd_Car.woff2') format('woff2');
+  font-display: swap;
+}
+
+/* ========================= Lenis Smooth Scroll ========================= */
 
 html.lenis, html.lenis body {
   height: auto;
@@ -27,104 +30,51 @@ html.lenis, html.lenis body {
   pointer-events: none;
 }
 
-@font-face {
-  font-family: 'Chaney';
-  src: url('/fonts/CHANEY-Regular.otf') format('opentype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Chaney';
-  src: url('/fonts/CHANEY-Wide.otf') format('opentype');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Chaney';
-  src: url('/fonts/CHANEY-Extended.otf') format('opentype');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Chaney';
-  src: url('/fonts/CHANEY-UltraExtended.otf') format('opentype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Chaney Individual Variants */
-@font-face {
-  font-family: 'Chaney Regular';
-  src: url('/fonts/CHANEY-Regular.otf') format('opentype');
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Chaney Wide';
-  src: url('/fonts/CHANEY-Wide.otf') format('opentype');
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Chaney Extended';
-  src: url('/fonts/CHANEY-Extended.otf') format('opentype');
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Chaney UltraExtended';
-  src: url('/fonts/CHANEY-UltraExtended.otf') format('opentype');
-  font-display: swap;
-}
-
-/* ------------------------- Scaling System by Osmo [https://osmo.supply/] -------------------------  */
+/* ========================= Scaling System by Osmo [https://osmo.supply/] ========================= */
 
 /* Desktop */
 :root {
-  /* Font Family */
-  --font-primary: 'Chaney', sans-serif;
-  --font-secondary: 'Inter', sans-serif;
-
-  /* Color System */
-  --color-white: #ffffff;
-  --color-black: #000000;
-  --color-dark: #272727;
-  --color-gray: #B0B0B0;
-  --color-light: #E6E6E6;
-  --color-accent: #9DF032;
-
-  --background: var(--color-white);
-  --foreground: var(--color-dark);
-
-  /* Typography - Golden Ratio (1.618) */
-  --font-ratio: 1.618;
-  --font-small: 0.618em;
-  --font-par: 1em;
-  --font-h4: 1.618em;
-  --font-h3: 2.618em;
-  --font-h2: 4.236em;
-  --font-h1: 6.854em;
-
-  /* Scaling System */
-  --size-unit: 16; /* body font-size in design - no px */
-  --size-container-ideal: 1440; /* screen-size in design - no px */
+  /* Scaling */
+  --size-unit: 16;
+  --size-container-ideal: 1440;
   --size-container-min: 992px;
-  --size-container-max: 2560px;
+  --size-container-max: 1920px;
   --size-container: clamp(var(--size-container-min), 100vw, var(--size-container-max));
   --size-font: calc(var(--size-container) / (var(--size-container-ideal) / var(--size-unit)));
+
+  /* Fonts */
+  --font-primary: 'Gd Car', sans-serif;
+  --font-secondary: 'Inter', sans-serif;
+
+  /* Base Colors */
+  --color-black: #070707;
+  --color-white: #FFFFFF;
+  --color-cream: #F7F6F3;
+
+  /* Accent */
+  --color-accent: #012296;
+
+  /* White Transparency */
+  --white-subtle: rgba(255, 255, 255, 0.05);
+  --white-light: rgba(255, 255, 255, 0.15);
+  --white-medium: rgba(255, 255, 255, 0.2);
+  --white-strong: rgba(255, 255, 255, 0.5);
+  --white-bright: rgba(255, 255, 255, 0.7);
+  --white-solid: rgba(255, 255, 255, 0.9);
+
+  /* Typography */
+  --font-h1: 3em;
+  --font-h2: 2em;
+  --font-h3: 1.5em;
+  --font-h4: 1.25em;
+  --font-par: 1em;
+  --font-small: 0.875em;
 }
 
 /* Tablet */
 @media screen and (max-width: 991px) {
   :root {
-    --size-container-ideal: 834; /* screen-size in design - no px */
+    --size-container-ideal: 834;
     --size-container-min: 768px;
     --size-container-max: 991px;
   }
@@ -133,7 +83,7 @@ html.lenis, html.lenis body {
 /* Mobile Landscape */
 @media screen and (max-width: 767px) {
   :root {
-    --size-container-ideal: 550; /* screen-size in design - no px */
+    --size-container-ideal: 550;
     --size-container-min: 480px;
     --size-container-max: 767px;
   }
@@ -142,17 +92,20 @@ html.lenis, html.lenis body {
 /* Mobile Portrait */
 @media screen and (max-width: 479px) {
   :root {
-    --size-container-ideal: 390; /* screen-size in design - no px */
+    --size-container-ideal: 390;
     --size-container-min: 320px;
     --size-container-max: 479px;
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: var(--color-dark);
-    --foreground: var(--color-light);
-  }
+
+
+/* ========================= Reset ========================= */
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 html,
@@ -162,120 +115,183 @@ body {
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
   font-family: var(--font-secondary);
   font-size: var(--size-font);
+  color: var(--color-black);
+  background: var(--color-white);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Buttons */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ========================= Buttons ========================= */
+
 .btn {
-  display: inline-block;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  border-radius: 3.5em;
+  justify-content: center;
+  align-items: center;
+  height: 5em;
+  padding-left: 3.5em;
+  padding-right: 3.5em;
+  text-decoration: none;
+  display: inline-flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn__text {
   font-family: var(--font-secondary);
   font-size: var(--font-par);
-  font-weight: 600;
-  text-transform: uppercase;
-  padding: 0.8em 1.5em;
-  background: var(--color-accent);
-  color: var(--color-black);
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-decoration: none;
+  font-weight: 500;
+  white-space: nowrap;
+  position: relative;
+  z-index: 2;
+  transition: color 0.5s cubic-bezier(0.625, 0.05, 0, 1);
 }
 
-.btn:hover {
-  letter-spacing: 0.1em;
-  transform: skewX(-10deg);
+.btn__bg {
+  border-radius: 3.5em;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
 }
 
-.btn:hover > * {
-  transform: skewX(10deg);
+.btn__circle-wrap {
+  border-radius: 3.5em;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 1;
 }
 
-.btn-social {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-secondary);
-  font-size: var(--font-small);
-  font-weight: 600;
-  text-transform: uppercase;
-  padding: 0.6em 1.2em;
-  background: var(--color-accent);
-  color: var(--color-black);
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-decoration: none;
-  gap: 0.5em;
+.btn__circle {
+  pointer-events: none;
+  border-radius: 50%;
+  width: 250%;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transition: transform 0.8s cubic-bezier(0.625, 0.05, 0, 1);
+  transform: translate(-50%, -50%) scale(0);
 }
 
-.btn-social:hover {
-  letter-spacing: 0.1em;
-  transform: skewX(-10deg);
+.btn__circle::before {
+  content: '';
+  display: block;
+  padding-top: 100%;
 }
 
-.btn-social:hover > * {
-  transform: skewX(10deg);
+.btn:hover .btn__circle {
+  transform: translate(-50%, -50%) scale(2);
 }
 
-.btn-icon {
-  display: inline-flex;
+.btn__icon {
+  display: flex;
   align-items: center;
   justify-content: center;
   width: 3.5em;
   height: 3.5em;
-  background: transparent;
-  border: 1px solid var(--color-accent);
-  color: var(--color-accent);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-decoration: none;
+  border-radius: 50%;
+  background-color: var(--color-white);
+  margin-right: 0.75em;
+  margin-left: -2.75em;
+  position: relative;
+  z-index: 2;
+  transition: background-color 0.5s cubic-bezier(0.625, 0.05, 0, 1);
 }
 
-.btn-icon:hover {
-  background: var(--color-accent);
+.btn__icon svg {
+  width: 1em;
+  height: 1em;
+}
+
+.btn[data-theme="primary"] .btn__icon {
+  background-color: var(--color-white);
+  color: var(--color-accent);
+}
+
+.btn[data-theme="dark"] .btn__icon {
+  background-color: var(--color-white);
   color: var(--color-black);
 }
 
-.btn-icon svg {
-  width: 1.5em;
-  height: 1.5em;
+.btn[data-theme="light"] .btn__icon {
+  background-color: var(--color-white);
+  color: var(--color-black);
 }
 
-.btn-bar {
-  display: inline-flex;
-  align-items: center;
-  gap: 1em;
-  font-family: var(--font-secondary);
-  font-size: var(--font-par);
-  font-weight: 500;
-  text-transform: uppercase;
-  background: transparent;
-  color: var(--color-dark);
-  border: none;
-  cursor: pointer;
-  text-decoration: none;
+.btn[data-theme="light"]:hover .btn__icon {
+  background-color: var(--color-white);
+  color: var(--color-accent);
 }
 
-.btn-bar::before {
-  content: '';
-  display: block;
-  width: 0.8em;
-  height: 0.8em;
-  background: var(--color-dark);
-  transition: width 0.3s ease, transform 0.3s ease;
+/* Primary (Mail) - Most prominent */
+.btn[data-theme="primary"] .btn__bg {
+  background-color: var(--color-accent);
 }
 
-.btn-bar:hover::before {
-  width: 2.5em;
-  transform: skewX(-10deg);
+.btn[data-theme="primary"] .btn__text {
+  color: var(--color-white);
 }
 
-/* Container Classes */
+.btn[data-theme="primary"] .btn__circle {
+  background-color: #0033cc;
+}
+
+.btn[data-theme="primary"]:hover .btn__text {
+  color: var(--color-white);
+}
+
+/* Dark */
+.btn[data-theme="dark"] .btn__bg {
+  background-color: var(--color-black);
+}
+
+.btn[data-theme="dark"] .btn__text {
+  color: var(--color-white);
+}
+
+.btn[data-theme="dark"] .btn__circle {
+  background-color: var(--color-accent);
+}
+
+.btn[data-theme="dark"]:hover .btn__text {
+  color: var(--color-white);
+}
+
+/* Light */
+.btn[data-theme="light"] .btn__bg {
+  background-color: var(--color-cream);
+}
+
+.btn[data-theme="light"] .btn__text {
+  color: var(--color-black);
+}
+
+.btn[data-theme="light"] .btn__circle {
+  background-color: var(--color-accent);
+}
+
+.btn[data-theme="light"]:hover .btn__text {
+  color: var(--color-white);
+}
+
+/* ========================= Containers ========================= */
+
 .container {
   max-width: var(--size-container);
   margin-left: auto;
@@ -288,21 +304,4 @@ body {
 
 .container.small {
   max-width: calc(var(--size-container) * 0.7);
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
 }
