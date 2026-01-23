@@ -1,0 +1,90 @@
+.whyUs {
+  padding: 6em 2em 0;
+  background-color: var(--color-cream);
+}
+
+.container {
+  max-width: 80em;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 4em;
+}
+
+.label {
+  font-family: var(--font-secondary);
+  font-size: 1em;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--color-accent);
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.title {
+  font-family: var(--font-primary);
+  font-size: 3.5em;
+  font-weight: 400;
+  color: #000000;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  margin: 0;
+  max-width: 18em;
+}
+
+.reasons {
+  display: flex;
+  flex-direction: column;
+}
+
+.reason {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 4em;
+  padding: 2.5em 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+
+.reasonTitle {
+  font-family: var(--font-primary);
+  font-size: 1.25em;
+  font-weight: 400;
+  color: #000000;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.reasonDescription {
+  font-family: var(--font-secondary);
+  font-size: 1em;
+  font-weight: 400;
+  color: #000000;
+  line-height: 1.5;
+  margin: 0;
+  opacity: 0.8;
+}
+
+/* Tablet */
+@media screen and (max-width: 991px) {
+  .title {
+    font-size: 2.5em;
+  }
+
+  .reason {
+    gap: 2em;
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 767px) {
+  .title {
+    font-size: 2em;
+  }
+
+  .reason {
+    grid-template-columns: 1fr;
+    gap: 1em;
+  }
+}

@@ -1,0 +1,149 @@
+.services {
+  padding: 6em 2em;
+  background-color: var(--color-cream);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2.5em;
+}
+
+.lines {
+  display: flex;
+  justify-content: center;
+  gap: 0.5em;
+  max-width: 80em;
+  margin: 0 auto;
+}
+
+.line {
+  flex: 1;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-family: var(--font-primary);
+  font-size: 4em;
+  font-weight: 400;
+  color: #000000;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin: 0 0 0.3em 0;
+}
+
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5em;
+  max-width: 80em;
+  margin: 0 auto;
+}
+
+.card {
+  background: var(--color-white);
+  border-radius: 1em;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+}
+
+.card.featured {
+  background: var(--color-accent);
+  color: var(--color-white);
+}
+
+.tag {
+  font-family: var(--font-primary);
+  font-size: 0.625em;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  background: rgba(0, 0, 0, 0.05);
+  padding: 0.4em 0.6em;
+  border-radius: 0.2em;
+  width: fit-content;
+  margin-bottom: 1.25em;
+}
+
+.featured .tag {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.cardTitle {
+  font-family: var(--font-primary);
+  font-size: 2em;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin: 0 0 0.25em 0;
+}
+
+.price {
+  font-family: var(--font-primary);
+  font-size: 1.25em;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  opacity: 0.7;
+  margin: 0 0 1em 0;
+}
+
+.description {
+  font-family: var(--font-primary);
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1.4;
+  opacity: 0.8;
+  margin: 0 0 1.5em 0;
+}
+
+.features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2em 0;
+  flex-grow: 1;
+}
+
+.features li {
+  font-family: var(--font-primary);
+  font-size: 0.875em;
+  font-weight: 400;
+  padding: 0.5em 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.featured .features li {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.features li:last-child {
+  border-bottom: none;
+}
+
+.card.featured :global(.btn) {
+  background: var(--color-white);
+  color: var(--color-accent);
+  border-color: var(--color-white);
+}
+
+/* Tablet */
+@media screen and (max-width: 991px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 767px) {
+  .title {
+    font-size: 2.5em;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 1.5em;
+  }
+}

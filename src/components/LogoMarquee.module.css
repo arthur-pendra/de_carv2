@@ -1,0 +1,104 @@
+.logoMarquee {
+  padding: 0 2em 4em;
+  background-color: var(--color-cream);
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5em;
+  max-width: 80em;
+  margin: 0 auto 3em;
+}
+
+.line {
+  flex: 1;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.tag {
+  display: flex;
+  gap: 0.5em;
+}
+
+.tag span {
+  font-family: var(--font-primary);
+  font-size: 0.75em;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: #000000;
+  background: rgba(0, 0, 0, 0.05);
+  padding: 0.5em 0.75em;
+  border-radius: 0.25em;
+}
+
+.marquee {
+  max-width: 80em;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 0.1) 2%,
+    rgba(0, 0, 0, 0.3) 4%,
+    rgba(0, 0, 0, 0.6) 6%,
+    black 10%,
+    black 90%,
+    rgba(0, 0, 0, 0.6) 94%,
+    rgba(0, 0, 0, 0.3) 96%,
+    rgba(0, 0, 0, 0.1) 98%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 0.1) 2%,
+    rgba(0, 0, 0, 0.3) 4%,
+    rgba(0, 0, 0, 0.6) 6%,
+    black 10%,
+    black 90%,
+    rgba(0, 0, 0, 0.6) 94%,
+    rgba(0, 0, 0, 0.3) 96%,
+    rgba(0, 0, 0, 0.1) 98%,
+    transparent 100%
+  );
+}
+
+.marqueeTrack {
+  display: flex;
+  gap: 4em;
+  animation: scroll 20s linear infinite;
+  width: max-content;
+}
+
+.brand {
+  font-family: var(--font-primary);
+  font-size: 2em;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-25%);
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 767px) {
+  .brand {
+    font-size: 1.5em;
+  }
+
+  .marqueeTrack {
+    gap: 2em;
+  }
+}

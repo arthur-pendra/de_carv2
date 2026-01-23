@@ -1,6 +1,10 @@
 import styles from "./page.module.css";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import Services from "@/components/Services";
+import WhyUs from "@/components/WhyUs";
+import LogoMarquee from "@/components/LogoMarquee";
+import FAQ from "@/components/FAQ";
 
 export default function Home() {
   return (
@@ -8,10 +12,10 @@ export default function Home() {
       <Navbar />
       <main className={styles.page}>
         <Hero />
-        <section className={styles.testSection}>
-          <h2>Test Sectie</h2>
-          <p>Dit is een test sectie om te kijken hoe de layout werkt.</p>
-        </section>
+        <Services />
+        <WhyUs />
+        <LogoMarquee />
+        <FAQ />
       </main>
     </>
   );
