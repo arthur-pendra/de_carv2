@@ -1,11 +1,14 @@
 import styles from './stylesheet.module.css';
 import Button from '@/components/Button';
+import Navbar from '@/components/Navbar';
 
 export default function StylesheetPage() {
   return (
-    <div className={styles.page}>
-      <div className={styles.container}>
-        <h1 className={styles.title}>Stylesheet</h1>
+    <>
+      <Navbar />
+      <div className={styles.page}>
+        <div className={styles.container}>
+          <h1 className={styles.title}>Stylesheet</h1>
 
         {/* Colors */}
         <section className={styles.section}>
@@ -169,7 +172,8 @@ export default function StylesheetPage() {
           </div>
         </section>
 
+        </div>
       </div>
-    </div>
+    </>
   );
 }

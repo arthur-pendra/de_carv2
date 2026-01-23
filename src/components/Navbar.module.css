@@ -1,0 +1,387 @@
+/* ========================= Animation Variables ========================= */
+
+.nav {
+  --cubic-default: cubic-bezier(0.625, 0.05, 0, 1);
+  --animation-ease: 0.2s ease;
+  --duration-default: 0.5s;
+  --duration-default-long: 0.75s;
+  --duration-default-half: 0.25s;
+  --animation-default: var(--duration-default) var(--cubic-default);
+  --animation-default-long: var(--duration-default-long) var(--cubic-default);
+  --animation-default-half: var(--duration-default-half) var(--cubic-default);
+
+  z-index: 100;
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+}
+
+/* ========================= Background Overlay ========================= */
+
+.bg {
+  z-index: 0;
+  opacity: 0;
+  pointer-events: auto;
+  visibility: hidden;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0 auto auto 0;
+  transition: opacity var(--animation-default), visibility var(--animation-default);
+}
+
+[data-nav-status="active"] .bg {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ========================= Wrapper ========================= */
+
+.wrap {
+  justify-content: center;
+  align-items: stretch;
+  width: 100%;
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.width {
+  flex-flow: column;
+  flex: none;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  max-width: 48em;
+  padding-top: 1.25em;
+  padding-left: 1.25em;
+  padding-right: 1.25em;
+  display: flex;
+}
+
+/* ========================= Bar ========================= */
+
+.bar {
+  pointer-events: auto;
+  color: var(--color-black);
+  width: 100%;
+  max-width: 25em;
+  position: relative;
+  transition: max-width var(--animation-default-long) 0.2s;
+}
+
+[data-nav-status="active"] .bar {
+  transition: max-width var(--animation-default) 0s;
+  max-width: 100%;
+}
+
+/* ========================= Background ========================= */
+
+.back {
+  z-index: 0;
+  position: absolute;
+  inset: 0;
+  transition: all var(--animation-default);
+}
+
+[data-nav-status="active"] .back {
+  inset: -0.25em;
+}
+
+.backBg {
+  background-color: var(--color-cream);
+  border-radius: 0.5em;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  transition: background-color var(--animation-ease);
+}
+
+/* ========================= Top Bar ========================= */
+
+.top {
+  z-index: 1;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 4em;
+  padding: 1.25em;
+  display: flex;
+  position: relative;
+}
+
+.topLine {
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.1);
+  height: 1px;
+  position: absolute;
+  bottom: 0;
+  left: 0.5em;
+  right: 0.5em;
+  opacity: 0;
+  transition: all var(--animation-default) 0s;
+}
+
+[data-nav-status="active"] .topLine {
+  transition: all var(--animation-default) 0.1s;
+  opacity: 1;
+}
+
+/* ========================= Logo ========================= */
+
+.logo {
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+  display: flex;
+  text-decoration: none;
+}
+
+.logoText {
+  font-family: var(--font-primary);
+  font-size: 1.25em;
+  font-weight: 700;
+  color: var(--color-black);
+  text-transform: uppercase;
+}
+
+.logoSvg {
+  height: 100%;
+}
+
+/* ========================= Toggle Button ========================= */
+
+.toggle {
+  pointer-events: auto;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  justify-content: center;
+  align-items: center;
+  width: 2.5em;
+  height: 2.5em;
+  padding: 0;
+  display: flex;
+  position: relative;
+}
+
+.toggleBar {
+  background-color: var(--color-black);
+  width: 1.875em;
+  height: 0.125em;
+  position: absolute;
+  transition: transform var(--animation-default);
+  transform: translateY(-0.25em) rotate(0.001deg);
+}
+
+.toggleBar:nth-child(2) {
+  transform: translateY(0.15em) rotate(0.001deg);
+}
+
+.toggle:hover .toggleBar {
+  transform: translateY(0.25em) rotate(0.001deg);
+}
+
+.toggle:hover .toggleBar:nth-child(2) {
+  transform: translateY(-0.15em) rotate(0.001deg);
+}
+
+[data-nav-status="active"] .toggleBar {
+  transform: translateY(0) rotate(45deg);
+}
+
+[data-nav-status="active"] .toggleBar:nth-child(2) {
+  transform: translateY(0) rotate(-45deg);
+}
+
+/* ========================= Bottom Section ========================= */
+
+.bottom {
+  grid-template-rows: 0fr;
+  width: 100%;
+  display: grid;
+  position: relative;
+  overflow: hidden;
+  transition: grid-template-rows var(--animation-default) 0s;
+}
+
+[data-nav-status="active"] .bottom {
+  transition: grid-template-rows var(--animation-default-long) 0.25s;
+  grid-template-rows: 1fr;
+}
+
+.bottomOverflow {
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.bottomInner {
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  padding: 1.5em;
+  display: flex;
+  position: relative;
+}
+
+.bottomRow {
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  display: flex;
+}
+
+.bottomRow > * {
+  transition: all var(--animation-default) 0s;
+  transform: translateY(2em);
+  opacity: 0;
+}
+
+.bottomRow > *:nth-child(2) {
+  transition-delay: 0.075s;
+}
+
+[data-nav-status="active"] .bottomRow > * {
+  transition: all var(--animation-default-long) 0.5s;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+[data-nav-status="active"] .bottomRow > *:nth-child(2) {
+  transition-delay: 0.575s;
+}
+
+/* ========================= Bottom Columns ========================= */
+
+.bottomCol {
+  flex: 1;
+  min-height: 100%;
+  display: flex;
+}
+
+.bottomColVisual {
+  display: flex;
+}
+
+/* ========================= Navigation Info ========================= */
+
+.info {
+  gap: 2em;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  display: flex;
+}
+
+/* ========================= Navigation List ========================= */
+
+.ul {
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+}
+
+.ulSmall {
+  gap: 1em 1em;
+  flex-flow: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.li {
+  display: block;
+}
+
+/* ========================= Navigation Links ========================= */
+
+.link {
+  color: inherit;
+  width: 100%;
+  padding-top: 0.375em;
+  padding-bottom: 0.375em;
+  text-decoration: none;
+  position: relative;
+  display: block;
+}
+
+.linkSpan {
+  font-family: var(--font-primary);
+  font-size: 2.125em;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+.linkEyebrow {
+  font-family: var(--font-secondary);
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  opacity: 0.7;
+}
+
+/* ========================= Visual ========================= */
+
+.visual {
+  aspect-ratio: 1;
+  border-radius: 0.375em;
+  width: 100%;
+  overflow: hidden;
+}
+
+.visualImg {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* ========================= Mobile Styles ========================= */
+
+@media screen and (max-width: 767px) {
+  .bottomColVisual {
+    display: none;
+  }
+
+  .topLine {
+    bottom: -0.5em;
+    left: 1em;
+    right: 1em;
+  }
+
+  [data-nav-status="active"] .topLine {
+    transition: all var(--animation-default) 0.2s;
+    inset: auto 0 -0.5em;
+  }
+
+  [data-nav-status="active"] .back {
+    inset: -1.25em;
+  }
+
+  .bottom {
+    transition: grid-template-rows var(--animation-default) 0s, transform var(--animation-default) 0s;
+    transform: translateY(-0.625em);
+  }
+
+  [data-nav-status="active"] .bottom {
+    transition: grid-template-rows var(--animation-default-long) 0.25s, transform var(--animation-default) 0.25s;
+    transform: translateY(0);
+  }
+}
