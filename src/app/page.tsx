@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import WhyUs from "@/components/WhyUs";
 import LogoMarquee from "@/components/LogoMarquee";
+import Reviews from "@/components/Reviews";
 import FAQ from "@/components/FAQ";
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
         <Services />
         <WhyUs />
         <LogoMarquee />
+        <Reviews />
         <FAQ />
       </main>
     </>
