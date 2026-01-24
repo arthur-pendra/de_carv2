@@ -44,11 +44,52 @@ const reviews = [
     name: 'Anna Smit',
     avatar: 'A',
   },
+  {
+    text: 'Super blij met het resultaat. Mijn BMW glimt als nooit tevoren!',
+    name: 'Ruben Hendriks',
+    avatar: 'R',
+  },
+  {
+    text: 'Snelle service en oog voor detail. Zeker een aanrader voor iedereen.',
+    name: 'Julia van Dijk',
+    avatar: 'J',
+  },
+  {
+    text: 'Mijn velgen zien er weer uit als nieuw. Geweldig werk!',
+    name: 'Kevin Bos',
+    avatar: 'K',
+  },
+  {
+    text: 'Na de behandeling reed ik weg met een glimlach. Fantastische service!',
+    name: 'Nathalie Prins',
+    avatar: 'N',
+  },
+  {
+    text: 'Uitstekende prijs-kwaliteit verhouding. Mijn Audi ziet er perfect uit!',
+    name: 'Bas Vermeulen',
+    avatar: 'B',
+  },
+  {
+    text: 'De glascoating is echt een aanrader. Regen parelt er zo vanaf!',
+    name: 'Iris van Leeuwen',
+    avatar: 'I',
+  },
+  {
+    text: 'Heel tevreden met de interieurreiniging. Voelt weer als nieuw!',
+    name: 'Stefan de Wit',
+    avatar: 'S',
+  },
+  {
+    text: 'Perfecte service van begin tot eind. Absolute vakman!',
+    name: 'Fleur Janssen',
+    avatar: 'F',
+  },
 ];
 
 export default function Reviews() {
   const sectionRef = useRef<HTMLElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const wrapRef = useRef<HTMLDivElement>(null);
   const angleRef = useRef(0);
   const isDragging = useRef(false);
   const lastX = useRef(0);
@@ -57,11 +98,12 @@ export default function Reviews() {
   useEffect(() => {
     const container = containerRef.current;
     const section = sectionRef.current;
-    if (!container || !section) return;
+    const wrap = wrapRef.current;
+    if (!container || !section || !wrap) return;
 
     const cards = container.querySelectorAll(`.${styles.card}`) as NodeListOf<HTMLElement>;
     const totalCards = cards.length;
-    const radius = 700;
+    const radius = 1600;
     const angleStep = 360 / totalCards;
 
     let animationId: number;
@@ -72,9 +114,16 @@ export default function Reviews() {
         angleRef.current += velocityRef.current;
         velocityRef.current *= 0.96;
 
-        // Auto rotate when velocity is very low
-        if (Math.abs(velocityRef.current) < 0.05) {
-          angleRef.current += 0.04;
+        // Snap to nearest card when velocity is low
+        if (Math.abs(velocityRef.current) < 0.2) {
+          const normalizedAngle = ((angleRef.current % 360) + 360) % 360;
+          const nearestCardIndex = Math.round(normalizedAngle / angleStep);
+          const targetAngle = nearestCardIndex * angleStep;
+
+          // Smooth snap with easing
+          const diff = targetAngle - normalizedAngle;
+          const shortestDiff = ((diff + 180) % 360) - 180;
+          angleRef.current += shortestDiff * 0.04;
         }
       }
 
@@ -83,7 +132,7 @@ export default function Reviews() {
 
         // Position on arc (bottom arc - smile shape)
         const x = Math.sin(angle) * radius;
-        const y = (1 - Math.cos(angle)) * radius - 600;
+        const y = (1 - Math.cos(angle)) * radius - 250;
 
         // Rotation follows curve
         const rotation = angle * (180 / Math.PI);
@@ -91,12 +140,8 @@ export default function Reviews() {
         // Z-index based on position (front cards on top)
         const zIndex = Math.round((1 - Math.cos(angle)) * 50);
 
-        // Opacity based on position
-        const opacity = 0.3 + (1 - Math.cos(angle)) * 0.35;
-
         card.style.transform = `translate(${x}px, ${y}px) rotate(${rotation}deg)`;
         card.style.zIndex = `${zIndex}`;
-        card.style.opacity = `${opacity}`;
       });
 
       animationId = requestAnimationFrame(updatePositions);
@@ -109,7 +154,7 @@ export default function Reviews() {
       isDragging.current = true;
       lastX.current = e.clientX;
       velocityRef.current = 0;
-      container.style.cursor = 'grabbing';
+      wrap.style.cursor = 'grabbing';
     };
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -122,7 +167,7 @@ export default function Reviews() {
 
     const handleMouseUp = () => {
       isDragging.current = false;
-      container.style.cursor = 'grab';
+      wrap.style.cursor = 'grab';
     };
 
     const handleTouchStart = (e: TouchEvent) => {
@@ -143,19 +188,19 @@ export default function Reviews() {
       isDragging.current = false;
     };
 
-    container.addEventListener('mousedown', handleMouseDown);
+    wrap.addEventListener('mousedown', handleMouseDown);
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mouseup', handleMouseUp);
-    container.addEventListener('touchstart', handleTouchStart, { passive: true });
+    wrap.addEventListener('touchstart', handleTouchStart, { passive: true });
     window.addEventListener('touchmove', handleTouchMove, { passive: true });
     window.addEventListener('touchend', handleTouchEnd);
 
     return () => {
       cancelAnimationFrame(animationId);
-      container.removeEventListener('mousedown', handleMouseDown);
+      wrap.removeEventListener('mousedown', handleMouseDown);
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseup', handleMouseUp);
-      container.removeEventListener('touchstart', handleTouchStart);
+      wrap.removeEventListener('touchstart', handleTouchStart);
       window.removeEventListener('touchmove', handleTouchMove);
       window.removeEventListener('touchend', handleTouchEnd);
     };
@@ -169,7 +214,7 @@ export default function Reviews() {
           <h2 className={styles.title}>Wat klanten zeggen</h2>
         </div>
 
-        <div className={styles.circleWrap}>
+        <div className={styles.circleWrap} ref={wrapRef}>
           <div className={styles.circle} ref={containerRef}>
             {reviews.map((review, index) => (
               <div key={index} className={styles.card}>
@@ -181,6 +226,11 @@ export default function Reviews() {
               </div>
             ))}
           </div>
+        </div>
+
+        <div className={styles.cta}>
+          <p className={styles.ctaText}>Ben jij ook klant geweest bij GD Carcare?</p>
+          <a href="#" className="btn">Laat een review achter</a>
         </div>
       </div>
     </section>

@@ -1,7 +1,7 @@
 .reviews {
   position: relative;
-  padding: 4em 0;
-  background-color: var(--color-cream);
+  padding: 0em 2em;
+  background-color: #121212;
   overflow: hidden;
 }
 
@@ -21,7 +21,7 @@
   font-family: var(--font-secondary);
   font-size: 1em;
   font-style: italic;
-  color: rgba(0, 0, 0, 0.6);
+  color: rgba(255, 255, 255, 0.6);
   display: block;
   margin-bottom: 0.5em;
 }
@@ -30,7 +30,7 @@
   font-family: var(--font-primary);
   font-size: 4em;
   font-weight: 400;
-  color: #000000;
+  color: var(--color-white);
   letter-spacing: -0.04em;
   line-height: 1.05;
   margin: 0;
@@ -39,9 +39,39 @@
 /* Circle Container */
 .circleWrap {
   position: relative;
-  height: 30em;
-  pointer-events: none;
+  height: 45em;
+  pointer-events: auto;
+  cursor: grab;
 }
+
+.circleWrap::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 12em;
+  background: linear-gradient(
+    to top,
+    rgba(18, 18, 18, 1) 0%,
+    rgba(18, 18, 18, 0.738) 19%,
+    rgba(18, 18, 18, 0.541) 34%,
+    rgba(18, 18, 18, 0.382) 47%,
+    rgba(18, 18, 18, 0.278) 56.5%,
+    rgba(18, 18, 18, 0.194) 65%,
+    rgba(18, 18, 18, 0.126) 73%,
+    rgba(18, 18, 18, 0.075) 80.2%,
+    rgba(18, 18, 18, 0.042) 86.1%,
+    rgba(18, 18, 18, 0.021) 91%,
+    rgba(18, 18, 18, 0.008) 95.2%,
+    rgba(18, 18, 18, 0.002) 98.2%,
+    rgba(18, 18, 18, 0) 100%
+  );
+  pointer-events: none;
+  z-index: 100;
+}
+
+
 
 .circle {
   position: absolute;
@@ -49,18 +79,15 @@
   top: 50%;
   width: 0;
   height: 0;
-  pointer-events: auto;
-  cursor: grab;
 }
 
 /* Review Cards */
 .card {
   position: absolute;
   width: 18em;
-  padding: 1.25em;
+  padding: 4em 1.25em;
   border-radius: 0.5em;
-  background: var(--color-white);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #1f1f1f;
   transform-origin: center center;
   will-change: transform, opacity;
   left: -9em;
@@ -68,14 +95,14 @@
   display: flex;
   flex-direction: column;
   gap: 1em;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  user-select: none;
 }
 
 .cardText {
   font-family: var(--font-secondary);
   font-size: 0.9375em;
   font-weight: 400;
-  color: #000000;
+  color: var(--color-white);
   line-height: 1.5;
   margin: 0;
 }
@@ -104,8 +131,28 @@
   font-family: var(--font-primary);
   font-size: 0.875em;
   font-weight: 400;
-  color: #000000;
+  color: var(--color-white);
   letter-spacing: -0.02em;
+}
+
+/* CTA */
+.cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5em;
+  padding: 2em;
+  margin-top: -14em;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
+.ctaText {
+  font-family: var(--font-secondary);
+  font-size: 1.125em;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
 }
 
 /* Tablet */

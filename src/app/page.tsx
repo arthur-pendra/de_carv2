@@ -6,6 +6,7 @@ import WhyUs from "@/components/WhyUs";
 import LogoMarquee from "@/components/LogoMarquee";
 import Reviews from "@/components/Reviews";
 import FAQ from "@/components/FAQ";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
         <Reviews />
         <FAQ />
       </main>
+      <Footer />
     </>
   );
 }
