@@ -104,8 +104,52 @@
   margin-top: 0.5em;
 }
 
+/* Tablet */
+@media screen and (max-width: 991px) {
+  .circleContainer {
+    height: 100vh;
+  }
+
+  .centerText {
+    top: calc(180px + 600px);
+  }
+
+  .centerText p {
+    font-size: 1.75em;
+  }
+
+  .title {
+    font-size: 4.5em;
+  }
+
+  .subtitle {
+    font-size: 1.125em;
+  }
+
+  .fadeBottom {
+    height: 40vh;
+  }
+}
+
 /* Mobile */
 @media screen and (max-width: 767px) {
+  .circleContainer {
+    height: 80vh;
+  }
+
+  .centerText {
+    top: calc(120px + 450px);
+    padding: 0 1.5em;
+  }
+
+  .centerText p {
+    font-size: 1.25em;
+  }
+
+  .content {
+    padding: 15vh 1.5em 2em;
+  }
+
   .title {
     font-size: 2.5em;
   }
@@ -116,5 +160,33 @@
 
   .buttons {
     flex-direction: column;
+    width: 100%;
+  }
+
+  .fadeBottom {
+    height: 30vh;
+  }
+}
+
+/* Small Mobile */
+@media screen and (max-width: 480px) {
+  .circleContainer {
+    height: 70vh;
+  }
+
+  .centerText {
+    top: calc(80px + 320px);
+  }
+
+  .centerText p {
+    font-size: 1em;
+  }
+
+  .title {
+    font-size: 2em;
+  }
+
+  .subtitle {
+    font-size: 0.8125em;
   }
 }

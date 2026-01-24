@@ -157,54 +157,122 @@
 
 /* Tablet */
 @media screen and (max-width: 991px) {
+  .header {
+    padding: 3em 1em 0;
+  }
+
   .title {
     font-size: 3em;
   }
 
   .circleWrap {
-    height: 25em;
+    height: 30em;
   }
 
   .card {
     width: 14em;
     left: -7em;
     top: -4em;
-    padding: 1em;
+    padding: 1.5em 1em;
   }
 
   .cardText {
     font-size: 0.875em;
   }
+
+  .cta {
+    margin-top: -8em;
+  }
 }
 
 /* Mobile */
 @media screen and (max-width: 767px) {
+  .reviews {
+    padding: 0 1em;
+  }
+
+  .header {
+    padding: 3em 1em 0;
+  }
+
   .title {
-    font-size: 2.5em;
+    font-size: 2.25em;
   }
 
   .circleWrap {
-    height: 20em;
+    height: 28em;
+  }
+
+  .circleWrap::after {
+    height: 8em;
   }
 
   .card {
-    width: 12em;
-    left: -6em;
-    top: -3.5em;
-    padding: 1em;
+    width: 11em;
+    left: -5.5em;
+    top: -3em;
+    padding: 1em 0.75em;
+    gap: 0.75em;
   }
 
   .cardText {
-    font-size: 0.8125em;
+    font-size: 0.75em;
+    line-height: 1.4;
   }
 
   .cardAvatar {
-    width: 2em;
-    height: 2em;
-    font-size: 0.75em;
+    width: 1.75em;
+    height: 1.75em;
+    font-size: 0.625em;
   }
 
   .cardName {
-    font-size: 0.75em;
+    font-size: 0.6875em;
+  }
+
+  .cta {
+    margin-top: -6em;
+    padding: 1.5em 1em;
+  }
+
+  .ctaText {
+    font-size: 1em;
+  }
+}
+
+/* Small Mobile */
+@media screen and (max-width: 480px) {
+  .title {
+    font-size: 2em;
+  }
+
+  .circleWrap {
+    height: 24em;
+  }
+
+  .card {
+    width: 9em;
+    left: -4.5em;
+    top: -2.5em;
+    padding: 0.75em 0.5em;
+    gap: 0.5em;
+  }
+
+  .cardText {
+    font-size: 0.625em;
+  }
+
+  .cardAuthor {
+    gap: 0.5em;
+  }
+
+  .cardAvatar {
+    width: 1.5em;
+    height: 1.5em;
+    font-size: 0.5em;
+  }
+
+  .cardName {
+    font-size: 0.5625em;
   }
 }

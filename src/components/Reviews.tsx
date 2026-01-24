@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from './Reviews.module.css';
 
 const reviews = [
@@ -94,6 +94,17 @@ export default function Reviews() {
   const isDragging = useRef(false);
   const lastX = useRef(0);
   const velocityRef = useRef(0);
+  const radiusRef = useRef(1600);
+
+  // Calculate responsive radius based on viewport
+  const getRadius = () => {
+    if (typeof window === 'undefined') return 1600;
+    const width = window.innerWidth;
+    if (width <= 480) return 600;
+    if (width <= 767) return 800;
+    if (width <= 991) return 1000;
+    return 1600;
+  };
 
   useEffect(() => {
     const container = containerRef.current;
@@ -103,8 +114,14 @@ export default function Reviews() {
 
     const cards = container.querySelectorAll(`.${styles.card}`) as NodeListOf<HTMLElement>;
     const totalCards = cards.length;
-    const radius = 1600;
+    radiusRef.current = getRadius();
     const angleStep = 360 / totalCards;
+
+    // Update radius on resize
+    const handleResize = () => {
+      radiusRef.current = getRadius();
+    };
+    window.addEventListener('resize', handleResize);
 
     let animationId: number;
 
@@ -129,10 +146,14 @@ export default function Reviews() {
 
       cards.forEach((card, index) => {
         const angle = (angleRef.current + index * angleStep) * (Math.PI / 180);
+        const radius = radiusRef.current;
+
+        // Responsive y-offset based on radius
+        const yOffset = radius <= 800 ? 100 : 250;
 
         // Position on arc (bottom arc - smile shape)
         const x = Math.sin(angle) * radius;
-        const y = (1 - Math.cos(angle)) * radius - 250;
+        const y = (1 - Math.cos(angle)) * radius - yOffset;
 
         // Rotation follows curve
         const rotation = angle * (180 / Math.PI);
@@ -197,6 +218,7 @@ export default function Reviews() {
 
     return () => {
       cancelAnimationFrame(animationId);
+      window.removeEventListener('resize', handleResize);
       wrap.removeEventListener('mousedown', handleMouseDown);
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseup', handleMouseUp);

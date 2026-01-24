@@ -94,6 +94,27 @@ export default function CircleGallery() {
   const rimRef = useRef<SVGSVGElement>(null);
   const animationRef = useRef<number | null>(null);
   const angleRef = useRef(0);
+  const radiusRef = useRef(1250);
+
+  // Calculate responsive radius based on viewport
+  const getRadius = () => {
+    if (typeof window === 'undefined') return 1250;
+    const width = window.innerWidth;
+    if (width <= 480) return 400;
+    if (width <= 767) return 550;
+    if (width <= 991) return 800;
+    return 1250;
+  };
+
+  // Calculate responsive y-offset based on viewport
+  const getYOffset = () => {
+    if (typeof window === 'undefined') return 250;
+    const width = window.innerWidth;
+    if (width <= 480) return 80;
+    if (width <= 767) return 120;
+    if (width <= 991) return 180;
+    return 250;
+  };
 
   useEffect(() => {
     const container = containerRef.current;
@@ -102,8 +123,14 @@ export default function CircleGallery() {
 
     const cards = container.querySelectorAll(`.${styles.card}`) as NodeListOf<HTMLElement>;
     const totalCards = cards.length;
-    const radius = 1250; // Radius of the circle
+    radiusRef.current = getRadius();
     const angleStep = 360 / totalCards;
+
+    // Update radius on resize
+    const handleResize = () => {
+      radiusRef.current = getRadius();
+    };
+    window.addEventListener('resize', handleResize);
 
     const animate = () => {
       angleRef.current += 0.05; // Speed of rotation
@@ -115,10 +142,12 @@ export default function CircleGallery() {
 
       cards.forEach((card, index) => {
         const angle = (angleRef.current + index * angleStep) * (Math.PI / 180);
+        const radius = radiusRef.current;
+        const yOffset = getYOffset();
 
         // Calculate position on the arc (showing top arc - like a rainbow)
         const x = Math.sin(angle) * radius;
-        const y = (1 - Math.cos(angle)) * radius + 250; // Top arc visible
+        const y = (1 - Math.cos(angle)) * radius + yOffset; // Top arc visible
 
         // Calculate rotation for each card to follow the curve (flipped)
         const rotation = angle * (180 / Math.PI);
@@ -139,6 +168,7 @@ export default function CircleGallery() {
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
       }
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 

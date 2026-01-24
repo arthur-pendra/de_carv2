@@ -52,6 +52,13 @@
 
 /* Tablet */
 @media screen and (max-width: 991px) {
+  .rim {
+    width: 1800px;
+    height: 1800px;
+    left: -900px;
+    top: calc(180px + 800px - 900px);
+  }
+
   .card {
     width: 14rem;
     left: -7rem;
@@ -61,13 +68,32 @@
 
 /* Mobile */
 @media screen and (max-width: 767px) {
-  .circleWrap {
-    height: 30rem;
+  .rim {
+    width: 1200px;
+    height: 1200px;
+    left: -600px;
+    top: calc(120px + 550px - 600px);
   }
 
   .card {
     width: 9rem;
     left: -4.5rem;
     top: -3.375rem;
+  }
+}
+
+/* Small Mobile */
+@media screen and (max-width: 480px) {
+  .rim {
+    width: 900px;
+    height: 900px;
+    left: -450px;
+    top: calc(80px + 400px - 450px);
+  }
+
+  .card {
+    width: 7rem;
+    left: -3.5rem;
+    top: -2.625rem;
   }
 }
