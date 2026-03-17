@@ -46,11 +46,10 @@
 
 .title {
   font-size: var(--font-h1);
-  font-weight: 700;
-  text-transform: uppercase;
+  font-weight: 400;
   color: var(--color-white);
-  letter-spacing: -0.02em;
-  line-height: 1;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
   margin: 0;
 }
 
