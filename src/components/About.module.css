@@ -1,6 +1,6 @@
 .about {
   background-color: var(--color-black);
-  padding: 8em 2em;
+  padding: 8em var(--padding-section);
 }
 
 .container {
@@ -86,7 +86,7 @@
 
 @media screen and (max-width: 767px) {
   .about {
-    padding: 5em 1.5em;
+    padding: 5em var(--padding-section);
   }
 
   .title {

@@ -1,6 +1,6 @@
 .reviews {
   position: relative;
-  padding: 0em 2em;
+  padding: 0em var(--padding-section);
   background-color: #121212;
   overflow: hidden;
 }
@@ -40,7 +40,7 @@
 
 .header {
   text-align: center;
-  padding: 4em 2em 0;
+  padding: 4em var(--padding-section) 0;
   position: relative;
   z-index: 10;
 }

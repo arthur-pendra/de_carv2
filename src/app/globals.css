@@ -57,6 +57,9 @@ html.lenis, html.lenis body {
   --white-bright: rgba(255, 255, 255, 0.7);
   --white-solid: rgba(255, 255, 255, 0.9);
 
+  /* Spacing */
+  --padding-section: 2em;
+
   /* Typography — 3 headings, 3 paragraphs */
   --font-h1: 4em;
   --font-h2: 2.5em;
@@ -82,6 +85,7 @@ html.lenis, html.lenis body {
     --size-container-min: 480px;
     --size-container-max: 767px;
     --font-par-lg: 1.25em;
+    --padding-section: 0.625em;
   }
 }
 

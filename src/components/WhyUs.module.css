@@ -1,5 +1,5 @@
 .whyUs {
-  padding: 6em 2em 0;
+  padding: 6em var(--padding-section) 0;
   background-color: var(--color-cream);
 }
 

@@ -1,5 +1,5 @@
 .logoMarquee {
-  padding: 0 2em 4em;
+  padding: 0 var(--padding-section) 4em;
   background-color: var(--color-cream);
 }
 
