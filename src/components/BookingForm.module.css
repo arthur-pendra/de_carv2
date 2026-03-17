@@ -114,13 +114,13 @@
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.5em;
   background: transparent;
-  color: var(--color-dark);
+  color: var(--color-black);
   cursor: pointer;
   transition: background 0.3s, color 0.3s, border-color 0.3s;
 }
 
 .categoryTab:hover {
-  border-color: var(--color-dark);
+  border-color: var(--color-black);
 }
 
 .categoryTabActive {

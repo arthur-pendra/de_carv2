@@ -49,13 +49,13 @@
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.5em;
   background: transparent;
-  color: var(--color-dark);
+  color: var(--color-black);
   cursor: pointer;
   transition: background 0.3s, color 0.3s, border-color 0.3s;
 }
 
 .tab:hover {
-  border-color: var(--color-dark);
+  border-color: var(--color-black);
 }
 
 .tabActive {
@@ -179,9 +179,9 @@
 }
 
 .card:not(.featured) :global(.btn) {
-  background: var(--color-dark);
+  background: var(--color-black);
   color: var(--color-white);
-  border-color: var(--color-dark);
+  border-color: var(--color-black);
 }
 
 /* Tablet */
