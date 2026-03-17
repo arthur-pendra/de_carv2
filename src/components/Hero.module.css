@@ -132,18 +132,6 @@
     top: calc(180px + 600px);
   }
 
-  .centerText p {
-    font-size: 1.75em;
-  }
-
-  .title {
-    font-size: 4.5em;
-  }
-
-  .subtitle {
-    font-size: 1.125em;
-  }
-
   .fadeBottom {
     height: 40vh;
   }
@@ -160,20 +148,8 @@
     padding: 0 1.5em;
   }
 
-  .centerText p {
-    font-size: 1.25em;
-  }
-
   .content {
     padding: 15vh 1.5em 2em;
-  }
-
-  .title {
-    font-size: 2.5em;
-  }
-
-  .subtitle {
-    font-size: 0.875em;
   }
 
   .buttons {
@@ -194,17 +170,5 @@
 
   .centerText {
     top: calc(80px + 320px);
-  }
-
-  .centerText p {
-    font-size: 1em;
-  }
-
-  .title {
-    font-size: 2em;
-  }
-
-  .subtitle {
-    font-size: 0.8125em;
   }
 }

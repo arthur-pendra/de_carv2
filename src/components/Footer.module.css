@@ -331,10 +331,6 @@
     text-align: center;
   }
 
-  .ctaTitle {
-    font-size: 2.5em;
-  }
-
   .ctaButtons {
     justify-content: center;
   }
@@ -359,9 +355,6 @@
     display: none;
   }
 
-  .ctaTitle {
-    font-size: 2em;
-  }
 
   .ctaButtons {
     flex-direction: column;

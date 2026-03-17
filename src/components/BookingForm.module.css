@@ -500,10 +500,6 @@
 /* ========================= Responsive ========================= */
 
 @media screen and (max-width: 767px) {
-  .title {
-    font-size: 2em;
-  }
-
   .serviceGrid {
     grid-template-columns: 1fr;
   }
