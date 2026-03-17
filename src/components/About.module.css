@@ -37,8 +37,7 @@
 }
 
 .eyebrow {
-  font-family: var(--font-secondary);
-  font-size: var(--font-small);
+  font-size: var(--font-par-sm);
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -46,7 +45,6 @@
 }
 
 .title {
-  font-family: var(--font-primary);
   font-size: var(--font-h1);
   font-weight: 700;
   text-transform: uppercase;
@@ -63,7 +61,6 @@
 }
 
 .text p {
-  font-family: var(--font-secondary);
   font-size: var(--font-par);
   font-weight: 400;
   color: var(--white-bright);

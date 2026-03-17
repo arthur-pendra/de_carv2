@@ -33,7 +33,7 @@
 /* Cards */
 .card {
   position: absolute;
-  width: 22rem;
+  width: 22em;
   aspect-ratio: 4/3;
   border-radius: 0.5rem;
   overflow: hidden;
@@ -60,8 +60,8 @@
   }
 
   .card {
-    width: 14rem;
-    left: -7rem;
+    width: 14em;
+    left: -7em;
     top: -5.25rem;
   }
 }
@@ -76,7 +76,7 @@
   }
 
   .card {
-    width: 9rem;
+    width: 9em;
     left: -4.5rem;
     top: -3.375rem;
   }
@@ -92,7 +92,7 @@
   }
 
   .card {
-    width: 7rem;
+    width: 7em;
     left: -3.5rem;
     top: -2.625rem;
   }

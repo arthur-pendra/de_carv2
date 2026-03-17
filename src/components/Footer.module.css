@@ -57,7 +57,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-primary);
   font-size: 0.75em;
   margin-right: -0.5em;
   border: 2px solid var(--color-accent);
@@ -68,14 +67,12 @@
 }
 
 .socialText {
-  font-family: var(--font-secondary);
   font-size: 0.875em;
   color: var(--color-white);
   margin-left: 0.5em;
 }
 
 .ctaTitle {
-  font-family: var(--font-primary);
   font-size: 3em;
   font-weight: 400;
   color: var(--color-white);
@@ -85,7 +82,6 @@
 }
 
 .ctaText {
-  font-family: var(--font-secondary);
   font-size: 1em;
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.5;
@@ -102,7 +98,6 @@
   background: var(--color-black);
   color: var(--color-white);
   border-radius: 0.5em;
-  font-family: var(--font-primary);
   font-size: 0.875em;
   font-weight: 400;
   letter-spacing: -0.02em;
@@ -120,7 +115,6 @@
   color: var(--color-black);
   border: none;
   border-radius: 0.5em;
-  font-family: var(--font-primary);
   font-size: 0.875em;
   font-weight: 400;
   letter-spacing: -0.02em;
@@ -152,7 +146,6 @@
 }
 
 .newsletterTitle {
-  font-family: var(--font-primary);
   font-size: 1.125em;
   font-weight: 400;
   color: var(--color-black);
@@ -177,7 +170,6 @@
   background: transparent;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.25em;
-  font-family: var(--font-secondary);
   font-size: 0.875em;
   color: var(--color-black);
   outline: none;
@@ -237,7 +229,6 @@
 }
 
 .checkboxText {
-  font-family: var(--font-secondary);
   font-size: 0.8125em;
   color: rgba(0, 0, 0, 0.6);
 }
@@ -253,7 +244,6 @@
   color: var(--color-white);
   border: none;
   border-radius: 0.25em;
-  font-family: var(--font-primary);
   font-size: 0.875em;
   font-weight: 400;
   letter-spacing: -0.02em;
@@ -279,7 +269,6 @@
 }
 
 .heading {
-  font-family: var(--font-primary);
   font-size: 0.875em;
   font-weight: 400;
   color: var(--color-black);
@@ -295,7 +284,6 @@
 }
 
 .list li {
-  font-family: var(--font-secondary);
   font-size: 0.875em;
   color: rgba(0, 0, 0, 0.6);
 }
@@ -320,7 +308,6 @@
 }
 
 .copyright {
-  font-family: var(--font-secondary);
   font-size: 0.8125em;
   color: rgba(0, 0, 0, 0.4);
   margin: 0;

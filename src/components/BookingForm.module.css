@@ -12,7 +12,6 @@
 /* ========================= Title ========================= */
 
 .title {
-  font-family: var(--font-primary);
   font-size: 3em;
   font-weight: 400;
   letter-spacing: -0.04em;
@@ -46,7 +45,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-primary);
   font-size: 0.75em;
   font-weight: 400;
   flex-shrink: 0;
@@ -59,7 +57,6 @@
 }
 
 .stepLabel {
-  font-family: var(--font-secondary);
   font-size: 0.75em;
   color: rgba(0, 0, 0, 0.4);
   transition: color 0.3s ease;
@@ -88,7 +85,6 @@
 }
 
 .stepTitle {
-  font-family: var(--font-primary);
   font-size: 1.5em;
   font-weight: 400;
   letter-spacing: -0.03em;
@@ -106,7 +102,6 @@
 }
 
 .categoryTab {
-  font-family: var(--font-primary);
   font-size: 0.875em;
   font-weight: 400;
   letter-spacing: 0.02em;
@@ -161,7 +156,6 @@
 }
 
 .serviceTag {
-  font-family: var(--font-primary);
   font-size: 1em;
   font-weight: 400;
   letter-spacing: 0.05em;
@@ -177,7 +171,6 @@
 }
 
 .serviceTitle {
-  font-family: var(--font-primary);
   font-size: 2.5em;
   font-weight: 400;
   letter-spacing: -0.03em;
@@ -186,7 +179,6 @@
 }
 
 .servicePrice {
-  font-family: var(--font-primary);
   font-size: 1.5em;
   font-weight: 400;
   letter-spacing: -0.02em;
@@ -201,7 +193,6 @@
 }
 
 .serviceFeatures li {
-  font-family: var(--font-secondary);
   font-size: 1em;
   font-weight: 400;
   padding: 0.5em 0;
@@ -240,7 +231,6 @@
 }
 
 .label {
-  font-family: var(--font-secondary);
   font-size: 0.75em;
   font-weight: 500;
   color: var(--color-black);
@@ -248,7 +238,6 @@
 
 .input,
 .textarea {
-  font-family: var(--font-secondary);
   font-size: 0.875em;
   padding: 0.875em 1em;
   border: 1px solid rgba(0, 0, 0, 0.15);
@@ -276,7 +265,6 @@
   align-items: center;
   gap: 0.5em;
   cursor: pointer;
-  font-family: var(--font-secondary);
   font-size: 0.8125em;
 }
 
@@ -342,7 +330,6 @@
 }
 
 .btnPrimary {
-  font-family: var(--font-primary);
   font-size: 0.875em;
   font-weight: 400;
   letter-spacing: -0.02em;
@@ -369,7 +356,6 @@
 }
 
 .btnOutline {
-  font-family: var(--font-primary);
   font-size: 0.875em;
   font-weight: 400;
   letter-spacing: -0.02em;
@@ -410,7 +396,6 @@
 }
 
 .confirmTitle {
-  font-family: var(--font-primary);
   font-size: 2.5em;
   font-weight: 400;
   letter-spacing: -0.04em;
@@ -418,7 +403,6 @@
 }
 
 .confirmText {
-  font-family: var(--font-secondary);
   font-size: 1em;
   color: rgba(0, 0, 0, 0.6);
   margin: 0 0 2em 0;
@@ -443,7 +427,6 @@
   display: inline-flex;
   align-items: center;
   gap: 0.375em;
-  font-family: var(--font-secondary);
   font-size: 0.75em;
   background: var(--color-accent);
   color: var(--color-white);
@@ -480,7 +463,6 @@
 }
 
 .summaryTitle {
-  font-family: var(--font-primary);
   font-size: 1.25em;
   font-weight: 400;
   letter-spacing: -0.03em;
@@ -503,14 +485,12 @@
 }
 
 .summaryLabel {
-  font-family: var(--font-secondary);
   font-size: 0.75em;
   color: rgba(0, 0, 0, 0.5);
   flex-shrink: 0;
 }
 
 .summaryValue {
-  font-family: var(--font-secondary);
   font-size: 0.75em;
   font-weight: 500;
   color: var(--color-black);

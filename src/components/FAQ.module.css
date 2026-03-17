@@ -14,7 +14,6 @@
 }
 
 .title {
-  font-family: var(--font-primary);
   font-size: 4em;
   font-weight: 400;
   color: var(--color-white);
@@ -47,7 +46,6 @@
   border: none;
   cursor: pointer;
   text-align: left;
-  font-family: var(--font-primary);
   font-size: 1.125em;
   font-weight: 400;
   color: var(--color-white);
@@ -99,7 +97,6 @@
 }
 
 .answer p {
-  font-family: var(--font-secondary);
   font-size: 1em;
   font-weight: 400;
   color: var(--color-white);

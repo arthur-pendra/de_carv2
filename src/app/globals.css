@@ -1,7 +1,5 @@
 /* ========================= Fonts ========================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
 @font-face {
   font-family: 'Gd Car';
   src: url('/fonts/Gd_Car.woff2') format('woff2');
@@ -42,16 +40,13 @@ html.lenis, html.lenis body {
   --size-container: clamp(var(--size-container-min), 100vw, var(--size-container-max));
   --size-font: calc(var(--size-container) / (var(--size-container-ideal) / var(--size-unit)));
 
-  /* Fonts */
-  --font-primary: 'Gd Car', sans-serif;
-  --font-secondary: 'Inter', sans-serif;
+  /* Font */
+  --font: 'Gd Car', sans-serif;
 
-  /* Base Colors */
+  /* Colors */
   --color-black: #070707;
   --color-white: #FFFFFF;
   --color-cream: #F7F6F3;
-
-  /* Accent */
   --color-accent: #012296;
 
   /* White Transparency */
@@ -62,13 +57,13 @@ html.lenis, html.lenis body {
   --white-bright: rgba(255, 255, 255, 0.7);
   --white-solid: rgba(255, 255, 255, 0.9);
 
-  /* Typography */
-  --font-h1: 3em;
-  --font-h2: 2em;
+  /* Typography — 3 headings, 3 paragraphs */
+  --font-h1: 4em;
+  --font-h2: 2.5em;
   --font-h3: 1.5em;
-  --font-h4: 1.25em;
+  --font-par-lg: 1.125em;
   --font-par: 1em;
-  --font-small: 0.875em;
+  --font-par-sm: 0.875em;
 }
 
 /* Tablet */
@@ -115,7 +110,7 @@ body {
 }
 
 body {
-  font-family: var(--font-secondary);
+  font-family: var(--font);
   font-size: var(--size-font);
   color: var(--color-black);
   background: var(--color-white);
@@ -143,7 +138,7 @@ a {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  font-family: var(--font-primary);
+  font-family: var(--font);
   font-size: 0.875em;
   font-weight: 400;
   letter-spacing: -0.02em;

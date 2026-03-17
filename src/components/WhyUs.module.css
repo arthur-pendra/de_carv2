@@ -13,7 +13,6 @@
 }
 
 .label {
-  font-family: var(--font-secondary);
   font-size: 1em;
   font-weight: 400;
   font-style: italic;
@@ -23,7 +22,6 @@
 }
 
 .title {
-  font-family: var(--font-primary);
   font-size: 3.5em;
   font-weight: 400;
   color: #000000;
@@ -48,7 +46,6 @@
 
 
 .reasonTitle {
-  font-family: var(--font-primary);
   font-size: 1.25em;
   font-weight: 400;
   color: #000000;
@@ -57,7 +54,6 @@
 }
 
 .reasonDescription {
-  font-family: var(--font-secondary);
   font-size: 1em;
   font-weight: 400;
   color: #000000;

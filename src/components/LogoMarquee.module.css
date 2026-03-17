@@ -24,7 +24,6 @@
 }
 
 .tag span {
-  font-family: var(--font-primary);
   font-size: 0.75em;
   font-weight: 400;
   letter-spacing: 0.05em;
@@ -75,7 +74,6 @@
 }
 
 .brand {
-  font-family: var(--font-primary);
   font-size: 2em;
   font-weight: 400;
   letter-spacing: -0.02em;
