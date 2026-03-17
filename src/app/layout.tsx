@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
+import { TransitionProvider, TransitionContent } from "@/components/PageTransition";
+import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
-  title: "GD Carcare",
-  description: "GD Carcare Website",
+  title: "GD Carcosmetics | Specialist in detailing",
+  description: "Professionele auto detailing: interieur en exterieur reiniging, keramische sealant en kleibehandeling.",
 };
 
 export default function RootLayout({
@@ -16,7 +18,12 @@ export default function RootLayout({
     <html lang="nl">
       <body>
         <SmoothScroll>
-          {children}
+          <TransitionProvider>
+            <Navbar />
+            <TransitionContent>
+              {children}
+            </TransitionContent>
+          </TransitionProvider>
         </SmoothScroll>
       </body>
     </html>

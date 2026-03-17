@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import TransitionLink from './TransitionLink';
 import styles from './Footer.module.css';
 import WheelRim from './WheelRim';
 
@@ -38,7 +39,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className={styles.footer}>
+    <footer id="contact" className={styles.footer}>
       {/* CTA Section */}
       <div className={styles.ctaSection} ref={sectionRef}>
         {/* Wheel SVG */}
@@ -62,8 +63,8 @@ export default function Footer() {
             Boek vandaag nog een afspraak en geef je auto de behandeling die het verdient.
           </p>
           <div className={styles.ctaButtons}>
-            <a href="#" className={styles.ctaPrimary}>Afspraak maken</a>
-            <a href="#" className={styles.ctaSecondary}>Bekijk prijzen</a>
+            <TransitionLink href="/start" className={styles.ctaPrimary}>Afspraak maken</TransitionLink>
+            <TransitionLink href="/#diensten" className={styles.ctaSecondary}>Bekijk prijzen</TransitionLink>
           </div>
         </div>
       </div>
@@ -111,19 +112,19 @@ export default function Footer() {
             <div className={styles.links}>
               <h4 className={styles.heading}>Diensten</h4>
               <ul className={styles.list}>
-                <li><a href="#">Uitgebreide wasbeurt</a></li>
-                <li><a href="#">Interieur reiniging</a></li>
-                <li><a href="#">Polijsten</a></li>
-                <li><a href="#">Keramische coating</a></li>
+                <li><a href="#diensten">Premium Wasbeurt</a></li>
+                <li><a href="#diensten">Interieur Reiniging</a></li>
+                <li><a href="#diensten">Polijsten</a></li>
+                <li><a href="#diensten">Keramische Coating</a></li>
               </ul>
             </div>
 
             <div className={styles.links}>
               <h4 className={styles.heading}>Bedrijf</h4>
               <ul className={styles.list}>
-                <li><a href="#">Over ons</a></li>
-                <li><a href="#">Reviews</a></li>
-                <li><a href="#">FAQ</a></li>
+                <li><a href="#waarom-ons">Waarom GD?</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#faq">FAQ</a></li>
               </ul>
             </div>
 
@@ -131,8 +132,8 @@ export default function Footer() {
               <h4 className={styles.heading}>Contact</h4>
               <ul className={styles.list}>
                 <li><a href="tel:+31612345678">+31 6 12345678</a></li>
-                <li><a href="mailto:info@gdcarcare.nl">info@gdcarcare.nl</a></li>
-                <li><a href="#">Instagram</a></li>
+                <li><a href="mailto:info@gdcarcosmetics.nl">info@gdcarcosmetics.nl</a></li>
+                <li><a href="https://www.instagram.com/gdcarcosmetics/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
               </ul>
             </div>
           </div>
@@ -142,7 +143,7 @@ export default function Footer() {
         <div className={styles.bottom}>
           <div className={styles.container}>
             <p className={styles.copyright}>
-              © {currentYear} GD Carcare. Alle rechten voorbehouden.
+              © {currentYear} GD Carcosmetics. Alle rechten voorbehouden.
             </p>
           </div>
         </div>

@@ -1,3 +1,7 @@
+'use client';
+
+import TransitionLink from './TransitionLink';
+
 interface ButtonProps {
   children: React.ReactNode;
   href?: string;
@@ -7,9 +11,9 @@ interface ButtonProps {
 export default function Button({ children, href, onClick }: ButtonProps) {
   if (href) {
     return (
-      <a href={href} className="btn">
+      <TransitionLink href={href} className="btn" onClick={onClick}>
         {children}
-      </a>
+      </TransitionLink>
     );
   }
 

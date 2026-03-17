@@ -1,5 +1,4 @@
 import styles from "./page.module.css";
-import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import WhyUs from "@/components/WhyUs";
@@ -11,7 +10,6 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <>
-      <Navbar />
       <main className={styles.page}>
         <Hero />
         <Services />
