@@ -184,6 +184,10 @@
 
 /* Small tablet */
 @media screen and (max-width: 767px) {
+  .title {
+    font-size: 3em;
+  }
+
   .grid {
     grid-template-columns: 1fr;
     max-width: 28em;

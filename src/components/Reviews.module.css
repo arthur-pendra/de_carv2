@@ -207,6 +207,10 @@
     padding: 3em 1em 0;
   }
 
+  .title {
+    font-size: 2em;
+  }
+
   .circleWrap {
     height: 28em;
   }

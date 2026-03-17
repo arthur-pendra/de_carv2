@@ -146,6 +146,15 @@
   .centerText {
     top: calc(120px + 450px);
     padding: 0 1.5em;
+    max-width: 30em;
+  }
+
+  .centerText p {
+    font-size: 1.5em;
+  }
+
+  .title {
+    font-size: 4em;
   }
 
   .content {
@@ -153,8 +162,7 @@
   }
 
   .buttons {
-    flex-direction: column;
-    width: 100%;
+    flex-wrap: wrap;
   }
 
   .fadeBottom {

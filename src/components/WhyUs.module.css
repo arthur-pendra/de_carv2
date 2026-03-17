@@ -71,6 +71,10 @@
 
 /* Mobile */
 @media screen and (max-width: 767px) {
+  .title {
+    font-size: 2em;
+  }
+
   .reason {
     grid-template-columns: 1fr;
     gap: 1em;
