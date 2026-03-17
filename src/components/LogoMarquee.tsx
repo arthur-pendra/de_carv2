@@ -1,5 +1,3 @@
-'use client';
-
 import styles from './LogoMarquee.module.css';
 
 const brands = [

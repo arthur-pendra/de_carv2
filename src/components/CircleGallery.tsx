@@ -1,7 +1,8 @@
 'use client';
 
-import { useEffect, useRef, forwardRef } from 'react';
+import { useEffect, useRef } from 'react';
 import styles from './CircleGallery.module.css';
+import WheelRim from './WheelRim';
 
 const images = [
   'https://images.unsplash.com/photo-1607860108855-64acf2078ed9?q=80&w=400&auto=format&fit=crop',
@@ -22,79 +23,13 @@ const images = [
   'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=400&auto=format&fit=crop',
 ];
 
-// Clean wheel rim component
-const WheelRim = forwardRef<SVGSVGElement>(function WheelRim(props, ref) {
-  const outerRadius = 1300;
-  const innerRadius = 1250;
-  const rimRadius = 1220;
-  const hubRadius = 150;
-  const spokes = 12;
-  const treadCount = 60;
-
-  return (
-    <svg className={styles.rim} viewBox="-1450 -1450 2900 2900" ref={ref}>
-      {/* Outer tire edge */}
-      <circle cx="0" cy="0" r={outerRadius} fill="none" stroke="currentColor" strokeWidth="2" />
-
-      {/* Inner tire edge */}
-      <circle cx="0" cy="0" r={innerRadius} fill="none" stroke="currentColor" strokeWidth="1" />
-
-      {/* Tire tread/profile - lines */}
-      {Array.from({ length: treadCount }).map((_, i) => {
-        const angle = (i * 360 / treadCount) * (Math.PI / 180);
-        const x1 = Math.cos(angle) * innerRadius;
-        const y1 = Math.sin(angle) * innerRadius;
-        const x2 = Math.cos(angle) * outerRadius;
-        const y2 = Math.sin(angle) * outerRadius;
-        return (
-          <line
-            key={`tread-${i}`}
-            x1={x1}
-            y1={y1}
-            x2={x2}
-            y2={y2}
-            stroke="currentColor"
-            strokeWidth="1"
-          />
-        );
-      })}
-
-      {/* Rim edge */}
-      <circle cx="0" cy="0" r={rimRadius} fill="none" stroke="currentColor" strokeWidth="1" />
-
-      {/* Hub */}
-      <circle cx="0" cy="0" r={hubRadius} fill="none" stroke="currentColor" strokeWidth="1" />
-      <circle cx="0" cy="0" r={80} fill="none" stroke="currentColor" strokeWidth="1" />
-
-      {/* Spokes */}
-      {Array.from({ length: spokes }).map((_, i) => {
-        const angle = (i * 360 / spokes) * (Math.PI / 180);
-        const x1 = Math.cos(angle) * hubRadius;
-        const y1 = Math.sin(angle) * hubRadius;
-        const x2 = Math.cos(angle) * rimRadius;
-        const y2 = Math.sin(angle) * rimRadius;
-        return (
-          <line
-            key={i}
-            x1={x1}
-            y1={y1}
-            x2={x2}
-            y2={y2}
-            stroke="currentColor"
-            strokeWidth="1"
-          />
-        );
-      })}
-    </svg>
-  );
-});
-
 export default function CircleGallery() {
   const containerRef = useRef<HTMLDivElement>(null);
   const rimRef = useRef<SVGSVGElement>(null);
   const animationRef = useRef<number | null>(null);
   const angleRef = useRef(0);
   const radiusRef = useRef(1250);
+  const yOffsetRef = useRef(250);
 
   // Calculate responsive radius based on viewport
   const getRadius = () => {
@@ -124,11 +59,13 @@ export default function CircleGallery() {
     const cards = container.querySelectorAll(`.${styles.card}`) as NodeListOf<HTMLElement>;
     const totalCards = cards.length;
     radiusRef.current = getRadius();
+    yOffsetRef.current = getYOffset();
     const angleStep = 360 / totalCards;
 
-    // Update radius on resize
+    // Update radius and y-offset on resize
     const handleResize = () => {
       radiusRef.current = getRadius();
+      yOffsetRef.current = getYOffset();
     };
     window.addEventListener('resize', handleResize);
 
@@ -143,7 +80,7 @@ export default function CircleGallery() {
       cards.forEach((card, index) => {
         const angle = (angleRef.current + index * angleStep) * (Math.PI / 180);
         const radius = radiusRef.current;
-        const yOffset = getYOffset();
+        const yOffset = yOffsetRef.current;
 
         // Calculate position on the arc (showing top arc - like a rainbow)
         const x = Math.sin(angle) * radius;
@@ -175,7 +112,7 @@ export default function CircleGallery() {
   return (
     <div className={styles.circleWrap}>
       <div className={styles.circle} ref={containerRef}>
-        <WheelRim ref={rimRef} />
+        <WheelRim className={styles.rim} ref={rimRef} />
         {images.map((src, index) => (
           <div key={index} className={styles.card}>
             <img src={src} alt={`Car detailing ${index + 1}`} />

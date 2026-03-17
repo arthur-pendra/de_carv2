@@ -5,6 +5,34 @@
   overflow: hidden;
 }
 
+.reviews::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 15em;
+  background: linear-gradient(
+    to top,
+    rgba(18, 18, 18, 1) 0%,
+    rgba(18, 18, 18, 0.738) 19%,
+    rgba(18, 18, 18, 0.541) 34%,
+    rgba(18, 18, 18, 0.382) 47%,
+    rgba(18, 18, 18, 0.278) 56.5%,
+    rgba(18, 18, 18, 0.194) 65%,
+    rgba(18, 18, 18, 0.126) 73%,
+    rgba(18, 18, 18, 0.075) 80.2%,
+    rgba(18, 18, 18, 0.042) 86.1%,
+    rgba(18, 18, 18, 0.021) 91%,
+    rgba(18, 18, 18, 0.008) 95.2%,
+    rgba(18, 18, 18, 0.002) 98.2%,
+    rgba(18, 18, 18, 0) 100%
+  );
+  pointer-events: none;
+  z-index: 100;
+}
+
+
 .stickyWrap {
   display: flex;
   flex-direction: column;
@@ -44,34 +72,6 @@
   cursor: grab;
 }
 
-.circleWrap::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 12em;
-  background: linear-gradient(
-    to top,
-    rgba(18, 18, 18, 1) 0%,
-    rgba(18, 18, 18, 0.738) 19%,
-    rgba(18, 18, 18, 0.541) 34%,
-    rgba(18, 18, 18, 0.382) 47%,
-    rgba(18, 18, 18, 0.278) 56.5%,
-    rgba(18, 18, 18, 0.194) 65%,
-    rgba(18, 18, 18, 0.126) 73%,
-    rgba(18, 18, 18, 0.075) 80.2%,
-    rgba(18, 18, 18, 0.042) 86.1%,
-    rgba(18, 18, 18, 0.021) 91%,
-    rgba(18, 18, 18, 0.008) 95.2%,
-    rgba(18, 18, 18, 0.002) 98.2%,
-    rgba(18, 18, 18, 0) 100%
-  );
-  pointer-events: none;
-  z-index: 100;
-}
-
-
 
 .circle {
   position: absolute;
@@ -89,7 +89,6 @@
   border-radius: 0.5em;
   background: #1f1f1f;
   transform-origin: center center;
-  will-change: transform, opacity;
   left: -9em;
   top: -5em;
   display: flex;
@@ -145,7 +144,7 @@
   margin-top: -14em;
   text-align: center;
   position: relative;
-  z-index: 10;
+  z-index: 102;
 }
 
 .ctaText {
@@ -153,6 +152,34 @@
   font-size: 1.125em;
   color: rgba(255, 255, 255, 0.7);
   margin: 0;
+}
+
+.googleBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625em;
+  padding: 0.75em 1.5em;
+  background: var(--color-white);
+  color: var(--color-black);
+  font-family: var(--font-primary);
+  font-size: 0.875em;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  border-radius: 0.25em;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.googleBtn:hover {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.googleIcon {
+  width: 1.25em;
+  height: 1.25em;
+  flex-shrink: 0;
 }
 
 /* Tablet */
@@ -201,10 +228,6 @@
 
   .circleWrap {
     height: 28em;
-  }
-
-  .circleWrap::after {
-    height: 8em;
   }
 
   .card {

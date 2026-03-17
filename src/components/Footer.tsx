@@ -1,67 +1,49 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styles from './Footer.module.css';
+import WheelRim from './WheelRim';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   const [agreed, setAgreed] = useState(false);
+  const wheelRef = useRef<SVGSVGElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const wheel = wheelRef.current;
+    const section = sectionRef.current;
+    if (!wheel || !section) return;
+
+    // Scroll-driven rotation
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 0.5,
+      },
+    });
+
+    tl.fromTo(wheel, { rotation: 0 }, { rotation: 360, ease: 'none' });
+
+    return () => {
+      tl.scrollTrigger?.kill();
+      tl.kill();
+    };
+  }, []);
 
   return (
     <footer className={styles.footer}>
       {/* CTA Section */}
-      <div className={styles.ctaSection}>
+      <div className={styles.ctaSection} ref={sectionRef}>
         {/* Wheel SVG */}
         <div className={styles.wheelWrap}>
-          <svg className={styles.wheel} viewBox="-1450 -1450 2900 2900">
-            {/* Outer tire edge */}
-            <circle cx="0" cy="0" r={1300} fill="none" stroke="currentColor" strokeWidth="2" />
-            {/* Inner tire edge */}
-            <circle cx="0" cy="0" r={1250} fill="none" stroke="currentColor" strokeWidth="1" />
-            {/* Tire tread/profile - lines */}
-            {Array.from({ length: 60 }).map((_, i) => {
-              const angle = (i * 360 / 60) * (Math.PI / 180);
-              const x1 = Math.cos(angle) * 1250;
-              const y1 = Math.sin(angle) * 1250;
-              const x2 = Math.cos(angle) * 1300;
-              const y2 = Math.sin(angle) * 1300;
-              return (
-                <line
-                  key={`tread-${i}`}
-                  x1={x1}
-                  y1={y1}
-                  x2={x2}
-                  y2={y2}
-                  stroke="currentColor"
-                  strokeWidth="1"
-                />
-              );
-            })}
-            {/* Rim edge */}
-            <circle cx="0" cy="0" r={1220} fill="none" stroke="currentColor" strokeWidth="1" />
-            {/* Hub */}
-            <circle cx="0" cy="0" r={150} fill="none" stroke="currentColor" strokeWidth="1" />
-            <circle cx="0" cy="0" r={80} fill="none" stroke="currentColor" strokeWidth="1" />
-            {/* Spokes */}
-            {Array.from({ length: 12 }).map((_, i) => {
-              const angle = (i * 360 / 12) * (Math.PI / 180);
-              const x1 = Math.cos(angle) * 150;
-              const y1 = Math.sin(angle) * 150;
-              const x2 = Math.cos(angle) * 1220;
-              const y2 = Math.sin(angle) * 1220;
-              return (
-                <line
-                  key={`spoke-${i}`}
-                  x1={x1}
-                  y1={y1}
-                  x2={x2}
-                  y2={y2}
-                  stroke="currentColor"
-                  strokeWidth="1"
-                />
-              );
-            })}
-          </svg>
+          <WheelRim className={styles.wheel} ref={wheelRef} />
         </div>
 
         <div className={styles.ctaContent}>

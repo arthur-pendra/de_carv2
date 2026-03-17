@@ -12,7 +12,6 @@ const reasons = [
   {
     title: 'Premium Producten',
     description: 'We gebruiken alleen de beste producten van topmerken. Geen compromissen, alleen resultaten die je verwachtingen overtreffen.',
-    isLast: true,
   },
 ];
 

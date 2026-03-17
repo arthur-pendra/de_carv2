@@ -24,7 +24,7 @@ export default function Hero() {
             Van interieurreiniging tot complete polijstbehandelingen -
             wij brengen uw auto terug naar showroom conditie.
           </p>
-          <Button>Bekijk onze diensten</Button>
+          <a href="#diensten" className={styles.ctaBtn}>Bekijk onze diensten</a>
         </div>
         <div className={styles.fadeBottom} />
       </div>
