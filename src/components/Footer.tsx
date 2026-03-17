@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import TransitionLink from './TransitionLink';
+import Button from './Button';
 import styles from './Footer.module.css';
 import WheelRim from './WheelRim';
 
@@ -63,8 +64,8 @@ export default function Footer() {
             Boek vandaag nog een afspraak en geef je auto de behandeling die het verdient.
           </p>
           <div className={styles.ctaButtons}>
-            <TransitionLink href="/start" className={styles.ctaPrimary}>Afspraak maken</TransitionLink>
-            <TransitionLink href="/#diensten" className={styles.ctaSecondary}>Bekijk prijzen</TransitionLink>
+            <Button href="/start">Afspraak maken</Button>
+            <Button href="/#diensten">Bekijk prijzen</Button>
           </div>
         </div>
       </div>

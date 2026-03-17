@@ -33,15 +33,15 @@
 /* Cards */
 .card {
   position: absolute;
-  width: 22em;
+  width: 18em;
   aspect-ratio: 4/3;
-  border-radius: 0.5rem;
+  border-radius: 0.5em;
   overflow: hidden;
   background: var(--color-white);
   transform-origin: center center;
   will-change: transform;
-  left: -11rem;
-  top: -8.25rem;
+  left: -9em;
+  top: -6.75em;
 }
 
 .card img {
@@ -60,9 +60,9 @@
   }
 
   .card {
-    width: 14em;
-    left: -7em;
-    top: -5.25rem;
+    width: 12em;
+    left: -6em;
+    top: -4.5em;
   }
 }
 
@@ -76,9 +76,9 @@
   }
 
   .card {
-    width: 9em;
-    left: -4.5rem;
-    top: -3.375rem;
+    width: 8em;
+    left: -4em;
+    top: -3em;
   }
 }
 
@@ -92,8 +92,8 @@
   }
 
   .card {
-    width: 7em;
-    left: -3.5rem;
-    top: -2.625rem;
+    width: 6em;
+    left: -3em;
+    top: -2.25em;
   }
 }
