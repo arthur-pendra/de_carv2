@@ -1,7 +1,7 @@
 .reviews {
   position: relative;
   padding: 0em var(--padding-section);
-  background-color: var(--color-black);
+  background-color: var(--color-dark);
   overflow: hidden;
 }
 
