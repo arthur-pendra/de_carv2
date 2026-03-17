@@ -17,7 +17,7 @@ const reasons = [
 
 export default function WhyUs() {
   return (
-    <section className={styles.whyUs}>
+    <section id="waarom-ons" className={styles.whyUs}>
       <div className={styles.container}>
         <div className={styles.header}>
           <span className={styles.label}>Waarom GD?</span>

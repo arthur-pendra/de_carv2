@@ -34,7 +34,7 @@ export default function FAQ() {
   };
 
   return (
-    <section className={styles.faq}>
+    <section id="faq" className={styles.faq}>
       <div className={styles.container}>
         <div className={styles.header}>
           <h2 className={styles.title}>

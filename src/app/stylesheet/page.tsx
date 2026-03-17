@@ -129,28 +129,12 @@ export default function StylesheetPage() {
           <h2 className={styles.sectionTitle}>Buttons</h2>
           <div className={styles.buttonGrid}>
             <div className={styles.buttonItem}>
-              <span className={styles.typeLabel}>Primary (Mail)</span>
-              <Button theme="primary">Contact</Button>
+              <span className={styles.typeLabel}>Glass Button</span>
+              <Button>Contact</Button>
             </div>
             <div className={styles.buttonItem}>
-              <span className={styles.typeLabel}>Primary + Icon</span>
-              <Button theme="primary" icon={<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3ZM12.0606 11.6829L5.64722 6.2377L4.35278 7.7623L12.0731 14.3171L19.6544 7.75616L18.3456 6.24384L12.0606 11.6829Z"></path></svg>}>Mail ons</Button>
-            </div>
-            <div className={styles.buttonItem}>
-              <span className={styles.typeLabel}>Dark</span>
-              <Button theme="dark">Learn More</Button>
-            </div>
-            <div className={styles.buttonItem}>
-              <span className={styles.typeLabel}>Dark + Icon</span>
-              <Button theme="dark" icon={<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8L7.00372 8V6H18.0037V17H16.0037V9.41421Z"></path></svg>}>Bekijk</Button>
-            </div>
-            <div className={styles.buttonItem}>
-              <span className={styles.typeLabel}>Light</span>
-              <Button theme="light">View All</Button>
-            </div>
-            <div className={styles.buttonItem}>
-              <span className={styles.typeLabel}>Light + Icon</span>
-              <Button theme="light" icon={<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8L7.00372 8V6H18.0037V17H16.0037V9.41421Z"></path></svg>}>Meer info</Button>
+              <span className={styles.typeLabel}>Glass Button</span>
+              <Button>Onze diensten</Button>
             </div>
           </div>
         </section>

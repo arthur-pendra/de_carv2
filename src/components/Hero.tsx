@@ -1,5 +1,6 @@
 import styles from './Hero.module.css';
 import Button from './Button';
+import CopyEmailButton from './CopyEmailButton';
 import CircleGallery from './CircleGallery';
 
 export default function Hero() {
@@ -11,8 +12,8 @@ export default function Hero() {
           Professionele autoreiniging en detailing in Limburg. Wij zorgen voor een showroom-waardige afwerking.
         </p>
         <div className={styles.buttons}>
-          <Button>Onze diensten</Button>
-          <Button>Contact</Button>
+          <Button href="/#diensten">Onze diensten</Button>
+          <CopyEmailButton />
         </div>
       </div>
 
@@ -20,11 +21,11 @@ export default function Hero() {
         <CircleGallery />
         <div className={styles.centerText}>
           <p>
-            GD Carcare is gespecialiseerd in professionele autodetailing.
+            GD Carcosmetics is gespecialiseerd in professionele autodetailing.
             Van interieurreiniging tot complete polijstbehandelingen -
             wij brengen uw auto terug naar showroom conditie.
           </p>
-          <a href="#diensten" className={styles.ctaBtn}>Bekijk onze diensten</a>
+          <a href="/#diensten" className={styles.ctaBtn}>Bekijk onze diensten</a>
         </div>
         <div className={styles.fadeBottom} />
       </div>

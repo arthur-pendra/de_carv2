@@ -5,7 +5,7 @@
 }
 
 .container {
-  max-width: 50em;
+  max-width: 70em;
   margin: 0 auto;
 }
 
@@ -330,7 +330,7 @@
 }
 
 .navBarInner {
-  max-width: 50em;
+  max-width: 70em;
   margin: 0 auto;
   display: flex;
   align-items: center;

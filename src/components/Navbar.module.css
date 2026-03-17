@@ -10,7 +10,7 @@
   --animation-default-long: var(--duration-default-long) var(--cubic-default);
   --animation-default-half: var(--duration-default-half) var(--cubic-default);
 
-  z-index: 200;
+  z-index: 9999;
   pointer-events: none;
   position: fixed;
   inset: 0;
@@ -362,12 +362,21 @@
   border-radius: 0.375em;
   width: 100%;
   overflow: hidden;
+  position: relative;
 }
 
 .visualImg {
   object-fit: cover;
   width: 100%;
   height: 100%;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.45s cubic-bezier(0.625, 0.05, 0, 1);
+}
+
+.visualImgActive {
+  opacity: 1;
 }
 
 /* ========================= Mobile Styles ========================= */
