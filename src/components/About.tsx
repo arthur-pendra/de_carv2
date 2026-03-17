@@ -18,10 +18,10 @@ export default function About() {
           {/* Content */}
           <div className={styles.content}>
             <span className={styles.eyebrow}>Over ons</span>
-            <h2 className={styles.title}>GD Carcosmetics</h2>
+            <h2 className={styles.title}>GD Carcare</h2>
             <div className={styles.text}>
               <p>
-                Bij GD Carcosmetics bieden we een totaalpakket aan professionele auto detailing diensten. Van interieur en exterieur reiniging tot keramische sealants en kleibehandelingen.
+                Bij GD Carcare bieden we een totaalpakket aan professionele auto detailing diensten. Van interieur en exterieur reiniging tot keramische sealants en kleibehandelingen.
               </p>
               <p>
                 Ons doel? Jouw auto terug in absolute showroomstaat brengen. Met oog voor detail en passie voor perfectie zorgen wij voor een resultaat dat je verwachtingen overtreft.

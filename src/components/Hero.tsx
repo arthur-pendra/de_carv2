@@ -21,7 +21,7 @@ export default function Hero() {
         <CircleGallery />
         <div className={styles.centerText}>
           <p>
-            GD Carcosmetics is gespecialiseerd in professionele autodetailing.
+            GD Carcare is gespecialiseerd in professionele autodetailing.
             Van interieurreiniging tot complete polijstbehandelingen -
             wij brengen uw auto terug naar showroom conditie.
           </p>

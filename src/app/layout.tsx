@@ -5,7 +5,7 @@ import { TransitionProvider, TransitionContent } from "@/components/PageTransiti
 import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
-  title: "GD Carcosmetics | Specialist in detailing",
+  title: "GD Carcare | Specialist in detailing",
   description: "Professionele auto detailing: interieur en exterieur reiniging, keramische sealant en kleibehandeling.",
 };
 

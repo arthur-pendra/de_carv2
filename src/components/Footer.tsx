@@ -159,8 +159,8 @@ export default function Footer() {
               <h4 className={styles.heading}>Contact</h4>
               <ul className={styles.list}>
                 <li><a href="tel:+31612345678">+31 6 12345678</a></li>
-                <li><a href="mailto:info@gdcarcosmetics.nl">info@gdcarcosmetics.nl</a></li>
-                <li><a href="https://www.instagram.com/gdcarcosmetics/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                <li><a href="mailto:info@gdcarcare.nl">info@gdcarcare.nl</a></li>
+                <li><a href="https://www.instagram.com/gdcarcare/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
               </ul>
             </div>
           </div>
@@ -170,7 +170,7 @@ export default function Footer() {
         <div className={styles.bottom}>
           <div className={styles.container}>
             <p className={styles.copyright}>
-              © {currentYear} GD Carcosmetics. Alle rechten voorbehouden.
+              © {currentYear} GD Carcare. Alle rechten voorbehouden.
             </p>
           </div>
         </div>

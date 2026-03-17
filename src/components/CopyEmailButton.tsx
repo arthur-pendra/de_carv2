@@ -3,7 +3,7 @@
 import { useCallback, useRef } from 'react';
 import styles from './CopyEmailButton.module.css';
 
-const EMAIL = 'info@gdcarcosmetics.nl';
+const EMAIL = 'info@gdcarcare.nl';
 
 export default function CopyEmailButton() {
   const buttonRef = useRef<HTMLButtonElement>(null);

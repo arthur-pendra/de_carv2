@@ -90,7 +90,7 @@ export default function Navbar() {
 
               {/* Center - Logo */}
               <TransitionLink href="/" className={styles.logo}>
-                <span className={styles.logoText}>GD Carcosmetics</span>
+                <span className={styles.logoText}>GD Carcare</span>
               </TransitionLink>
 
               {/* Right - Button */}
@@ -130,7 +130,7 @@ export default function Navbar() {
 
                         <ul className={`${styles.ul} ${styles.ulSmall}`}>
                           <li className={styles.li}>
-                            <a href="https://www.instagram.com/gdcarcosmetics/" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                            <a href="https://www.instagram.com/gdcarcare/" target="_blank" rel="noopener noreferrer" className={styles.link}>
                               <span className={styles.linkEyebrow}>Instagram</span>
                             </a>
                           </li>
@@ -150,7 +150,7 @@ export default function Navbar() {
                           <img
                             key={src}
                             src={src}
-                            alt={NAV_ITEMS[i]?.label || 'GD Carcosmetics'}
+                            alt={NAV_ITEMS[i]?.label || 'GD Carcare'}
                             className={`${styles.visualImg} ${hoveredIndex === i ? styles.visualImgActive : ''}`}
                           />
                         ))}
