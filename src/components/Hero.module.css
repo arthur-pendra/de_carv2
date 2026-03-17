@@ -173,7 +173,7 @@
 /* Small Mobile */
 @media screen and (max-width: 480px) {
   .circleContainer {
-    height: 40em;
+    height: 32em;
   }
 
   .centerText {

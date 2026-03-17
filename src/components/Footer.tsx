@@ -6,23 +6,27 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import TransitionLink from './TransitionLink';
 import Button from './Button';
 import styles from './Footer.module.css';
-import WheelRim from './WheelRim';
-
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   const [agreed, setAgreed] = useState(false);
-  const wheelRef = useRef<SVGSVGElement>(null);
+  const wheelWrapRef = useRef<HTMLDivElement>(null);
+  const dirtyRef = useRef<HTMLImageElement>(null);
+  const cleanRef = useRef<HTMLImageElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const wheel = wheelRef.current;
+    const wheelWrap = wheelWrapRef.current;
+    const dirty = dirtyRef.current;
+    const clean = cleanRef.current;
     const section = sectionRef.current;
-    if (!wheel || !section) return;
+    if (!wheelWrap || !dirty || !clean || !section) return;
 
-    // Scroll-driven rotation
-    const tl = gsap.timeline({
+    // Rotation: full scroll range
+    gsap.fromTo(wheelWrap, { rotation: 0 }, {
+      rotation: 360,
+      ease: 'none',
       scrollTrigger: {
         trigger: section,
         start: 'top bottom',
@@ -31,11 +35,20 @@ export default function Footer() {
       },
     });
 
-    tl.fromTo(wheel, { rotation: 0 }, { rotation: 360, ease: 'none' });
+    // Fade: dirty fades out when section enters viewport
+    gsap.fromTo(dirty, { opacity: 1 }, {
+      opacity: 0,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: section,
+        start: 'top 80%',
+        end: 'top 20%',
+        scrub: true,
+      },
+    });
 
     return () => {
-      tl.scrollTrigger?.kill();
-      tl.kill();
+      ScrollTrigger.getAll().forEach(t => t.kill());
     };
   }, []);
 
@@ -43,9 +56,22 @@ export default function Footer() {
     <footer id="contact" className={styles.footer}>
       {/* CTA Section */}
       <div className={styles.ctaSection} ref={sectionRef}>
-        {/* Wheel SVG */}
+        {/* Wheel before/after */}
         <div className={styles.wheelWrap}>
-          <WheelRim className={styles.wheel} ref={wheelRef} />
+          <div className={styles.wheelSpin} ref={wheelWrapRef}>
+            <img
+              ref={dirtyRef}
+              src="/wielvies.png"
+              alt="Vies wiel"
+              className={styles.wheelImg}
+            />
+            <img
+              ref={cleanRef}
+              src="/wielschoon.png"
+              alt="Schoon wiel"
+              className={`${styles.wheelImg} ${styles.wheelClean}`}
+            />
+          </div>
         </div>
 
         <div className={styles.ctaContent}>
