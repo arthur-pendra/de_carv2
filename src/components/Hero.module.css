@@ -107,7 +107,7 @@
 
 /* Subtitle */
 .subtitle {
-  font-size: 1.375em;
+  font-size: var(--font-par-lg);
   font-weight: 400;
   color: #000000;
   max-width: 30em;
@@ -146,7 +146,7 @@
   .centerText {
     top: calc(120px + 450px);
     padding: 0 1.5em;
-    max-width: 30em;
+    width: 100%;
   }
 
   .centerText p {
@@ -158,7 +158,7 @@
   }
 
   .content {
-    padding: 15vh 1.5em 2em;
+    padding: 20vh 1em 3em;
   }
 
   .buttons {

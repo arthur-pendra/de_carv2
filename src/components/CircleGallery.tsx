@@ -1,15 +1,15 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from './CircleGallery.module.css';
 import WheelRim from './WheelRim';
 
-const images = [
+const allImages = [
   'https://images.unsplash.com/photo-1607860108855-64acf2078ed9?q=80&w=400&auto=format&fit=crop',
   'https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=400&auto=format&fit=crop',
   'https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?q=80&w=400&auto=format&fit=crop',
   'https://images.unsplash.com/photo-1619405399517-d7fce0f13302?q=80&w=400&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1612825173281-9a193378571e?q=80&w=400&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?q=80&w=400&auto=format&fit=crop',
   'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=400&auto=format&fit=crop',
   'https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?q=80&w=400&auto=format&fit=crop',
   'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?q=80&w=400&auto=format&fit=crop',
@@ -23,7 +23,21 @@ const images = [
   'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=400&auto=format&fit=crop',
 ];
 
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth <= 767);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+  return isMobile;
+}
+
 export default function CircleGallery() {
+  const isMobile = useIsMobile();
+  const images = isMobile ? allImages.slice(0, 12) : allImages;
+
   const containerRef = useRef<HTMLDivElement>(null);
   const rimRef = useRef<SVGSVGElement>(null);
   const animationRef = useRef<number | null>(null);
@@ -35,8 +49,8 @@ export default function CircleGallery() {
   const getRadius = () => {
     if (typeof window === 'undefined') return 1250;
     const width = window.innerWidth;
-    if (width <= 480) return 400;
-    if (width <= 767) return 550;
+    if (width <= 480) return 550;
+    if (width <= 767) return 750;
     if (width <= 991) return 800;
     return 1250;
   };
@@ -45,8 +59,8 @@ export default function CircleGallery() {
   const getYOffset = () => {
     if (typeof window === 'undefined') return 250;
     const width = window.innerWidth;
-    if (width <= 480) return 80;
-    if (width <= 767) return 120;
+    if (width <= 480) return 100;
+    if (width <= 767) return 150;
     if (width <= 991) return 180;
     return 250;
   };
@@ -107,7 +121,7 @@ export default function CircleGallery() {
       }
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [images.length]);
 
   return (
     <div className={styles.circleWrap}>

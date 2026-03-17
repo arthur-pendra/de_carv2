@@ -81,6 +81,7 @@ html.lenis, html.lenis body {
     --size-container-ideal: 550;
     --size-container-min: 480px;
     --size-container-max: 767px;
+    --font-par-lg: 1.25em;
   }
 }
 

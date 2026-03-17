@@ -58,42 +58,36 @@
     left: -900px;
     top: calc(180px + 800px - 900px);
   }
-
-  .card {
-    width: 12em;
-    left: -6em;
-    top: -4.5em;
-  }
 }
 
 /* Mobile */
 @media screen and (max-width: 767px) {
   .rim {
-    width: 1200px;
-    height: 1200px;
-    left: -600px;
-    top: calc(120px + 550px - 600px);
+    width: 1600px;
+    height: 1600px;
+    left: -800px;
+    top: calc(120px + 650px - 800px);
   }
 
   .card {
-    width: 8em;
-    left: -4em;
-    top: -3em;
+    width: 14em;
+    left: -7em;
+    top: -5.25em;
   }
 }
 
 /* Small Mobile */
 @media screen and (max-width: 480px) {
   .rim {
-    width: 900px;
-    height: 900px;
-    left: -450px;
-    top: calc(80px + 400px - 450px);
+    width: 1200px;
+    height: 1200px;
+    left: -600px;
+    top: calc(80px + 500px - 600px);
   }
 
   .card {
-    width: 6em;
-    left: -3em;
-    top: -2.25em;
+    width: 12em;
+    left: -6em;
+    top: -4.5em;
   }
 }
