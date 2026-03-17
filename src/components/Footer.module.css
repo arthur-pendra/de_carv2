@@ -374,8 +374,21 @@
     height: 16em;
   }
 
+  .ctaTitle {
+    font-size: 2em;
+  }
+
+  .ctaContent {
+    text-align: left;
+  }
+
   .ctaButtons {
     flex-direction: column;
+    width: 100%;
+  }
+
+  .ctaButtons :global(.btn) {
+    width: 100%;
   }
 
   .inputGroup {
