@@ -211,7 +211,7 @@
 }
 
 .cta:hover {
-  background-color: #0033cc;
+  background-color: color-mix(in srgb, var(--color-accent) 80%, black);
 }
 
 /* ========================= Bottom Section ========================= */

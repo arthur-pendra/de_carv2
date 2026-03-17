@@ -32,7 +32,7 @@
 }
 
 .ctaBtn:hover {
-  background: #0033cc;
+  background: var(--color-accent);
 }
 
 /* Center text in circle */
@@ -50,7 +50,7 @@
 .centerText p {
   font-size: 2.5em;
   font-weight: 400;
-  color: #000000;
+  color: var(--color-black);
   line-height: 1.05;
   letter-spacing: -0.03em;
   margin: 0 0 1em 0;
@@ -109,7 +109,7 @@
 .subtitle {
   font-size: var(--font-par-lg);
   font-weight: 400;
-  color: #000000;
+  color: var(--color-black);
   max-width: 30em;
   line-height: 1.2;
   margin: 0;

@@ -45,9 +45,11 @@ html.lenis, html.lenis body {
 
   /* Colors */
   --color-black: #070707;
+  --color-black-light: #1f1f1f;
   --color-white: #FFFFFF;
   --color-cream: #F7F6F3;
   --color-accent: #012296;
+  --color-success: #0F8E2E;
 
   /* White Transparency */
   --white-subtle: rgba(255, 255, 255, 0.05);

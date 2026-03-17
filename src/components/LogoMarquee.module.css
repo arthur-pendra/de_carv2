@@ -27,7 +27,7 @@
   font-size: 0.75em;
   font-weight: 400;
   letter-spacing: 0.05em;
-  color: #000000;
+  color: var(--color-black);
   background: rgba(0, 0, 0, 0.05);
   padding: 0.5em 0.75em;
   border-radius: 0.25em;

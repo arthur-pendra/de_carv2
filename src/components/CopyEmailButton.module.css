@@ -76,7 +76,7 @@
 
 /* Copied state */
 .button[data-copy-button="copied"] .iconWrap {
-  background-color: #0F8E2E !important;
+  background-color: var(--color-success) !important;
 }
 
 .button[data-copy-button="copied"] .textEl {

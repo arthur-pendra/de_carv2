@@ -1,7 +1,7 @@
 .reviews {
   position: relative;
   padding: 0em var(--padding-section);
-  background-color: #121212;
+  background-color: var(--color-black);
   overflow: hidden;
 }
 
@@ -85,7 +85,7 @@
   width: 18em;
   padding: 4em 1.25em;
   border-radius: 0.5em;
-  background: #1f1f1f;
+  background: var(--color-black-light);
   transform-origin: center center;
   left: -9em;
   top: -5em;

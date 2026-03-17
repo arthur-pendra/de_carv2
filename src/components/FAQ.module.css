@@ -1,6 +1,6 @@
 .faq {
   padding: 6em var(--padding-section);
-  background-color: #121212;
+  background-color: var(--color-black);
 }
 
 .container {
