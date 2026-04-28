@@ -167,7 +167,7 @@ export default function Footer() {
                     />
                     <span className={styles.checkmark}></span>
                     <span className={styles.checkboxText}>
-                      Ik ga akkoord met het <a href="#">privacybeleid</a>
+                      Ik ga akkoord met het <TransitionLink href="/privacybeleid">privacybeleid</TransitionLink>
                     </span>
                   </label>
                   <button

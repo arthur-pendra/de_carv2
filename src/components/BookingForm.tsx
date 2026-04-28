@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
+import TransitionLink from './TransitionLink';
 import styles from './BookingForm.module.css';
 
 type Category = 'exterieur' | 'interieur' | 'combi';
@@ -553,7 +554,7 @@ export default function BookingForm() {
                 />
                 <span className={styles.checkmark} />
                 <span className={styles.checkboxText}>
-                  Ik ga akkoord met het privacybeleid *
+                  Ik ga akkoord met het <TransitionLink href="/privacybeleid">privacybeleid</TransitionLink> *
                 </span>
               </label>
               {submitError && (
