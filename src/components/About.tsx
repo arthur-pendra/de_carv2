@@ -9,7 +9,7 @@ export default function About() {
           {/* Image */}
           <div className={styles.imageWrap}>
             <img
-              src="/img/cars/car-09.jpg"
+              src="/img/cars/car-09.webp"
               alt="Auto detailing"
               className={styles.image}
             />
@@ -57,7 +57,7 @@ export default function About() {
           {/* Image */}
           <div className={styles.imageWrap}>
             <img
-              src="/img/cars/car-12.jpg"
+              src="/img/cars/car-12.webp"
               alt="Guyliamo aan het werk"
               className={styles.image}
             />

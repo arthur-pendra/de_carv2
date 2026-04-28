@@ -6,7 +6,7 @@ const WheelRim = forwardRef<HTMLImageElement, { className?: string }>(
       <img
         ref={ref}
         className={className}
-        src="/WEEL_GD.png"
+        src="/WEEL_GD.webp"
         alt="GD Carcare wiel"
       />
     );

@@ -5,16 +5,16 @@ import styles from './CircleGallery.module.css';
 import WheelRim from './WheelRim';
 
 const allImages = [
-  '/img/cars/car-01.jpg',
-  '/img/cars/car-02.jpg',
-  '/img/cars/car-03.jpg',
-  '/img/cars/car-04.jpg',
-  '/img/cars/car-05.jpg',
-  '/img/cars/car-06.jpg',
-  '/img/cars/car-07.jpg',
-  '/img/cars/car-08.jpg',
-  '/img/cars/car-09.jpg',
-  '/img/cars/car-12.jpg',
+  '/img/cars/car-01.webp',
+  '/img/cars/car-02.webp',
+  '/img/cars/car-03.webp',
+  '/img/cars/car-04.webp',
+  '/img/cars/car-05.webp',
+  '/img/cars/car-06.webp',
+  '/img/cars/car-07.webp',
+  '/img/cars/car-08.webp',
+  '/img/cars/car-09.webp',
+  '/img/cars/car-12.webp',
 ];
 
 function useIsMobile() {

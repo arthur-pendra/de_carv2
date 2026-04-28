@@ -15,12 +15,12 @@ const NAV_ITEMS = [
 ];
 
 const NAV_IMAGES = [
-  '/img/cars/car-01.jpg',
-  '/img/cars/car-03.jpg',
-  '/img/cars/car-06.jpg',
-  '/img/cars/car-07.jpg',
-  '/img/cars/car-09.jpg',
-  '/img/cars/car-12.jpg',
+  '/img/cars/car-01.webp',
+  '/img/cars/car-03.webp',
+  '/img/cars/car-06.webp',
+  '/img/cars/car-07.webp',
+  '/img/cars/car-09.webp',
+  '/img/cars/car-12.webp',
 ];
 
 export default function Navbar() {
