@@ -56,8 +56,7 @@ export default function Footer() {
     <footer id="contact" className={styles.footer}>
       {/* CTA Section */}
       <div className={styles.ctaSection} ref={sectionRef}>
-        {/* Wheel before/after - tijdelijk uitgeschakeld i.v.m. copyright */}
-        {/*
+        {/* Wheel before/after */}
         <div className={styles.wheelWrap}>
           <div className={styles.wheelSpin} ref={wheelWrapRef}>
             <img
@@ -74,7 +73,6 @@ export default function Footer() {
             />
           </div>
         </div>
-        */}
 
         <div className={styles.ctaContent}>
           <div className={styles.ctaSocial}>
