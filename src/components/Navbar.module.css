@@ -146,8 +146,17 @@
 .logoSvg {
   height: 2.1875em;
   width: auto;
-  color: var(--color-accent);
+  color: var(--color-white);
   display: block;
+  transition: color var(--animation-default);
+}
+
+.logoLines {
+  fill: var(--color-accent);
+}
+
+[data-nav-theme="dark"]:not([data-nav-status="active"]) .logoSvg {
+  color: var(--color-black);
 }
 
 /* ========================= Toggle Button ========================= */
