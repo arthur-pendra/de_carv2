@@ -5,82 +5,82 @@ import styles from './Reviews.module.css';
 
 const reviews = [
   {
-    text: 'Mijn auto zag eruit alsof hij net van de showroom kwam. Ongelooflijk resultaat!',
+    text: 'Guyliamo heeft mijn auto echt teruggebracht naar showroomstaat. Excellence in every detail, dat zie je terug in zijn werk.',
     name: 'Thomas van den Berg',
     avatar: 'T',
   },
   {
-    text: 'De keramische coating is het meer dan waard. Na 6 maanden ziet mijn auto er nog steeds fantastisch uit.',
+    text: 'Voor de keramische coating gekozen en absoluut geen spijt van. Maanden later parelt het water er nog vanaf en glimt de lak strakker dan ooit.',
     name: 'Lisa de Vries',
     avatar: 'L',
   },
   {
-    text: 'Eindelijk iemand die weet hoe je een auto echt schoon krijgt. Het interieur ruikt weer als nieuw!',
+    text: 'Het interieur was na de gold detail volledig getransformeerd: stomen, leder, dakhemel, alles. Ruikt en voelt weer als nieuw.',
     name: 'Mark Jansen',
     avatar: 'M',
   },
   {
-    text: 'Top service, flexibele tijden en een prachtig eindresultaat. Ik kom zeker terug!',
+    text: 'Persoonlijke aanpak, eerlijk advies en een resultaat waar je écht verschil in ziet. Geen wasstraat die hier tegenop kan.',
     name: 'Sophie Bakker',
     avatar: 'S',
   },
   {
-    text: 'De swirls in mijn lak zijn volledig verdwenen na het polijsten. Echt vakwerk!',
+    text: 'De swirls en lichte krassen in de lak zijn na het polijsten compleet verdwenen. Vakwerk van een gecertificeerd detailer.',
     name: 'Dennis Visser',
     avatar: 'D',
   },
   {
-    text: 'Zeer tevreden met de ophaalservice. Makkelijk en het resultaat was perfect.',
+    text: 'De combi deal exterieur + interieur was de moeite meer dan waard. Auto staat er weer perfect bij van binnen en buiten.',
     name: 'Emma Mulder',
     avatar: 'E',
   },
   {
-    text: 'Professionele aanpak en perfecte communicatie. Aanrader!',
+    text: 'Vooraf duidelijke uitleg over wat er aan zat te komen en achteraf een resultaat dat de verwachtingen overtrof. Nette communicatie en gestructureerde werkwijze.',
     name: 'Pieter de Groot',
     avatar: 'P',
   },
   {
-    text: 'Beste detailer in de regio. Mijn Mercedes ziet er weer als nieuw uit.',
+    text: 'Mijn Mercedes glimt weer alsof hij van de zaak komt. Top product, top service, en oog voor elk detail.',
     name: 'Anna Smit',
     avatar: 'A',
   },
   {
-    text: 'Super blij met het resultaat. Mijn BMW glimt als nooit tevoren!',
+    text: 'BMW na de silver exterior detail laten doen (handwas, foambad, sealant). Auto is volledig getransformeerd.',
     name: 'Ruben Hendriks',
     avatar: 'R',
   },
   {
-    text: 'Snelle service en oog voor detail. Zeker een aanrader voor iedereen.',
+    text: 'Geen standaard werk, maar échte aandacht voor elk detail. Duidelijk te merken dat hier vakmanschap achter zit.',
     name: 'Julia van Dijk',
     avatar: 'J',
   },
   {
-    text: 'Mijn velgen zien er weer uit als nieuw. Geweldig werk!',
+    text: 'Velgen, banden en wielkasten zien er weer uit als nieuw. Diepte reiniging die je in een wasstraat nooit krijgt.',
     name: 'Kevin Bos',
     avatar: 'K',
   },
   {
-    text: 'Na de behandeling reed ik weg met een glimlach. Fantastische service!',
+    text: 'Na de klei behandeling en chemische decontaminatie voelt de lak echt glad als glas. Verschil is voelbaar én zichtbaar.',
     name: 'Nathalie Prins',
     avatar: 'N',
   },
   {
-    text: 'Uitstekende prijs-kwaliteit verhouding. Mijn Audi ziet er perfect uit!',
+    text: 'Audi laten doen voor de gold exterior. Prijs-kwaliteit is sterk en de afwerking is precies wat je hoopt van een professional.',
     name: 'Bas Vermeulen',
     avatar: 'B',
   },
   {
-    text: 'De glascoating is echt een aanrader. Regen parelt er zo vanaf!',
+    text: 'Glascoating laten aanbrengen, regen parelt er prachtig vanaf en de auto blijft veel langer schoon. Absolute aanrader.',
     name: 'Iris van Leeuwen',
     avatar: 'I',
   },
   {
-    text: 'Heel tevreden met de interieurreiniging. Voelt weer als nieuw!',
+    text: 'Het interieur was bij ons echt aan een grondige beurt toe. Stoelen, mat, kunststof, alles is weer als nieuw.',
     name: 'Stefan de Wit',
     avatar: 'S',
   },
   {
-    text: 'Perfecte service van begin tot eind. Absolute vakman!',
+    text: 'Premium producten, hoogwaardig werk en een eindresultaat waar je trots op bent. Guyliamo gaat tot in elk detail.',
     name: 'Fleur Janssen',
     avatar: 'F',
   },
@@ -236,7 +236,7 @@ export default function Reviews() {
   }, []);
 
   return (
-    <section id="reviews" className={styles.reviews} ref={sectionRef}>
+    <section id="reviews" className={styles.reviews} ref={sectionRef} data-nav-theme="dark">
       <div className={styles.stickyWrap}>
         <div className={styles.header}>
           <span className={styles.label}>Ervaringen</span>

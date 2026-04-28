@@ -2,16 +2,24 @@ import styles from './WhyUs.module.css';
 
 const reasons = [
   {
-    title: 'Vakmanschap & Passie',
-    description: 'Wij zijn geen doorsnee wasstraat. Elke auto wordt met de hand behandeld door gepassioneerde specialisten die oog hebben voor elk detail.',
+    title: 'Ervaren vakmanschap',
+    description: 'Ruim 5 jaar ervaring in het professioneel behandelen van uiteenlopende voertuigen, van dagelijks gebruik tot liefhebbersauto’s.',
   },
   {
-    title: 'Persoonlijke Aanpak',
-    description: 'Elke auto is uniek en verdient een behandeling op maat. We nemen de tijd om jouw wensen te begrijpen en het perfecte resultaat te leveren.',
+    title: 'Gecertificeerd detailer',
+    description: 'Werkend volgens professionele detailing standaarden, met diepgaande kennis van correctie- en beschermtechnieken.',
   },
   {
-    title: 'Premium Producten',
-    description: 'We gebruiken alleen de beste producten van topmerken. Geen compromissen, alleen resultaten die je verwachtingen overtreffen.',
+    title: 'Nauwkeurige afwerking',
+    description: 'Geen standaard werk, maar gecontroleerde aandacht voor elk detail van het voertuig, binnen en buiten.',
+  },
+  {
+    title: 'Premium producten & bescherming',
+    description: 'Hoogwaardige producten en duurzame coatings voor een langdurig strak en beschermd resultaat.',
+  },
+  {
+    title: 'Persoonlijke aanpak',
+    description: 'Elke auto wordt individueel beoordeeld en behandeld op basis van conditie en jouw wensen.',
   },
 ];
 

@@ -316,6 +316,29 @@ export default function BookingForm() {
           ))}
         </div>
 
+        {/* Selected package banner (visible after step 0) */}
+        {step > 0 && selectedTier !== null && (
+          <div className={styles.selectedBanner}>
+            <div className={styles.selectedInfo}>
+              <span className={styles.selectedLabel}>Gekozen pakket</span>
+              <span className={styles.selectedValue}>
+                {packages[activeCategory][selectedTier].tag}{' '}
+                {packages[activeCategory][selectedTier].title}
+                <span className={styles.selectedPrice}>
+                  {packages[activeCategory][selectedTier].price}
+                </span>
+              </span>
+            </div>
+            <button
+              type="button"
+              className={styles.selectedChange}
+              onClick={() => setStep(0)}
+            >
+              Wijzig
+            </button>
+          </div>
+        )}
+
         {/* Step 1: Kies je pakket */}
         {step === 0 && (
           <div className={styles.stepContent}>

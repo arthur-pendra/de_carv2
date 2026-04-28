@@ -95,12 +95,14 @@ export function TransitionProvider({ children }: { children: React.ReactNode }) 
       // ── 1. Freeze current page into snapshot ──
       const scrollY = window.scrollY || 0;
 
-      // Copy page HTML into the wrapper overlay
-      wrapper.innerHTML = page.innerHTML;
-      const inner = wrapper.firstElementChild as HTMLElement;
-      if (inner) {
-        inner.style.transform = `translateY(${-scrollY}px)`;
-      }
+      // Deep clone the current page (preserves images, canvas state better than innerHTML)
+      while (wrapper.firstChild) wrapper.removeChild(wrapper.firstChild);
+      const clone = page.cloneNode(true) as HTMLElement;
+      // Strip ids from clone so duplicate-id queries on the new page aren't ambiguous
+      clone.querySelectorAll('[id]').forEach((el) => el.removeAttribute('id'));
+      clone.style.transform = `translateY(${-scrollY}px)`;
+      clone.style.width = '100%';
+      wrapper.appendChild(clone);
 
       // ── 2. Set up layers ──
       gsap.set(overlay, { autoAlpha: 1, pointerEvents: 'auto' });
@@ -143,6 +145,10 @@ export function TransitionProvider({ children }: { children: React.ReactNode }) 
         yPercent: 0,
         clipPath: 'rect(0% 100% 100% 0% round 0em)',
       });
+
+      // Force browser to commit snapshot to screen before swapping content
+      // (otherwise React re-renders the page before snapshot is painted → flash of empty content)
+      wrapper.getBoundingClientRect();
 
       // ── 3. Navigate (new content renders behind snapshot) ──
       window.scrollTo(0, 0);

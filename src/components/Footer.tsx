@@ -62,13 +62,13 @@ export default function Footer() {
           <div className={styles.wheelSpin} ref={wheelWrapRef}>
             <img
               ref={dirtyRef}
-              src="/wielvies.png"
+              src="/Weel_Dirty_GD.png"
               alt="Vies wiel"
               className={styles.wheelImg}
             />
             <img
               ref={cleanRef}
-              src="/wielschoon.png"
+              src="/WEEL_GD.png"
               alt="Schoon wiel"
               className={`${styles.wheelImg} ${styles.wheelClean}`}
             />

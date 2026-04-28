@@ -7,12 +7,12 @@ export default function Hero() {
   return (
     <section className={styles.hero}>
       <div className={styles.content}>
-        <h1 className={styles.title}>Car Cleaning & Detailing</h1>
+        <h1 className={styles.title}>Excellence in every detail.</h1>
         <p className={styles.subtitle}>
-          Professionele autoreiniging en detailing in Limburg. Wij zorgen voor een showroom-waardige afwerking.
+          Van grondige interieur- en exterieurreiniging tot lakcorrectie en keramische coatings. Wij brengen jouw auto terug naar absolute perfectie.
         </p>
         <div className={styles.buttons}>
-          <Button href="/#diensten">Onze diensten</Button>
+          <Button href="/#contact">Plan jouw detailing</Button>
           <CopyEmailButton />
         </div>
       </div>
@@ -21,9 +21,7 @@ export default function Hero() {
         <CircleGallery />
         <div className={styles.centerText}>
           <p>
-            GD Carcare is gespecialiseerd in professionele autodetailing.
-            Van interieurreiniging tot complete polijstbehandelingen -
-            wij brengen uw auto terug naar showroom conditie.
+            Bij GD Carcare draait alles om kwaliteit, precisie en aandacht voor detail. Met ruim 5 jaar ervaring als gecertificeerd detailer brengen wij elk voertuig terug naar topconditie.
           </p>
           <a href="/#diensten" className={styles.ctaBtn}>Bekijk onze diensten</a>
         </div>

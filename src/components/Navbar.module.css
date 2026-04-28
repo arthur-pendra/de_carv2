@@ -143,11 +143,11 @@
   text-decoration: none;
 }
 
-.logoText {
-  font-size: 1.25em;
-  font-weight: 400;
-  color: var(--color-white);
-  letter-spacing: -0.03em;
+.logoSvg {
+  height: 2.1875em;
+  width: auto;
+  color: var(--color-accent);
+  display: block;
 }
 
 /* ========================= Toggle Button ========================= */

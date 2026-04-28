@@ -23,7 +23,7 @@
   height: 2900px;
   left: -1450px;
   top: calc(250px + 1250px - 1450px);
-  color: var(--color-black);
+  object-fit: contain;
   opacity: 0.05;
   pointer-events: none;
   transform-origin: center center;

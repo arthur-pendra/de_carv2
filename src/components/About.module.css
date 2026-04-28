@@ -15,6 +15,14 @@
   align-items: center;
 }
 
+.grid + .grid {
+  margin-top: 8em;
+}
+
+.gridReverse .imageWrap {
+  order: 2;
+}
+
 /* Image */
 .imageWrap {
   position: relative;
@@ -76,6 +84,14 @@
   .grid {
     grid-template-columns: 1fr;
     gap: 3em;
+  }
+
+  .grid + .grid {
+    margin-top: 5em;
+  }
+
+  .gridReverse .imageWrap {
+    order: 0;
   }
 
   .imageWrap {

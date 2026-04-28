@@ -5,22 +5,16 @@ import styles from './CircleGallery.module.css';
 import WheelRim from './WheelRim';
 
 const allImages = [
-  'https://images.unsplash.com/photo-1607860108855-64acf2078ed9?q=80&w=400&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1601362840469-51e4d8d58785?q=80&w=400&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?q=80&w=400&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1619405399517-d7fce0f13302?q=80&w=400&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?q=80&w=400&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=400&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?q=80&w=400&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?q=80&w=400&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1583121274602-3e2820c69888?q=80&w=400&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=400&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?q=80&w=400&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=400&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1555215695-3004980ad54e?q=80&w=400&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=400&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=400&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=400&auto=format&fit=crop',
+  '/img/cars/car-01.jpg',
+  '/img/cars/car-02.jpg',
+  '/img/cars/car-03.jpg',
+  '/img/cars/car-04.jpg',
+  '/img/cars/car-05.jpg',
+  '/img/cars/car-06.jpg',
+  '/img/cars/car-07.jpg',
+  '/img/cars/car-08.jpg',
+  '/img/cars/car-09.jpg',
+  '/img/cars/car-12.jpg',
 ];
 
 function useIsMobile() {
@@ -36,10 +30,10 @@ function useIsMobile() {
 
 export default function CircleGallery() {
   const isMobile = useIsMobile();
-  const images = isMobile ? allImages.slice(0, 12) : allImages;
+  const images = isMobile ? allImages.slice(0, 8) : allImages;
 
   const containerRef = useRef<HTMLDivElement>(null);
-  const rimRef = useRef<SVGSVGElement>(null);
+  const rimRef = useRef<HTMLImageElement>(null);
   const animationRef = useRef<number | null>(null);
   const angleRef = useRef(0);
   const radiusRef = useRef(1250);
