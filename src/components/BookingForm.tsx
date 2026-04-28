@@ -154,6 +154,8 @@ export default function BookingForm() {
   const [activeCategory, setActiveCategory] = useState<Category>('exterieur');
   const [selectedTier, setSelectedTier] = useState<number | null>(null);
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   useEffect(() => {
     const dienst = searchParams.get('dienst');
@@ -211,8 +213,34 @@ export default function BookingForm() {
     return false;
   };
 
-  const handleSubmit = () => {
-    setSubmitted(true);
+  const handleSubmit = async () => {
+    if (submitting || selectedTier === null) return;
+    setSubmitError(null);
+    setSubmitting(true);
+    try {
+      const pkg = packages[activeCategory][selectedTier];
+      const res = await fetch('/api/booking', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          package: { tag: pkg.tag, title: pkg.title, price: pkg.price },
+          car: { brand: carBrand, plate: carPlate, color: carColor },
+          contact: { name, phone, email },
+          dates,
+          time,
+          notes,
+        }),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || 'Versturen mislukt');
+      }
+      setSubmitted(true);
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : 'Versturen mislukt');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   if (submitted) {
@@ -528,6 +556,11 @@ export default function BookingForm() {
                   Ik ga akkoord met het privacybeleid *
                 </span>
               </label>
+              {submitError && (
+                <p className={styles.errorMessage}>
+                  Er ging iets mis: {submitError}. Probeer het opnieuw of bel ons direct.
+                </p>
+              )}
             </div>
           </div>
         )}
@@ -558,10 +591,10 @@ export default function BookingForm() {
             <button
               type="button"
               className={styles.btnPrimary}
-              disabled={!canNext()}
+              disabled={!canNext() || submitting}
               onClick={handleSubmit}
             >
-              Verstuur
+              {submitting ? 'Versturen...' : 'Verstuur'}
             </button>
           )}
         </div>
