@@ -412,3 +412,17 @@
     gap: 2em;
   }
 }
+
+.newsletterDone {
+  font-size: 0.9375em;
+  color: var(--color-cream);
+  margin: 0.5em 0 0 0;
+  line-height: 1.5;
+}
+
+.newsletterError {
+  font-size: 0.8125em;
+  color: #ff8a8a;
+  margin: 0.75em 0 0 0;
+  line-height: 1.4;
+}

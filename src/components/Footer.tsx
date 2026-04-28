@@ -11,6 +11,38 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   const [agreed, setAgreed] = useState(false);
+  const [nlName, setNlName] = useState('');
+  const [nlEmail, setNlEmail] = useState('');
+  const [nlState, setNlState] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
+  const [nlError, setNlError] = useState<string | null>(null);
+
+  const handleNewsletter = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (nlState === 'sending' || nlState === 'done') return;
+    if (!nlName.trim() || !nlEmail.trim() || !agreed) {
+      setNlError('Vul je naam, e-mail in en ga akkoord met het privacybeleid.');
+      setNlState('error');
+      return;
+    }
+    setNlError(null);
+    setNlState('sending');
+    try {
+      const res = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: nlName, email: nlEmail, agreed }),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || 'Aanmelden mislukt');
+      }
+      setNlState('done');
+    } catch (err) {
+      setNlError(err instanceof Error ? err.message : 'Aanmelden mislukt');
+      setNlState('error');
+    }
+  };
+
   const wheelWrapRef = useRef<HTMLDivElement>(null);
   const dirtyRef = useRef<HTMLImageElement>(null);
   const cleanRef = useRef<HTMLImageElement>(null);
@@ -102,36 +134,53 @@ export default function Footer() {
           {/* Newsletter */}
           <div className={styles.newsletter}>
             <h3 className={styles.newsletterTitle}>Schrijf je in voor updates</h3>
-            <form className={styles.form}>
-              <div className={styles.inputGroup}>
-                <input
-                  type="text"
-                  placeholder="Naam"
-                  className={styles.input}
-                />
-                <input
-                  type="email"
-                  placeholder="jouw@email.nl"
-                  className={styles.input}
-                />
-              </div>
-              <div className={styles.formBottom}>
-                <label className={styles.checkbox}>
+            {nlState === 'done' ? (
+              <p className={styles.newsletterDone}>
+                Bedankt voor je inschrijving — je staat op de lijst.
+              </p>
+            ) : (
+              <form className={styles.form} onSubmit={handleNewsletter}>
+                <div className={styles.inputGroup}>
                   <input
-                    type="checkbox"
-                    checked={agreed}
-                    onChange={(e) => setAgreed(e.target.checked)}
+                    type="text"
+                    placeholder="Naam"
+                    className={styles.input}
+                    value={nlName}
+                    onChange={(e) => setNlName(e.target.value)}
+                    required
                   />
-                  <span className={styles.checkmark}></span>
-                  <span className={styles.checkboxText}>
-                    Ik ga akkoord met het <a href="#">privacybeleid</a>
-                  </span>
-                </label>
-                <button type="submit" className={styles.submitBtn}>
-                  Aanmelden
-                </button>
-              </div>
-            </form>
+                  <input
+                    type="email"
+                    placeholder="jouw@email.nl"
+                    className={styles.input}
+                    value={nlEmail}
+                    onChange={(e) => setNlEmail(e.target.value)}
+                    required
+                  />
+                </div>
+                <div className={styles.formBottom}>
+                  <label className={styles.checkbox}>
+                    <input
+                      type="checkbox"
+                      checked={agreed}
+                      onChange={(e) => setAgreed(e.target.checked)}
+                    />
+                    <span className={styles.checkmark}></span>
+                    <span className={styles.checkboxText}>
+                      Ik ga akkoord met het <a href="#">privacybeleid</a>
+                    </span>
+                  </label>
+                  <button
+                    type="submit"
+                    className={styles.submitBtn}
+                    disabled={nlState === 'sending'}
+                  >
+                    {nlState === 'sending' ? 'Aanmelden...' : 'Aanmelden'}
+                  </button>
+                </div>
+                {nlError && <p className={styles.newsletterError}>{nlError}</p>}
+              </form>
+            )}
           </div>
 
           {/* Links */}
