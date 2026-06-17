@@ -5,84 +5,84 @@ import styles from './Reviews.module.css';
 
 const reviews = [
   {
-    text: 'Guyliamo heeft mijn auto echt teruggebracht naar showroomstaat. Excellence in every detail, dat zie je terug in zijn werk.',
+    text: 'Mijn auto echt terug naar showroomstaat. Vakwerk tot in elk detail.',
     name: 'Thomas van den Berg',
-    avatar: 'T',
+    avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
   },
   {
-    text: 'Voor de keramische coating gekozen en absoluut geen spijt van. Maanden later parelt het water er nog vanaf en glimt de lak strakker dan ooit.',
+    text: 'Keramische coating laten doen, het water parelt er maanden later nog vanaf.',
     name: 'Lisa de Vries',
-    avatar: 'L',
+    avatar: 'https://randomuser.me/api/portraits/women/44.jpg',
   },
   {
-    text: 'Het interieur was na de gold detail volledig getransformeerd: stomen, leder, dakhemel, alles. Ruikt en voelt weer als nieuw.',
+    text: 'Het interieur is na de gold detail volledig getransformeerd. Voelt als nieuw.',
     name: 'Mark Jansen',
-    avatar: 'M',
+    avatar: 'https://randomuser.me/api/portraits/men/45.jpg',
   },
   {
-    text: 'Persoonlijke aanpak, eerlijk advies en een resultaat waar je écht verschil in ziet. Geen wasstraat die hier tegenop kan.',
+    text: 'Persoonlijke aanpak, eerlijk advies en een zichtbaar verschil in resultaat.',
     name: 'Sophie Bakker',
-    avatar: 'S',
+    avatar: 'https://randomuser.me/api/portraits/women/68.jpg',
   },
   {
-    text: 'De swirls en lichte krassen in de lak zijn na het polijsten compleet verdwenen. Vakwerk van een gecertificeerd detailer.',
+    text: 'Swirls en lichte krassen zijn na het polijsten compleet verdwenen. Vakwerk.',
     name: 'Dennis Visser',
-    avatar: 'D',
+    avatar: 'https://randomuser.me/api/portraits/men/12.jpg',
   },
   {
-    text: 'De combi deal exterieur + interieur was de moeite meer dan waard. Auto staat er weer perfect bij van binnen en buiten.',
+    text: 'De combi exterieur en interieur was de moeite meer dan waard.',
     name: 'Emma Mulder',
-    avatar: 'E',
+    avatar: 'https://randomuser.me/api/portraits/women/65.jpg',
   },
   {
-    text: 'Vooraf duidelijke uitleg over wat er aan zat te komen en achteraf een resultaat dat de verwachtingen overtrof. Nette communicatie en gestructureerde werkwijze.',
+    text: 'Duidelijke uitleg vooraf en een resultaat dat de verwachtingen overtrof.',
     name: 'Pieter de Groot',
-    avatar: 'P',
+    avatar: 'https://randomuser.me/api/portraits/men/76.jpg',
   },
   {
-    text: 'Mijn Mercedes glimt weer alsof hij van de zaak komt. Top product, top service, en oog voor elk detail.',
+    text: 'Mijn Mercedes glimt weer alsof hij van de zaak komt. Top service.',
     name: 'Anna Smit',
-    avatar: 'A',
+    avatar: 'https://randomuser.me/api/portraits/women/33.jpg',
   },
   {
-    text: 'BMW na de silver exterior detail laten doen (handwas, foambad, sealant). Auto is volledig getransformeerd.',
+    text: 'BMW na de silver exterior detail laten doen. Volledig getransformeerd.',
     name: 'Ruben Hendriks',
-    avatar: 'R',
+    avatar: 'https://randomuser.me/api/portraits/men/51.jpg',
   },
   {
-    text: 'Geen standaard werk, maar échte aandacht voor elk detail. Duidelijk te merken dat hier vakmanschap achter zit.',
+    text: 'Geen standaard werk maar échte aandacht voor elk detail. Vakmanschap.',
     name: 'Julia van Dijk',
-    avatar: 'J',
+    avatar: 'https://randomuser.me/api/portraits/women/21.jpg',
   },
   {
-    text: 'Velgen, banden en wielkasten zien er weer uit als nieuw. Diepte reiniging die je in een wasstraat nooit krijgt.',
+    text: 'Velgen, banden en wielkasten zien er weer uit als nieuw. Echt schoon.',
     name: 'Kevin Bos',
-    avatar: 'K',
+    avatar: 'https://randomuser.me/api/portraits/men/3.jpg',
   },
   {
-    text: 'Na de klei behandeling en chemische decontaminatie voelt de lak echt glad als glas. Verschil is voelbaar én zichtbaar.',
+    text: 'Na de klei behandeling voelt de lak echt glad als glas. Top resultaat.',
     name: 'Nathalie Prins',
-    avatar: 'N',
+    avatar: 'https://randomuser.me/api/portraits/women/57.jpg',
   },
   {
-    text: 'Audi laten doen voor de gold exterior. Prijs-kwaliteit is sterk en de afwerking is precies wat je hoopt van een professional.',
+    text: 'Audi laten doen voor de gold exterior. Prijs-kwaliteit is sterk.',
     name: 'Bas Vermeulen',
-    avatar: 'B',
+    avatar: 'https://randomuser.me/api/portraits/men/85.jpg',
   },
   {
-    text: 'Glascoating laten aanbrengen, regen parelt er prachtig vanaf en de auto blijft veel langer schoon. Absolute aanrader.',
+    text: 'Glascoating laten aanbrengen, regen parelt er prachtig vanaf. Aanrader.',
     name: 'Iris van Leeuwen',
-    avatar: 'I',
+    avatar: 'https://randomuser.me/api/portraits/women/9.jpg',
   },
   {
-    text: 'Het interieur was bij ons echt aan een grondige beurt toe. Stoelen, mat, kunststof, alles is weer als nieuw.',
+    text: 'Het interieur was aan een beurt toe en is nu weer helemaal als nieuw.',
     name: 'Stefan de Wit',
-    avatar: 'S',
+    avatar: 'https://randomuser.me/api/portraits/men/22.jpg',
   },
   {
-    text: 'Premium producten, hoogwaardig werk en een eindresultaat waar je trots op bent. Guyliamo gaat tot in elk detail.',
+    text: 'Premium producten, hoogwaardig werk en een resultaat om trots op te zijn.',
     name: 'Fleur Janssen',
-    avatar: 'F',
+    avatar: 'https://randomuser.me/api/portraits/women/12.jpg',
   },
 ];
 
@@ -96,14 +96,24 @@ export default function Reviews() {
   const velocityRef = useRef(0);
   const radiusRef = useRef(1600);
 
+  const yOffsetRef = useRef(250);
+
   // Calculate responsive radius based on viewport
   const getRadius = () => {
     if (typeof window === 'undefined') return 1600;
     const width = window.innerWidth;
-    if (width <= 480) return 600;
-    if (width <= 767) return 800;
+    if (width <= 480) return 660;
+    if (width <= 767) return 850;
     if (width <= 991) return 1000;
     return 1600;
+  };
+
+  // Vertical offset of the arc, decoupled from radius
+  const getYOffset = () => {
+    if (typeof window === 'undefined') return 250;
+    const width = window.innerWidth;
+    if (width <= 767) return 100;
+    return 250;
   };
 
   useEffect(() => {
@@ -115,11 +125,13 @@ export default function Reviews() {
     const cards = container.querySelectorAll(`.${styles.card}`) as NodeListOf<HTMLElement>;
     const totalCards = cards.length;
     radiusRef.current = getRadius();
+    yOffsetRef.current = getYOffset();
     const angleStep = 360 / totalCards;
 
     // Update radius on resize
     const handleResize = () => {
       radiusRef.current = getRadius();
+      yOffsetRef.current = getYOffset();
     };
     window.addEventListener('resize', handleResize);
 
@@ -148,8 +160,8 @@ export default function Reviews() {
         const angle = (angleRef.current + index * angleStep) * (Math.PI / 180);
         const radius = radiusRef.current;
 
-        // Responsive y-offset based on radius
-        const yOffset = radius <= 800 ? 100 : 250;
+        // Vertical offset of the arc (decoupled from radius)
+        const yOffset = yOffsetRef.current;
 
         // Position on arc (bottom arc - smile shape)
         const x = Math.sin(angle) * radius;
@@ -249,7 +261,7 @@ export default function Reviews() {
               <div key={index} className={styles.card}>
                 <p className={styles.cardText}>{review.text}</p>
                 <div className={styles.cardAuthor}>
-                  <span className={styles.cardAvatar}>{review.avatar}</span>
+                  <img className={styles.cardAvatar} src={review.avatar} alt={review.name} draggable={false} />
                   <span className={styles.cardName}>{review.name}</span>
                 </div>
               </div>

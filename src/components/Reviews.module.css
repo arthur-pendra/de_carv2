@@ -110,16 +110,13 @@
 }
 
 .cardAvatar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 2.25em;
   height: 2.25em;
   border-radius: 100em;
-  background: var(--color-accent);
-  color: var(--color-white);
-  font-size: 0.875em;
-  font-weight: 400;
+  object-fit: cover;
+  flex-shrink: 0;
+  user-select: none;
+  pointer-events: none;
 }
 
 .cardName {
@@ -203,8 +200,14 @@
     padding: 0 1em;
   }
 
+  .stickyWrap {
+    min-height: 100svh;
+    justify-content: center;
+    gap: 1em;
+  }
+
   .header {
-    padding: 3em 1em 0;
+    padding: 2em 1em 1em;
   }
 
   .title {
@@ -212,31 +215,37 @@
   }
 
   .circleWrap {
-    height: 28em;
+    height: 32em;
   }
 
   .card {
     width: 15em;
+    height: 15em;
     left: -7.5em;
     top: -4em;
     padding: 1.25em 1em;
     gap: 0.75em;
   }
 
+  .cardAuthor {
+    margin-top: auto;
+  }
+
   .cta {
-    margin-top: -6em;
-    padding: 1.5em 1em;
+    margin-top: -3em;
+    padding: 2em 1em 3em;
   }
 }
 
 /* Small Mobile */
 @media screen and (max-width: 480px) {
   .circleWrap {
-    height: 24em;
+    height: 28em;
   }
 
   .card {
     width: 12em;
+    height: 15em;
     left: -6em;
     top: -3em;
     padding: 1em 0.75em;

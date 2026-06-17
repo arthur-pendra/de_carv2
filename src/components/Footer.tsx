@@ -109,9 +109,9 @@ export default function Footer() {
         <div className={styles.ctaContent}>
           <div className={styles.ctaSocial}>
             <div className={styles.avatars}>
-              <span className={styles.avatar}>T</span>
-              <span className={styles.avatar}>L</span>
-              <span className={styles.avatar}>M</span>
+              <img className={styles.avatar} src="https://randomuser.me/api/portraits/men/32.jpg" alt="Thomas" />
+              <img className={styles.avatar} src="https://randomuser.me/api/portraits/women/44.jpg" alt="Lisa" />
+              <img className={styles.avatar} src="https://randomuser.me/api/portraits/men/45.jpg" alt="Mark" />
             </div>
             <span className={styles.socialText}>50+ tevreden klanten</span>
           </div>
