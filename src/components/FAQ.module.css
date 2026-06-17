@@ -108,6 +108,10 @@
 
 /* Mobile */
 @media screen and (max-width: 767px) {
+  .faq {
+    padding: 2em var(--padding-section);
+  }
+
   .title {
     font-size: 3em;
   }

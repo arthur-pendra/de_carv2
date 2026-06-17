@@ -144,15 +144,11 @@
 }
 
 .logoSvg {
-  height: 2.1875em;
+  height: 1.75em;
   width: auto;
   color: var(--color-white);
   display: block;
   transition: color var(--animation-default);
-}
-
-.logoLines {
-  fill: var(--color-accent);
 }
 
 [data-nav-theme="dark"]:not([data-nav-status="active"]) .logoSvg {

@@ -92,6 +92,11 @@
 
 /* Mobile */
 @media screen and (max-width: 767px) {
+  .logoMarquee {
+    padding-top: 6em;
+    padding-bottom: 6em;
+  }
+
   .brand {
     font-size: 1.5em;
   }

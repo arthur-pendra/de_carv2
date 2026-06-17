@@ -184,6 +184,10 @@
 
 /* Small tablet */
 @media screen and (max-width: 767px) {
+  .services {
+    padding-bottom: 0;
+  }
+
   .title {
     font-size: 3em;
   }
