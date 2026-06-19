@@ -2,158 +2,37 @@
 
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
+import Image from 'next/image';
 import TransitionLink from './TransitionLink';
+import Button from './Button';
+import PackageCard from './PackageCard';
+import Calendar from './Calendar';
 import styles from './BookingForm.module.css';
+import {
+  packages,
+  categories as categoryLabels,
+  sizes,
+  addOns,
+  formatPrice,
+  type Category,
+  type Size,
+} from '../data/packages';
 
-type Category = 'exterieur' | 'interieur' | 'combi';
+const stepLabels = ['Pakket', 'Opties', 'Auto', 'Contact', 'Datum'];
+const lastStep = stepLabels.length - 1;
 
-const categoryLabels: { key: Category; label: string }[] = [
-  { key: 'exterieur', label: 'Exterieur' },
-  { key: 'interieur', label: 'Interieur' },
-  { key: 'combi', label: 'Combi' },
-];
-
-const packages: Record<Category, {
-  tag: string;
-  title: string;
-  price: string;
-  features: string[];
-}[]> = {
-  exterieur: [
-    {
-      tag: 'BRONZE',
-      title: 'Exterior Detail',
-      price: '€120,-',
-      features: [
-        'Diepte reiniging velgen, banden & wielkasten',
-        'Reiniging deurstijlen',
-        'Voorwassen (krasloze reiniging)',
-        'Volledig foambad & handwas',
-        'Streep vrij glas',
-        'Bandenglans aangebracht (3 maanden protectie)',
-      ],
-    },
-    {
-      tag: 'SILVER',
-      title: 'Exterior Detail',
-      price: '€180,-',
-      features: [
-        'Diepte reiniging velgen, banden & wielkasten',
-        'Reiniging deurstijlen',
-        'Voorwassen (krasloze reiniging)',
-        'Volledig foambad & handwas',
-        'Streep vrij glas',
-        'Bandenglans aangebracht (3 maanden protectie)',
-        'Keramische sealant (1-3 maanden lakprotectie)',
-        'IJzer & tar verwijdering',
-      ],
-    },
-    {
-      tag: 'GOLD',
-      title: 'Exterior Detail',
-      price: '€200,-',
-      features: [
-        'Diepte reiniging velgen, banden & wielkasten',
-        'Reiniging deurstijlen',
-        'Voorwassen (krasloze reiniging)',
-        'Volledig foambad & handwas',
-        'Streep vrij glas',
-        'Bandenglans aangebracht (3 maanden protectie)',
-        'Keramische sealant (3-6 maanden lakprotectie)',
-        'Volledige kleibehandeling',
-        'Dressing & protectie kunststof oppervlakten',
-        'Glascoating (1 jaar protectie)',
-      ],
-    },
-  ],
-  interieur: [
-    {
-      tag: 'BRONZE',
-      title: 'Interior Detail',
-      price: '€120,-',
-      features: [
-        'Volledige stofzuigen en stofvrij maken',
-        'Dashboard, middenconsole & deurpanelen reinigen',
-        'Reinigen kofferruimte',
-        'Stomen interieur oppervlaktes',
-        'Streep vrij glas',
-      ],
-    },
-    {
-      tag: 'SILVER',
-      title: 'Interior Detail',
-      price: '€200,-',
-      features: [
-        'Volledige stofzuigen en stofvrij maken',
-        'Dashboard, middenconsole & deurpanelen reinigen',
-        'Reinigen kofferruimte',
-        'Stomen interieur oppervlaktes',
-        'Streep vrij glas',
-        'Lederen stoelen reinigen',
-        'Stoffen & alcantara stoelen reinigen',
-        'Automatten en tapijt reinigen',
-      ],
-    },
-    {
-      tag: 'GOLD',
-      title: 'Interior Detail',
-      price: '€250,-',
-      features: [
-        'Volledige stofzuigen en stofvrij maken',
-        'Dashboard, middenconsole & deurpanelen reinigen',
-        'Reinigen kofferruimte',
-        'Stomen interieur oppervlaktes',
-        'Streep vrij glas',
-        'Lederen stoelen reinigen',
-        'Stoffen & alcantara stoelen reinigen',
-        'Automatten en tapijt reinigen',
-        'Behandelen kunststof onderdelen',
-        'Reinigen dakhemel',
-        '100% geur en bacterie vrij',
-      ],
-    },
-  ],
-  combi: [
-    {
-      tag: 'BRONZE',
-      title: 'Ultimate Detail',
-      price: '€200,-',
-      features: [
-        'Bronze exterior detail',
-        'Bronze interior detail',
-        'Bespaar €40 door onze combi deal',
-      ],
-    },
-    {
-      tag: 'SILVER',
-      title: 'Ultimate Detail',
-      price: '€320,-',
-      features: [
-        'Silver exterior detail',
-        'Silver interior detail',
-        'Bespaar €60 door onze combi deal',
-      ],
-    },
-    {
-      tag: 'GOLD',
-      title: 'Ultimate Detail',
-      price: '€380,-',
-      features: [
-        'Gold exterior detail',
-        'Gold interior detail',
-        'Bespaar €70 door onze combi deal',
-      ],
-    },
-  ],
-};
-
-const stepLabels = ['Pakket', 'Auto', 'Contact', 'Datum'];
+const sizeLabel = (key: Size) => sizes.find((s) => s.key === key)?.label ?? key;
 
 export default function BookingForm() {
   const searchParams = useSearchParams();
   const [step, setStep] = useState(0);
   const [activeCategory, setActiveCategory] = useState<Category>('exterieur');
+  const [categorySelected, setCategorySelected] = useState(false);
   const [selectedTier, setSelectedTier] = useState<number | null>(null);
+  const [selectedSize, setSelectedSize] = useState<Size | null>(null);
+  const [selectedAddOns, setSelectedAddOns] = useState<string[]>([]);
+  const [detailsOpen, setDetailsOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -164,17 +43,45 @@ export default function BookingForm() {
       const lower = dienst.toLowerCase();
       for (const cat of categoryLabels) {
         const idx = packages[cat.key].findIndex(
-          (p) => `${p.tag} ${p.title}`.toLowerCase() === lower
+          (p) => p.title.toLowerCase() === lower
         );
         if (idx !== -1) {
           setActiveCategory(cat.key);
+          setCategorySelected(true);
           setSelectedTier(idx);
+          setSelectedSize(null);
+          setSelectedAddOns([]);
           setStep(1);
-          break;
+          return;
         }
       }
     }
+
+    const categorie = searchParams.get('categorie');
+    if (categorie === 'exterieur' || categorie === 'interieur' || categorie === 'combi') {
+      setActiveCategory(categorie);
+      setCategorySelected(true);
+      setStep(0);
+    }
   }, [searchParams]);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 767px)');
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
+
+  // Bij elke stap- of dienstkeuze terug naar boven scrollen
+  useEffect(() => {
+    const lenis = (window as Window & { lenis?: { scrollTo: (t: number, o?: { immediate?: boolean }) => void } }).lenis;
+    if (lenis) {
+      lenis.scrollTo(0, { immediate: true });
+    } else {
+      window.scrollTo({ top: 0 });
+    }
+  }, [step, categorySelected]);
 
   const [carBrand, setCarBrand] = useState('');
   const [carPlate, setCarPlate] = useState('');
@@ -185,14 +92,43 @@ export default function BookingForm() {
   const [email, setEmail] = useState('');
 
   const [dates, setDates] = useState<string[]>([]);
-  const [time, setTime] = useState('');
+  const [dayTimes, setDayTimes] = useState<Record<string, string>>({});
   const [notes, setNotes] = useState('');
   const [privacy, setPrivacy] = useState(false);
 
-  const toggleDate = (d: string) => {
-    setDates((prev) =>
-      prev.includes(d) ? prev.filter((x) => x !== d) : [...prev, d].sort()
+  const selectedPkg = selectedTier !== null ? packages[activeCategory][selectedTier] : null;
+  const basePrice = selectedPkg && selectedSize ? selectedPkg.prices[selectedSize] : 0;
+  const addOnsTotal = selectedAddOns.reduce((sum, id) => sum + (addOns[id]?.price ?? 0), 0);
+  const total = basePrice + addOnsTotal;
+
+  const pickTier = (i: number) => {
+    setSelectedTier(i);
+    setSelectedSize(null);
+    setSelectedAddOns([]);
+    setStep(1);
+  };
+
+  const toggleAddOn = (id: string) => {
+    setSelectedAddOns((prev) =>
+      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
     );
+  };
+
+  const toggleDate = (d: string) => {
+    if (dates.includes(d)) {
+      setDates(dates.filter((x) => x !== d));
+      setDayTimes((prev) => {
+        const next = { ...prev };
+        delete next[d];
+        return next;
+      });
+    } else {
+      setDates([...dates, d].sort());
+    }
+  };
+
+  const setDayTime = (d: string, value: string) => {
+    setDayTimes((prev) => ({ ...prev, [d]: value }));
   };
 
   const formatDate = (d: string) => {
@@ -206,29 +142,45 @@ export default function BookingForm() {
     avond: 'Avond',
   };
 
+  const handleBack = () => {
+    if (step === 0) {
+      if (categorySelected) {
+        setCategorySelected(false);
+        setSelectedTier(null);
+        setSelectedSize(null);
+        setSelectedAddOns([]);
+      }
+      return;
+    }
+    setStep(step - 1);
+  };
+
   const canNext = () => {
     if (step === 0) return selectedTier !== null;
-    if (step === 1) return carBrand.trim() !== '';
-    if (step === 2) return name.trim() !== '' && phone.trim() !== '' && email.trim() !== '';
-    if (step === 3) return dates.length > 0 && time !== '' && privacy;
+    if (step === 1) return selectedSize !== null;
+    if (step === 2) return carBrand.trim() !== '';
+    if (step === 3) return name.trim() !== '' && phone.trim() !== '' && email.trim() !== '';
+    if (step === 4) return dates.length > 0 && dates.every((d) => dayTimes[d]) && privacy;
     return false;
   };
 
   const handleSubmit = async () => {
-    if (submitting || selectedTier === null) return;
+    if (submitting || !selectedPkg || selectedSize === null) return;
     setSubmitError(null);
     setSubmitting(true);
     try {
-      const pkg = packages[activeCategory][selectedTier];
       const res = await fetch('/api/booking', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          package: { tag: pkg.tag, title: pkg.title, price: pkg.price },
+          package: { title: selectedPkg.title },
+          size: { key: selectedSize, label: sizeLabel(selectedSize) },
+          basePrice,
+          addOns: selectedAddOns.map((id) => ({ label: addOns[id].label, price: addOns[id].price })),
+          total,
           car: { brand: carBrand, plate: carPlate, color: carColor },
           contact: { name, phone, email },
-          dates,
-          time,
+          days: dates.map((d) => ({ date: d, time: dayTimes[d] })),
           notes,
         }),
       });
@@ -245,8 +197,6 @@ export default function BookingForm() {
   };
 
   if (submitted) {
-    const chosenPackage = selectedTier !== null ? packages[activeCategory][selectedTier] : null;
-
     return (
       <main className={styles.main}>
         <div className={styles.container}>
@@ -267,10 +217,28 @@ export default function BookingForm() {
 
               <div className={styles.summaryRow}>
                 <span className={styles.summaryLabel}>Pakket</span>
-                <span className={styles.summaryValue}>
-                  {chosenPackage ? `${chosenPackage.tag} ${chosenPackage.title} (${chosenPackage.price})` : '-'}
-                </span>
+                <span className={styles.summaryValue}>{selectedPkg ? selectedPkg.title : '-'}</span>
               </div>
+
+              {selectedSize && (
+                <div className={styles.summaryRow}>
+                  <span className={styles.summaryLabel}>Voertuiggrootte</span>
+                  <span className={styles.summaryValue}>
+                    {sizeLabel(selectedSize)} ({formatPrice(basePrice)})
+                  </span>
+                </div>
+              )}
+
+              {selectedAddOns.length > 0 && (
+                <div className={styles.summaryRow}>
+                  <span className={styles.summaryLabel}>Add-ons</span>
+                  <span className={styles.summaryValue}>
+                    {selectedAddOns
+                      .map((id) => `${addOns[id].label} (${formatPrice(addOns[id].price)})`)
+                      .join(', ')}
+                  </span>
+                </div>
+              )}
 
               <div className={styles.summaryRow}>
                 <span className={styles.summaryLabel}>Auto</span>
@@ -295,15 +263,12 @@ export default function BookingForm() {
               </div>
 
               <div className={styles.summaryRow}>
-                <span className={styles.summaryLabel}>Voorkeursdagen</span>
+                <span className={styles.summaryLabel}>Voorkeursmomenten</span>
                 <span className={styles.summaryValue}>
-                  {dates.map((d) => formatDate(d)).join(', ')}
+                  {dates
+                    .map((d) => `${formatDate(d)} (${timeLabels[dayTimes[d]] || dayTimes[d]})`)
+                    .join(', ')}
                 </span>
-              </div>
-
-              <div className={styles.summaryRow}>
-                <span className={styles.summaryLabel}>Tijdstip</span>
-                <span className={styles.summaryValue}>{timeLabels[time] || time}</span>
               </div>
 
               {notes && (
@@ -312,6 +277,11 @@ export default function BookingForm() {
                   <span className={styles.summaryValue}>{notes}</span>
                 </div>
               )}
+
+              <div className={styles.summaryRow}>
+                <span className={styles.summaryLabel}>Totaal</span>
+                <span className={styles.summaryValue}>{formatPrice(total)}</span>
+              </div>
             </div>
 
             <a href="/" className={styles.btnPrimary}>
@@ -346,17 +316,27 @@ export default function BookingForm() {
         </div>
 
         {/* Selected package banner (visible after step 0) */}
-        {step > 0 && selectedTier !== null && (
+        {step > 0 && selectedPkg && (
           <div className={styles.selectedBanner}>
             <div className={styles.selectedInfo}>
               <span className={styles.selectedLabel}>Gekozen pakket</span>
               <span className={styles.selectedValue}>
-                {packages[activeCategory][selectedTier].tag}{' '}
-                {packages[activeCategory][selectedTier].title}
+                {selectedPkg.title}
+                {selectedSize && <span className={styles.selectedSize}>{sizeLabel(selectedSize)}</span>}
                 <span className={styles.selectedPrice}>
-                  {packages[activeCategory][selectedTier].price}
+                  {selectedSize ? formatPrice(total) : `Vanaf ${formatPrice(selectedPkg.prices.klein)}`}
                 </span>
               </span>
+              {selectedAddOns.length > 0 && (
+                <div className={styles.selectedAddOns}>
+                  {selectedAddOns.map((id) => (
+                    <span key={id} className={styles.selectedAddOn}>
+                      {addOns[id].label}
+                      <span className={styles.selectedAddOnPrice}>+ {formatPrice(addOns[id].price)}</span>
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
             <button
               type="button"
@@ -368,48 +348,124 @@ export default function BookingForm() {
           </div>
         )}
 
-        {/* Step 1: Kies je pakket */}
-        {step === 0 && (
+        {/* Step 1a: Kies een dienst */}
+        {step === 0 && !categorySelected && (
           <div className={styles.stepContent}>
-            <h2 className={styles.stepTitle}>Kies je pakket</h2>
+            <h2 className={styles.stepTitle}>Kies een dienst</h2>
 
-            <div className={styles.categoryTabs}>
+            <div className={styles.choiceGrid}>
               {categoryLabels.map((cat) => (
                 <button
                   key={cat.key}
                   type="button"
-                  className={`${styles.categoryTab} ${activeCategory === cat.key ? styles.categoryTabActive : ''}`}
-                  onClick={() => { setActiveCategory(cat.key); setSelectedTier(null); }}
+                  className={styles.choiceCard}
+                  onClick={() => {
+                    setActiveCategory(cat.key);
+                    setSelectedTier(null);
+                    setSelectedSize(null);
+                    setSelectedAddOns([]);
+                    setCategorySelected(true);
+                  }}
                 >
-                  {cat.label}
-                </button>
-              ))}
-            </div>
-
-            <div className={styles.serviceGrid}>
-              {packages[activeCategory].map((pkg, i) => (
-                <button
-                  key={i}
-                  type="button"
-                  className={`${styles.serviceCard} ${selectedTier === i ? styles.serviceSelected : ''}`}
-                  onClick={() => setSelectedTier(i)}
-                >
-                  <span className={styles.serviceTag}>{pkg.tag}</span>
-                  <h3 className={styles.serviceTitle}>{pkg.title}</h3>
-                  <p className={styles.servicePrice}>{pkg.price}</p>
-                  <ul className={styles.serviceFeatures}>
-                    {pkg.features.map((f, fi) => (
-                      <li key={fi}>{f}</li>
-                    ))}
-                  </ul>
+                  <Image
+                    src={cat.image}
+                    alt={cat.label}
+                    fill
+                    sizes="(max-width: 767px) 100vw, 23em"
+                    className={styles.choiceImage}
+                  />
+                  <span className={styles.choiceOverlay} />
+                  <span className={styles.choiceHover} />
+                  <span className={styles.choiceContent}>
+                    <span className={styles.choiceTitle}>{cat.label}</span>
+                    <span className={styles.choiceDesc}>{cat.description}</span>
+                  </span>
                 </button>
               ))}
             </div>
           </div>
         )}
 
-        {/* Step 2: Auto gegevens */}
-        {step === 1 && (
+        {/* Step 1b: Kies je pakket */}
+        {step === 0 && categorySelected && (
+          <div className={styles.stepContent}>
+            <h2 className={styles.stepTitle}>Kies je pakket</h2>
+
+            <div className={styles.serviceGrid}>
+              {packages[activeCategory].map((pkg, i) => (
+                <PackageCard
+                  key={i}
+                  pkg={pkg}
+                  featured={pkg.featured}
+                  detailsOpen={isMobile ? undefined : detailsOpen}
+                  onToggleDetails={isMobile ? undefined : () => setDetailsOpen((o) => !o)}
+                >
+                  <Button onClick={() => pickTier(i)}>Kies pakket</Button>
+                </PackageCard>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Step 2: Voertuiggrootte & opties */}
+        {step === 1 && selectedPkg && (
+          <div className={styles.stepContent}>
+            <h2 className={styles.stepTitle}>Voertuiggrootte & opties</h2>
+            <div className={styles.formFields}>
+              <div className={styles.field}>
+                <label className={styles.label}>Voertuiggrootte *</label>
+                <div className={styles.sizeGrid}>
+                  {sizes.map((s) => (
+                    <button
+                      key={s.key}
+                      type="button"
+                      className={`${styles.sizeCard} ${selectedSize === s.key ? styles.sizeCardActive : ''}`}
+                      onClick={() => setSelectedSize(s.key)}
+                    >
+                      <span className={styles.sizeLabel}>{s.label}</span>
+                      <span className={styles.sizeDesc}>{s.description}</span>
+                      <span className={styles.sizePrice}>{formatPrice(selectedPkg.prices[s.key])}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {selectedPkg.addOnIds.length > 0 && (
+                <div className={styles.field}>
+                  <label className={styles.label}>Add-ons (optioneel)</label>
+                  <div className={styles.addOnList}>
+                    {selectedPkg.addOnIds.map((id) => {
+                      const addOn = addOns[id];
+                      if (!addOn) return null;
+                      return (
+                        <label key={id} className={styles.addOnItem}>
+                          <input
+                            type="checkbox"
+                            checked={selectedAddOns.includes(id)}
+                            onChange={() => toggleAddOn(id)}
+                          />
+                          <span className={styles.checkmark} />
+                          <span className={styles.addOnLabel}>{addOn.label}</span>
+                          <span className={styles.addOnPrice}>+ {formatPrice(addOn.price)}</span>
+                        </label>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+
+              {selectedSize && (
+                <div className={styles.totalRow}>
+                  <span className={styles.totalLabel}>Totaal</span>
+                  <span className={styles.totalPrice}>{formatPrice(total)}</span>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* Step 3: Auto gegevens */}
+        {step === 2 && (
           <div className={styles.stepContent}>
             <h2 className={styles.stepTitle}>Auto gegevens</h2>
             <div className={styles.formFields}>
@@ -447,8 +503,8 @@ export default function BookingForm() {
           </div>
         )}
 
-        {/* Step 3: Contactgegevens */}
-        {step === 2 && (
+        {/* Step 4: Contactgegevens */}
+        {step === 3 && (
           <div className={styles.stepContent}>
             <h2 className={styles.stepTitle}>Contactgegevens</h2>
             <div className={styles.formFields}>
@@ -486,66 +542,66 @@ export default function BookingForm() {
           </div>
         )}
 
-        {/* Step 4: Datum & opmerkingen */}
-        {step === 3 && (
+        {/* Step 5: Datum & opmerkingen */}
+        {step === 4 && (
           <div className={styles.stepContent}>
             <h2 className={styles.stepTitle}>Datum & opmerkingen</h2>
-            <div className={styles.formFields}>
-              <div className={styles.field}>
-                <label className={styles.label}>Voorkeursdagen * (selecteer meerdere)</label>
-                <div className={styles.datePickerWrap}>
-                  <input
-                    type="date"
-                    className={styles.input}
-                    onChange={(e) => {
-                      if (e.target.value) {
-                        toggleDate(e.target.value);
-                        e.target.value = '';
-                      }
-                    }}
-                  />
-                  {dates.length > 0 && (
-                    <div className={styles.dateTags}>
+            <div className={styles.dateStep}>
+              <div className={styles.dateColumn}>
+                <div className={styles.field}>
+                  <label className={styles.label}>Voorkeursdagen * (selecteer meerdere)</label>
+                  <Calendar selected={dates} onToggle={toggleDate} />
+                </div>
+              </div>
+              <div className={styles.dateColumn}>
+                <div className={styles.field}>
+                  <label className={styles.label}>Gewenst tijdstip per dag *</label>
+                  {dates.length === 0 ? (
+                    <p className={styles.dayTimeHint}>
+                      Selecteer eerst een of meer dagen in de kalender.
+                    </p>
+                  ) : (
+                    <div className={styles.dayTimeList}>
                       {dates.map((d) => (
-                        <span key={d} className={styles.dateTag}>
-                          {formatDate(d)}
+                        <div key={d} className={styles.dayTimeRow}>
+                          <span className={styles.dayTimeLabel}>{formatDate(d)}</span>
+                          <select
+                            className={styles.dayTimeSelect}
+                            value={dayTimes[d] || ''}
+                            onChange={(e) => setDayTime(d, e.target.value)}
+                          >
+                            <option value="">Kies tijdstip</option>
+                            <option value="ochtend">Ochtend</option>
+                            <option value="middag">Middag</option>
+                            <option value="avond">Avond</option>
+                          </select>
                           <button
                             type="button"
-                            className={styles.dateTagRemove}
+                            className={styles.dayTimeRemove}
                             onClick={() => toggleDate(d)}
                             aria-label={`Verwijder ${formatDate(d)}`}
                           >
                             &times;
                           </button>
-                        </span>
+                        </div>
                       ))}
                     </div>
                   )}
                 </div>
+                <div className={styles.field}>
+                  <label className={styles.label}>Opmerkingen</label>
+                  <textarea
+                    className={styles.textarea}
+                    placeholder="Extra wensen of opmerkingen..."
+                    rows={4}
+                    value={notes}
+                    onChange={(e) => setNotes(e.target.value)}
+                  />
+                </div>
               </div>
-              <div className={styles.field}>
-                <label className={styles.label}>Gewenst tijdstip *</label>
-                <select
-                  className={styles.input}
-                  value={time}
-                  onChange={(e) => setTime(e.target.value)}
-                >
-                  <option value="">Kies een tijdstip</option>
-                  <option value="ochtend">Ochtend</option>
-                  <option value="middag">Middag</option>
-                  <option value="avond">Avond</option>
-                </select>
-              </div>
-              <div className={styles.field}>
-                <label className={styles.label}>Opmerkingen</label>
-                <textarea
-                  className={styles.textarea}
-                  placeholder="Extra wensen of opmerkingen..."
-                  rows={4}
-                  value={notes}
-                  onChange={(e) => setNotes(e.target.value)}
-                />
-              </div>
+            </div>
+
+            <div className={styles.dateFooter}>
               <label className={styles.checkbox}>
                 <input
                   type="checkbox"
@@ -573,13 +629,13 @@ export default function BookingForm() {
         <div className={styles.navBarInner}>
           <button
             type="button"
-            className={`${styles.btnOutline} ${step === 0 ? styles.btnDisabled : ''}`}
-            disabled={step === 0}
-            onClick={() => setStep(step - 1)}
+            className={`${styles.btnOutline} ${step === 0 && !categorySelected ? styles.btnDisabled : ''}`}
+            disabled={step === 0 && !categorySelected}
+            onClick={handleBack}
           >
             Vorige
           </button>
-          {step < 3 ? (
+          {step < lastStep ? (
             <button
               type="button"
               className={styles.btnPrimary}

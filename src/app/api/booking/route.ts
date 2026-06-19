@@ -3,13 +3,18 @@ import { NextResponse } from 'next/server'
 export const runtime = 'nodejs'
 
 type BookingPayload = {
-  package: { tag: string; title: string; price: string }
+  package: { title: string }
+  size: { key: string; label: string }
+  basePrice: number
+  addOns: { label: string; price: number }[]
+  total: number
   car: { brand: string; plate: string; color: string }
   contact: { name: string; phone: string; email: string }
-  dates: string[]
-  time: string
+  days: { date: string; time: string }[]
   notes: string
 }
+
+const formatPrice = (n: number) => `€${n},-`
 
 const escape = (s: string) =>
   String(s ?? '')
@@ -29,15 +34,21 @@ const timeLabel = (t: string) =>
 
 const detailRows = (data: BookingPayload): [string, string][] => {
   const rows: [string, string][] = [
-    ['Pakket', `${data.package.tag} ${data.package.title} (${data.package.price})`],
-    ['Auto', [data.car.brand, data.car.color, data.car.plate].filter(Boolean).join(' — ')],
+    ['Pakket', data.package.title],
+    ['Voertuiggrootte', `${data.size.label} (${formatPrice(data.basePrice)})`],
+  ]
+  if (data.addOns?.length) {
+    rows.push(['Add-ons', data.addOns.map((a) => `${a.label} (${formatPrice(a.price)})`).join(', ')])
+  }
+  rows.push(
+    ['Auto', [data.car.brand, data.car.color, data.car.plate].filter(Boolean).join(' - ')],
     ['Naam', data.contact.name],
     ['Telefoon', data.contact.phone],
     ['E-mail', data.contact.email],
-    ['Voorkeursdagen', data.dates.map(formatDateNL).join(', ')],
-    ['Tijdstip', timeLabel(data.time)],
-  ]
+    ['Voorkeursmomenten', data.days.map((d) => `${formatDateNL(d.date)} (${timeLabel(d.time)})`).join(', ')],
+  )
   if (data.notes) rows.push(['Opmerkingen', data.notes])
+  rows.push(['Totaal', formatPrice(data.total)])
   return rows
 }
 
@@ -123,8 +134,8 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 })
   }
 
-  const { package: pkg, car, contact, dates, time } = body
-  if (!pkg?.title || !car?.brand || !contact?.name || !contact?.email || !contact?.phone || !dates?.length || !time) {
+  const { package: pkg, size, car, contact, days } = body
+  if (!pkg?.title || !size?.label || !car?.brand || !contact?.name || !contact?.email || !contact?.phone || !days?.length || days.some((d) => !d.date || !d.time)) {
     return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
   }
 
@@ -133,7 +144,7 @@ export async function POST(req: Request) {
       from,
       to: [internalTo],
       reply_to: contact.email,
-      subject: `Nieuwe afspraak — ${contact.name} (${pkg.tag} ${pkg.title})`,
+      subject: `Nieuwe afspraak — ${contact.name} (${pkg.title})`,
       html: renderInternalEmail(body),
     }),
     sendEmail(apiKey, {

@@ -125,6 +125,43 @@
   font-weight: 500;
 }
 
+.selectedSize {
+  font-size: 0.75em;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.25em;
+  padding: 0.2em 0.6em;
+}
+
+.selectedAddOns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+  margin-top: 0.5em;
+}
+
+.selectedAddOn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  font-size: 0.75em;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--color-black);
+  background: rgba(1, 34, 150, 0.06);
+  border: 1px solid rgba(1, 34, 150, 0.2);
+  border-radius: 0.25em;
+  padding: 0.3em 0.6em;
+}
+
+.selectedAddOnPrice {
+  font-weight: 500;
+  color: var(--color-accent);
+}
+
 .selectedChange {
   font-size: 0.8125em;
   font-weight: 400;
@@ -190,87 +227,265 @@
   border-color: var(--color-accent);
 }
 
+/* ========================= Choice Cards (kies een dienst) ========================= */
+
+.choiceGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5em;
+  width: 80em;
+  max-width: calc(100vw - 2 * var(--padding-section));
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.choiceCard {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  border: none;
+  border-radius: 1em;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 0;
+  display: block;
+  width: 100%;
+  font-family: inherit;
+}
+
+.choiceImage {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.choiceCard:hover .choiceImage {
+  transform: scale(1.05);
+}
+
+.choiceOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(7, 7, 7, 0.75) 0%,
+    rgba(7, 7, 7, 0.1) 50%,
+    rgba(7, 7, 7, 0) 100%
+  );
+}
+
+.choiceHover {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(1, 34, 150, 0.95) 0%,
+    rgba(1, 34, 150, 0.6) 45%,
+    rgba(1, 34, 150, 0) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.choiceCard:hover .choiceHover {
+  opacity: 1;
+}
+
+.choiceContent {
+  position: absolute;
+  left: 1.25em;
+  right: 1.25em;
+  bottom: 1.25em;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+  color: var(--color-white);
+}
+
+.choiceTitle {
+  font-size: 1.875em;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.choiceDesc {
+  font-size: 0.9375em;
+  font-weight: 400;
+  line-height: 1.3;
+  opacity: 0;
+  max-height: 0;
+  transform: translateY(0.4em);
+  overflow: hidden;
+  transition: opacity 0.4s ease, max-height 0.4s ease, transform 0.4s ease;
+}
+
+.choiceCard:hover .choiceDesc {
+  opacity: 0.95;
+  max-height: 5em;
+  transform: translateY(0);
+}
+
 /* ========================= Service Cards ========================= */
 
 .serviceGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1em;
+  gap: 1.5em;
+  width: 80em;
+  max-width: calc(100vw - 2 * var(--padding-section));
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .serviceCard {
-  background: var(--color-white);
-  border: 2px solid rgba(0, 0, 0, 0.08);
+  position: relative;
+  background: var(--color-black);
+  border: 2px solid rgba(255, 255, 255, 0.1);
   border-radius: 1em;
-  padding: 1.5em;
+  padding: 0;
+  overflow: hidden;
   text-align: left;
   cursor: pointer;
-  transition: border-color 0.3s ease, background 0.3s ease, color 0.3s ease;
+  color: var(--color-white);
   display: flex;
   flex-direction: column;
+  min-height: 32em;
   font-family: inherit;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .serviceCard:hover {
-  border-color: var(--color-accent);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.cardInner {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 2em;
 }
 
 .serviceSelected {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px var(--color-accent);
+}
+
+.featured {
   background: var(--color-accent);
-  color: var(--color-white);
   border-color: var(--color-accent);
 }
 
-.serviceTag {
-  font-size: 1em;
-  font-weight: 400;
-  letter-spacing: 0.05em;
-  background: rgba(0, 0, 0, 0.05);
-  padding: 0.4em 0.6em;
-  border-radius: 0.2em;
+.badge {
+  font-size: 0.7em;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--color-white);
+  padding: 0.3em 0.8em;
+  border-radius: 100em;
   width: fit-content;
   margin-bottom: 0.75em;
 }
 
-.serviceSelected .serviceTag {
-  background: rgba(255, 255, 255, 0.2);
+/* Op de uitgelichte (blauwe) card: witte cirkel met accent-symbool */
+.featured .featIcon circle,
+.featured .featCheck circle {
+  fill: var(--color-white);
+}
+
+.featured .featIcon path,
+.featured .featCheck path {
+  stroke: var(--color-accent);
+}
+
+.serviceTag {
+  font-size: 0.75em;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 0.4em 0.7em;
+  border-radius: 0.2em;
+  width: fit-content;
+  margin-bottom: 1em;
 }
 
 .serviceTitle {
-  font-size: 2.5em;
+  font-size: 2.25em;
   font-weight: 400;
   letter-spacing: -0.03em;
-  line-height: 1.1;
-  margin: 0 0 0.25em 0;
+  line-height: 1.05;
+  margin: 0 0 0.15em 0;
 }
 
-.servicePrice {
-  font-size: 1.5em;
+.serviceSubtitle {
+  font-size: 0.9375em;
   font-weight: 400;
-  letter-spacing: -0.02em;
+  line-height: 1.3;
   opacity: 0.7;
-  margin: 0 0 1em 0;
+  margin: 0 0 1.25em 0;
 }
 
 .serviceFeatures {
   list-style: none;
   padding: 0;
   margin: 0;
+  flex: 1;
 }
 
 .serviceFeatures li {
-  font-size: 1em;
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+  font-size: 0.875em;
   font-weight: 400;
-  padding: 0.5em 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  line-height: 1.3;
+  padding: 0.6em 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.serviceSelected .serviceFeatures li {
-  border-bottom-color: rgba(255, 255, 255, 0.1);
+.serviceFeatures li span {
+  flex: 1;
 }
 
 .serviceFeatures li:last-child {
   border-bottom: none;
+}
+
+.featIcon {
+  color: var(--color-accent);
+  width: 1.35em;
+  height: 1.35em;
+  flex-shrink: 0;
+}
+
+.featCheck {
+  color: var(--color-accent);
+  width: 1.2em;
+  height: 1.2em;
+  flex-shrink: 0;
+}
+
+.priceWrap {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.5em;
+}
+
+.priceLabel {
+  font-size: 0.75em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: 0.15em;
+}
+
+.servicePrice {
+  font-size: 2.5em;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1;
 }
 
 /* ========================= Form Fields ========================= */
@@ -368,6 +583,143 @@
 
 .checkboxText {
   color: rgba(0, 0, 0, 0.7);
+}
+
+/* ========================= Voertuiggrootte ========================= */
+
+.sizeGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75em;
+}
+
+.sizeCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.4em;
+  padding: 1.25em 1em;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.5em;
+  background: var(--color-white);
+  color: var(--color-black);
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sizeCard:hover {
+  border-color: var(--color-black);
+}
+
+.sizeCardActive {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 1px var(--color-accent);
+}
+
+.sizeLabel {
+  font-size: 1em;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.sizeDesc {
+  font-size: 0.75em;
+  line-height: 1.3;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.sizePrice {
+  font-size: 1.125em;
+  font-weight: 500;
+  color: var(--color-accent);
+  margin-top: 0.25em;
+}
+
+/* ========================= Add-ons ========================= */
+
+.addOnList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.addOnItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+  padding: 0.75em 1em;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 0.375em;
+  background: var(--color-white);
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.addOnItem:hover {
+  border-color: rgba(0, 0, 0, 0.3);
+}
+
+.addOnItem input {
+  display: none;
+}
+
+.addOnItem input:checked + .checkmark {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.addOnItem input:checked + .checkmark::after {
+  content: '';
+  position: absolute;
+  top: 0.15em;
+  left: 0.375em;
+  width: 0.375em;
+  height: 0.625em;
+  border: solid var(--color-white);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.addOnLabel {
+  flex: 1;
+  font-size: 0.8125em;
+  line-height: 1.3;
+  color: var(--color-black);
+}
+
+.addOnPrice {
+  font-size: 0.8125em;
+  font-weight: 500;
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+/* ========================= Totaal ========================= */
+
+.totalRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1em;
+  margin-top: 0.25em;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.totalLabel {
+  font-size: 0.75em;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.totalPrice {
+  font-size: 1.5em;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--color-accent);
 }
 
 /* ========================= Navigation Buttons ========================= */
@@ -475,6 +827,100 @@
   max-width: 24em;
 }
 
+/* ========================= Datum stap (twee kolommen) ========================= */
+
+.dateStep {
+  display: grid;
+  grid-template-columns: minmax(0, 26em) minmax(0, 1fr);
+  gap: 2.5em;
+  align-items: start;
+}
+
+.dateColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25em;
+}
+
+.dayTimeHint {
+  font-size: 0.8125em;
+  color: rgba(0, 0, 0, 0.5);
+  line-height: 1.4;
+  margin: 0;
+  padding: 0.875em 1em;
+  border: 1px dashed rgba(0, 0, 0, 0.18);
+  border-radius: 0.375em;
+}
+
+.dayTimeList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.dayTimeRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+  padding: 0.5em 0.5em 0.5em 1em;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 0.375em;
+  background: var(--color-white);
+}
+
+.dayTimeLabel {
+  flex: 1;
+  min-width: 0;
+  font-size: 0.8125em;
+  color: var(--color-black);
+}
+
+.dayTimeSelect {
+  font-size: 0.8125em;
+  padding: 0.5em 0.75em;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.25em;
+  background: var(--color-white);
+  color: var(--color-black);
+  outline: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: border-color 0.2s ease;
+}
+
+.dayTimeSelect:focus {
+  border-color: var(--color-accent);
+}
+
+.dayTimeRemove {
+  width: 1.75em;
+  height: 1.75em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  border-radius: 50%;
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 1.125em;
+  line-height: 1;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.dayTimeRemove:hover {
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--color-black);
+}
+
+.dateFooter {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  margin-top: 2em;
+}
+
 /* ========================= Date Tags ========================= */
 
 .datePickerWrap {
@@ -566,12 +1012,25 @@
 /* ========================= Responsive ========================= */
 
 @media screen and (max-width: 767px) {
-  .serviceGrid {
+  .serviceGrid,
+  .choiceGrid {
     grid-template-columns: 1fr;
+    width: 100%;
+    left: auto;
+    transform: none;
   }
 
   .fieldRow {
     flex-direction: column;
+  }
+
+  .sizeGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .dateStep {
+    grid-template-columns: 1fr;
+    gap: 1.5em;
   }
 
   .stepLine {

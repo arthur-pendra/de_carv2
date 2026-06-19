@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import styles from './Reviews.module.css';
+import DragCursor from './DragCursor';
 
 const reviews = [
   {
@@ -194,7 +195,7 @@ export default function Reviews() {
       isDragging.current = true;
       lastX.current = e.clientX;
       velocityRef.current = 0;
-      wrap.style.cursor = 'grabbing';
+      wrap.style.cursor = 'none';
     };
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -207,7 +208,7 @@ export default function Reviews() {
 
     const handleMouseUp = () => {
       isDragging.current = false;
-      wrap.style.cursor = 'grab';
+      wrap.style.cursor = 'none';
     };
 
     const handleTouchStart = (e: TouchEvent) => {
@@ -249,13 +250,19 @@ export default function Reviews() {
 
   return (
     <section id="reviews" className={styles.reviews} ref={sectionRef} data-nav-theme="dark">
+      <DragCursor />
       <div className={styles.stickyWrap}>
         <div className={styles.header}>
           <span className={styles.label}>Ervaringen</span>
           <h2 className={styles.title}>Wat klanten zeggen</h2>
         </div>
 
-        <div className={styles.circleWrap} ref={wrapRef}>
+        <div
+          className={styles.circleWrap}
+          ref={wrapRef}
+          data-cursor-hover
+          data-cursor-text="Sleep"
+        >
           <div className={styles.circle} ref={containerRef}>
             {reviews.map((review, index) => (
               <div key={index} className={styles.card}>

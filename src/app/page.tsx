@@ -1,5 +1,6 @@
 import styles from "./page.module.css";
 import Hero from "@/components/Hero";
+import AboutCompany from "@/components/AboutCompany";
 import Services from "@/components/Services";
 import WhyUs from "@/components/WhyUs";
 import LogoMarquee from "@/components/LogoMarquee";
@@ -12,6 +13,7 @@ export default function Home() {
     <>
       <main className={styles.page}>
         <Hero />
+        <AboutCompany />
         <Services />
         <WhyUs />
         <LogoMarquee />

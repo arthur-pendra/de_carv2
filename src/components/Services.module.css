@@ -62,11 +62,127 @@
   border-color: var(--color-accent);
 }
 
+/* ========================= Choice Cards (kies een dienst) ========================= */
+
+.choiceGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5em;
+  max-width: 80em;
+  margin: 0 auto;
+}
+
+.choiceCard {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  border: none;
+  border-radius: 1em;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 0;
+  display: block;
+  width: 100%;
+  font-family: inherit;
+  text-decoration: none;
+  color: var(--color-white);
+  transform: translateZ(0);
+  isolation: isolate;
+}
+
+.choiceImage {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.choiceCard:hover .choiceImage {
+  transform: scale(1.05);
+}
+
+.choiceOverlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to top,
+      rgba(7, 7, 7, 0.9) 0%,
+      rgba(7, 7, 7, 0.15) 55%,
+      rgba(7, 7, 7, 0) 100%
+    ),
+    rgba(7, 7, 7, 0.3);
+}
+
+.choiceContent {
+  position: absolute;
+  left: 1.5em;
+  right: 1.5em;
+  bottom: 1.5em;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+  color: var(--color-white);
+}
+
+.choiceTitle {
+  font-size: 2em;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.choiceDesc {
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1.3;
+  opacity: 0;
+  max-height: 0;
+  transform: translateY(0.4em);
+  overflow: hidden;
+  transition: opacity 0.4s ease, max-height 0.4s ease, transform 0.4s ease;
+}
+
+.choiceCard:hover .choiceDesc {
+  opacity: 0.95;
+  max-height: 5em;
+  transform: translateY(0);
+}
+
+/* ========================= Back button ========================= */
+
+.back {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5em;
+  width: 100%;
+  max-width: 80em;
+  font-size: 0.875em;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  color: var(--color-black);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 2em auto 0;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.back:hover {
+  opacity: 1;
+}
+
+.backArrow {
+  font-size: 1.125em;
+  line-height: 1;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5em;
-  max-width: 70em;
+  max-width: 80em;
   margin: 0 auto;
 }
 
@@ -78,31 +194,38 @@
 }
 
 .card {
-  background: var(--color-white);
+  position: relative;
+  background: var(--color-black);
+  border: 2px solid rgba(255, 255, 255, 0.1);
   border-radius: 1em;
-  padding: 2em;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
+  min-height: 32em;
+  color: var(--color-white);
 }
 
 .card.featured {
   background: var(--color-accent);
-  color: var(--color-white);
+  border-color: var(--color-accent);
+}
+
+.cardInner {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 2em;
 }
 
 .tag {
   font-size: 0.625em;
   font-weight: 400;
-  letter-spacing: 0.05em;
-  background: rgba(0, 0, 0, 0.05);
-  padding: 0.4em 0.6em;
+  letter-spacing: 0.08em;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 0.4em 0.7em;
   border-radius: 0.2em;
   width: fit-content;
   margin-bottom: 1.25em;
-}
-
-.featured .tag {
-  background: rgba(255, 255, 255, 0.2);
 }
 
 .badge {
@@ -118,61 +241,97 @@
 }
 
 .cardTitle {
-  font-size: 2em;
+  font-size: 2.25em;
   font-weight: 400;
   letter-spacing: -0.03em;
-  line-height: 1.1;
-  margin: 0 0 0.25em 0;
+  line-height: 1.05;
+  margin: 0 0 0.15em 0;
 }
 
-.price {
-  font-size: 1.25em;
+.subtitle {
+  font-size: 0.9375em;
   font-weight: 400;
-  letter-spacing: -0.02em;
+  line-height: 1.3;
   opacity: 0.7;
-  margin: 0 0 1em 0;
-}
-
-.description {
-  font-size: 1em;
-  font-weight: 400;
-  line-height: 1.4;
-  opacity: 0.8;
-  margin: 0 0 1.5em 0;
+  margin: 0 0 1.25em 0;
 }
 
 .features {
   list-style: none;
   padding: 0;
-  margin: 0 0 2em 0;
+  margin: 0;
   flex-grow: 1;
 }
 
 .features li {
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
   font-size: 0.875em;
   font-weight: 400;
-  padding: 0.5em 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  line-height: 1.3;
+  padding: 0.6em 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.featured .features li {
-  border-bottom-color: rgba(255, 255, 255, 0.1);
+.features li span {
+  flex: 1;
 }
 
 .features li:last-child {
   border-bottom: none;
 }
 
-.card.featured :global(.btn) {
+.featIcon {
+  color: var(--color-accent);
+  width: 1.35em;
+  height: 1.35em;
+  flex-shrink: 0;
+}
+
+.featCheck {
+  color: var(--color-accent);
+  width: 1.2em;
+  height: 1.2em;
+  flex-shrink: 0;
+}
+
+/* Op de uitgelichte (blauwe) card: witte cirkel met accent-symbool */
+.featured .featIcon circle,
+.featured .featCheck circle {
+  fill: var(--color-white);
+}
+
+.featured .featIcon path,
+.featured .featCheck path {
+  stroke: var(--color-accent);
+}
+
+.priceWrap {
+  display: flex;
+  flex-direction: column;
+  margin: 1.5em 0;
+}
+
+.priceLabel {
+  font-size: 0.75em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: 0.15em;
+}
+
+.price {
+  font-size: 2.5em;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.card :global(.btn) {
   background: var(--color-white);
   color: var(--color-accent);
   border-color: var(--color-white);
-}
-
-.card:not(.featured) :global(.btn) {
-  background: var(--color-black);
-  color: var(--color-white);
-  border-color: var(--color-black);
 }
 
 /* Tablet */
@@ -192,12 +351,16 @@
     font-size: 3em;
   }
 
-  .grid {
+  .choiceGrid {
     grid-template-columns: 1fr;
-    max-width: 28em;
   }
 
-  .card {
+  .grid {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+  }
+
+  .cardInner {
     padding: 1.5em;
   }
 

@@ -70,6 +70,12 @@
   cursor: grab;
 }
 
+@media (hover: hover) and (pointer: fine) {
+  .circleWrap {
+    cursor: none;
+  }
+}
+
 
 .circle {
   position: absolute;

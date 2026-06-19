@@ -1,182 +1,148 @@
 .hero {
-  position: relative;
   width: 100%;
+  min-height: 100vh;
+  padding: 0.75em;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  background: var(--color-cream);
 }
 
-/* Circle container */
-.circleContainer {
+/* Image frame */
+.frame {
   position: relative;
-  width: 100%;
-  height: 62.5em;
+  flex: 1;
+  border-radius: 1.5em;
   overflow: hidden;
 }
 
-.ctaBtn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.75em 1.5em;
-  background: var(--color-accent);
-  color: var(--color-white);
-  font-size: 0.875em;
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  border-radius: 0.25em;
-  border: none;
-  text-decoration: none;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.ctaBtn:hover {
-  background: var(--color-accent);
-}
-
-/* Center text in circle */
-.centerText {
+.image {
   position: absolute;
-  top: calc(250px + 750px);
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  max-width: 50em;
-  padding: 0 var(--padding-section);
-  z-index: 200;
-}
-
-.centerText p {
-  font-size: 2.5em;
-  font-weight: 400;
-  color: var(--color-black);
-  line-height: 1.05;
-  letter-spacing: -0.03em;
-  margin: 0 0 1em 0;
-}
-
-/* Bottom fade gradient - smooth eased transition */
-.fadeBottom {
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  right: 0;
-  height: 50vh;
-  background: linear-gradient(
-    to top,
-    var(--color-cream) 0%,
-    rgba(250, 249, 246, 0.738) 19%,
-    rgba(250, 249, 246, 0.541) 34%,
-    rgba(250, 249, 246, 0.382) 47%,
-    rgba(250, 249, 246, 0.278) 56.5%,
-    rgba(250, 249, 246, 0.194) 65%,
-    rgba(250, 249, 246, 0.126) 73%,
-    rgba(250, 249, 246, 0.075) 80.2%,
-    rgba(250, 249, 246, 0.042) 86.1%,
-    rgba(250, 249, 246, 0.021) 91%,
-    rgba(250, 249, 246, 0.008) 95.2%,
-    rgba(250, 249, 246, 0.002) 98.2%,
-    transparent 100%
-  );
-  pointer-events: none;
-  z-index: 150;
-}
-
-/* Content */
-.content {
-  position: relative;
+  inset: 0;
   width: 100%;
-  text-align: center;
-  padding: 20vh var(--padding-section) 2em;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* Subtle overall darkening + stronger gradient at the bottom */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to top,
+      rgba(7, 7, 7, 0.9) 0%,
+      rgba(7, 7, 7, 0) 55%
+    ),
+    rgba(7, 7, 7, 0.3);
+  z-index: 2;
+}
+
+/* Content overlaid on the image */
+.content {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--padding-section);
   gap: 1.5em;
 }
 
-/* Title */
+.titleGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.eyebrow {
+  font-size: 1em;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--color-white);
+}
+
 .title {
   font-size: 7em;
   font-weight: 400;
-  color: var(--color-black);
+  color: var(--color-white);
   letter-spacing: -0.06em;
   line-height: 1;
-  margin: 0 0 0.2em 0;
+  margin: 0;
 }
 
-/* Subtitle */
 .subtitle {
   font-size: var(--font-par-lg);
   font-weight: 400;
-  color: var(--color-black);
+  color: var(--color-white);
   max-width: 30em;
   line-height: 1.2;
   margin: 0;
 }
 
-/* Buttons */
 .buttons {
   display: flex;
-  gap: 1em;
-  margin-top: 0.5em;
+  gap: 2.25em;
+  margin-top: 1.5em;
+}
+
+/* Primaire knop in accentblauw */
+.buttons :global(.btn) {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-white);
+}
+
+.buttons :global(.btn:hover) {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  opacity: 0.9;
+}
+
+/* Copy-email button readable on the dark hero */
+.buttons button {
+  background: var(--white-light);
+  border-color: var(--white-medium);
+}
+
+.buttons button span {
+  color: var(--color-white);
+}
+
+.buttons button:hover {
+  background: var(--white-medium);
+  border-color: var(--white-strong);
+}
+
+/* Respect reduced motion — show the static poster instead of the loop */
+@media (prefers-reduced-motion: reduce) {
+  .video {
+    display: none;
+  }
 }
 
 /* Tablet */
 @media screen and (max-width: 991px) {
-  .circleContainer {
-    height: 50em;
-  }
-
-  .centerText {
-    top: calc(180px + 600px);
-  }
-
-  .fadeBottom {
-    height: 40vh;
+  .frame {
+    border-radius: 1.25em;
   }
 }
 
 /* Mobile */
 @media screen and (max-width: 767px) {
-  .circleContainer {
-    height: 45em;
-  }
-
-  .centerText {
-    top: calc(120px + 450px);
-    padding: 0 1.5em;
-    width: 100%;
-  }
-
-  .centerText p {
-    font-size: 1.5em;
+  .frame {
+    border-radius: 1em;
   }
 
   .title {
     font-size: 3.5em;
   }
 
-  .content {
-    padding: 20vh 1em 3em;
-  }
-
   .buttons {
     flex-wrap: wrap;
-  }
-
-  .fadeBottom {
-    height: 30vh;
-  }
-}
-
-/* Small Mobile */
-@media screen and (max-width: 480px) {
-  .circleContainer {
-    height: 32em;
-  }
-
-  .centerText {
-    top: calc(80px + 320px);
+    justify-content: center;
   }
 }
