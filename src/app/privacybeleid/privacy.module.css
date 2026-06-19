@@ -17,7 +17,7 @@
 
 .eyebrow {
   display: inline-block;
-  font-size: 0.875em;
+  font-size: var(--text-sm);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-accent);
@@ -25,7 +25,7 @@
 }
 
 .title {
-  font-size: 4em;
+  font-size: var(--text-xl);
   font-weight: 400;
   letter-spacing: -0.04em;
   line-height: 1;
@@ -34,13 +34,13 @@
 }
 
 .lastUpdated {
-  font-size: 0.875em;
+  font-size: var(--text-sm);
   color: rgba(7, 7, 7, 0.55);
   margin: 0;
 }
 
 .lead {
-  font-size: 1.125em;
+  font-size: var(--text-md);
   line-height: 1.55;
   color: var(--color-black);
   margin: 0;
@@ -51,7 +51,7 @@
 }
 
 .section h2 {
-  font-size: 1.5em;
+  font-size: var(--text-md);
   font-weight: 400;
   letter-spacing: -0.02em;
   margin: 0 0 0.75em 0;
@@ -59,14 +59,14 @@
 }
 
 .section h3 {
-  font-size: 1.0625em;
+  font-size: var(--text-base);
   font-weight: 400;
   margin: 1.25em 0 0.5em 0;
   color: var(--color-black);
 }
 
 .section p {
-  font-size: 1em;
+  font-size: var(--text-base);
   line-height: 1.6;
   margin: 0 0 0.75em 0;
   color: rgba(7, 7, 7, 0.85);
@@ -78,7 +78,7 @@
 }
 
 .section li {
-  font-size: 1em;
+  font-size: var(--text-base);
   line-height: 1.6;
   margin-bottom: 0.4em;
   color: rgba(7, 7, 7, 0.85);
@@ -105,14 +105,14 @@
   }
 
   .title {
-    font-size: 2.75em;
+    font-size: var(--text-xl);
   }
 
   .lead {
-    font-size: 1em;
+    font-size: var(--text-base);
   }
 
   .section h2 {
-    font-size: 1.25em;
+    font-size: var(--text-md);
   }
 }

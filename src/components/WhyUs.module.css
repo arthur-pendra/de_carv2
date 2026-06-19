@@ -13,7 +13,7 @@
 }
 
 .label {
-  font-size: 1em;
+  font-size: var(--text-base);
   font-weight: 400;
   font-style: italic;
   color: var(--color-accent);
@@ -22,7 +22,7 @@
 }
 
 .title {
-  font-size: 3.5em;
+  font-size: var(--text-xl);
   font-weight: 400;
   color: var(--color-black);
   letter-spacing: -0.04em;
@@ -46,7 +46,7 @@
 
 
 .reasonTitle {
-  font-size: 1.25em;
+  font-size: var(--text-md);
   font-weight: 400;
   color: var(--color-black);
   letter-spacing: -0.02em;
@@ -54,7 +54,7 @@
 }
 
 .reasonDescription {
-  font-size: 1em;
+  font-size: var(--text-base);
   font-weight: 400;
   color: var(--color-black);
   line-height: 1.5;
@@ -72,7 +72,7 @@
 /* Mobile */
 @media screen and (max-width: 767px) {
   .title {
-    font-size: 2em;
+    font-size: var(--text-lg);
   }
 
   .reason {

@@ -24,7 +24,7 @@
 }
 
 .tag span {
-  font-size: 0.75em;
+  font-size: var(--text-sm);
   font-weight: 400;
   letter-spacing: 0.05em;
   color: var(--color-black);
@@ -74,7 +74,7 @@
 }
 
 .brand {
-  font-size: 2em;
+  font-size: var(--text-lg);
   font-weight: 400;
   letter-spacing: -0.02em;
   color: rgba(0, 0, 0, 0.2);
@@ -98,7 +98,7 @@
   }
 
   .brand {
-    font-size: 1.5em;
+    font-size: var(--text-md);
   }
 
   .marqueeTrack {

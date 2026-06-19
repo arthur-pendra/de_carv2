@@ -33,7 +33,7 @@
 .text {
   letter-spacing: -0.02em;
   white-space: nowrap;
-  font-size: 1em;
+  font-size: var(--text-base);
   font-weight: 500;
 }
 

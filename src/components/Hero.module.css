@@ -59,14 +59,14 @@
 }
 
 .eyebrow {
-  font-size: 1em;
+  font-size: var(--text-base);
   font-weight: 400;
   font-style: italic;
   color: var(--color-white);
 }
 
 .title {
-  font-size: 7em;
+  font-size: var(--text-2xl);
   font-weight: 400;
   color: var(--color-white);
   letter-spacing: -0.06em;
@@ -75,7 +75,7 @@
 }
 
 .subtitle {
-  font-size: var(--font-par-lg);
+  font-size: var(--text-md);
   font-weight: 400;
   color: var(--color-white);
   max-width: 30em;
@@ -133,16 +133,31 @@
 
 /* Mobile */
 @media screen and (max-width: 767px) {
+  .hero {
+    padding: 0;
+  }
+
   .frame {
-    border-radius: 1em;
+    border-radius: 0;
+  }
+
+  .content {
+    justify-content: flex-end;
+    padding-bottom: 2.5em;
   }
 
   .title {
-    font-size: 3.5em;
+    font-size: var(--text-xl);
   }
 
   .buttons {
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 0;
+    width: 100%;
+  }
+
+  .buttons > * {
+    flex: 1;
   }
 }

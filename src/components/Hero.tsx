@@ -1,6 +1,5 @@
 import styles from './Hero.module.css';
 import Button from './Button';
-import CopyEmailButton from './CopyEmailButton';
 
 export default function Hero() {
   return (
@@ -23,7 +22,6 @@ export default function Hero() {
           </p>
           <div className={styles.buttons}>
             <Button href="/#diensten">Bekijk onze pakketten</Button>
-            <CopyEmailButton />
           </div>
         </div>
       </div>

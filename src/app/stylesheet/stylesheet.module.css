@@ -9,7 +9,7 @@
 }
 
 .title {
-  font-size: var(--font-h1);
+  font-size: var(--text-xl);
   font-weight: 700;
   text-transform: uppercase;
   margin-bottom: 2em;
@@ -20,7 +20,7 @@
 }
 
 .sectionTitle {
-  font-size: var(--font-h3);
+  font-size: var(--text-md);
   font-weight: 700;
   text-transform: uppercase;
   margin-bottom: 1.5em;
@@ -47,12 +47,12 @@
 }
 
 .colorName {
-  font-size: var(--font-par-sm);
+  font-size: var(--text-sm);
   font-weight: 500;
 }
 
 .colorValue {
-  font-size: var(--font-par-sm);
+  font-size: var(--text-sm);
   color: var(--white-strong);
 }
 
@@ -96,41 +96,41 @@
 }
 
 .typeLabel {
-  font-size: var(--font-par-sm);
+  font-size: var(--text-sm);
   color: var(--white-strong);
 }
 
 .fontH1 {
-  font-size: var(--font-h1);
+  font-size: var(--text-xl);
   font-weight: 700;
   text-transform: uppercase;
 }
 
 .fontH2 {
-  font-size: var(--font-h2);
+  font-size: var(--text-lg);
   font-weight: 700;
   text-transform: uppercase;
 }
 
 .fontH3 {
-  font-size: var(--font-h3);
+  font-size: var(--text-md);
   font-weight: 700;
   text-transform: uppercase;
 }
 
 .fontH4 {
-  font-size: var(--font-h3);
+  font-size: var(--text-md);
   font-weight: 700;
   text-transform: uppercase;
 }
 
 .fontPar {
-  font-size: var(--font-par);
+  font-size: var(--text-base);
   max-width: 40em;
 }
 
 .fontSmall {
-  font-size: var(--font-par-sm);
+  font-size: var(--text-sm);
 }
 
 /* Fonts */
@@ -147,11 +147,11 @@
 }
 
 .fontPrimary {
-  font-size: var(--font-h3);
+  font-size: var(--text-md);
 }
 
 .fontSecondary {
-  font-size: var(--font-h3);
+  font-size: var(--text-md);
 }
 
 /* Buttons */

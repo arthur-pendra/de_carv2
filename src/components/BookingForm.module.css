@@ -12,7 +12,7 @@
 /* ========================= Title ========================= */
 
 .title {
-  font-size: 3em;
+  font-size: var(--text-xl);
   font-weight: 400;
   letter-spacing: -0.04em;
   line-height: 1;
@@ -45,7 +45,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.75em;
+  font-size: var(--text-sm);
   font-weight: 400;
   flex-shrink: 0;
   transition: background 0.3s ease, color 0.3s ease;
@@ -57,7 +57,7 @@
 }
 
 .stepLabel {
-  font-size: 0.75em;
+  font-size: var(--text-sm);
   color: rgba(0, 0, 0, 0.4);
   transition: color 0.3s ease;
 }
@@ -101,7 +101,7 @@
 }
 
 .selectedLabel {
-  font-size: 0.7em;
+  font-size: var(--text-sm);
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -109,7 +109,7 @@
 }
 
 .selectedValue {
-  font-size: 1em;
+  font-size: var(--text-base);
   font-weight: 400;
   color: var(--color-black);
   letter-spacing: -0.01em;
@@ -120,13 +120,13 @@
 }
 
 .selectedPrice {
-  font-size: 0.875em;
+  font-size: var(--text-sm);
   color: var(--color-accent);
   font-weight: 500;
 }
 
 .selectedSize {
-  font-size: 0.75em;
+  font-size: var(--text-sm);
   font-weight: 500;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -147,7 +147,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.4em;
-  font-size: 0.75em;
+  font-size: var(--text-sm);
   font-weight: 400;
   letter-spacing: -0.01em;
   color: var(--color-black);
@@ -163,7 +163,7 @@
 }
 
 .selectedChange {
-  font-size: 0.8125em;
+  font-size: var(--text-sm);
   font-weight: 400;
   letter-spacing: -0.01em;
   padding: 0.5em 1em;
@@ -188,7 +188,7 @@
 }
 
 .stepTitle {
-  font-size: 1.5em;
+  font-size: var(--text-md);
   font-weight: 400;
   letter-spacing: -0.03em;
   text-align: center;
@@ -205,7 +205,7 @@
 }
 
 .categoryTab {
-  font-size: 0.875em;
+  font-size: var(--text-sm);
   font-weight: 400;
   letter-spacing: 0.02em;
   padding: 0.7em 2em;
@@ -303,14 +303,14 @@
 }
 
 .choiceTitle {
-  font-size: 1.875em;
+  font-size: var(--text-lg);
   font-weight: 400;
   letter-spacing: -0.02em;
   line-height: 1;
 }
 
 .choiceDesc {
-  font-size: 0.9375em;
+  font-size: var(--text-base);
   font-weight: 400;
   line-height: 1.3;
   opacity: 0;
@@ -378,7 +378,7 @@
 }
 
 .badge {
-  font-size: 0.7em;
+  font-size: var(--text-sm);
   font-weight: 500;
   letter-spacing: 0.02em;
   background: rgba(255, 255, 255, 0.2);
@@ -401,7 +401,7 @@
 }
 
 .serviceTag {
-  font-size: 0.75em;
+  font-size: var(--text-sm);
   font-weight: 400;
   letter-spacing: 0.08em;
   background: rgba(255, 255, 255, 0.15);
@@ -412,7 +412,7 @@
 }
 
 .serviceTitle {
-  font-size: 2.25em;
+  font-size: var(--text-lg);
   font-weight: 400;
   letter-spacing: -0.03em;
   line-height: 1.05;
@@ -420,7 +420,7 @@
 }
 
 .serviceSubtitle {
-  font-size: 0.9375em;
+  font-size: var(--text-base);
   font-weight: 400;
   line-height: 1.3;
   opacity: 0.7;
@@ -438,7 +438,7 @@
   display: flex;
   align-items: center;
   gap: 0.75em;
-  font-size: 0.875em;
+  font-size: var(--text-sm);
   font-weight: 400;
   line-height: 1.3;
   padding: 0.6em 0;
@@ -474,7 +474,7 @@
 }
 
 .priceLabel {
-  font-size: 0.75em;
+  font-size: var(--text-sm);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   opacity: 0.6;
@@ -482,7 +482,7 @@
 }
 
 .servicePrice {
-  font-size: 2.5em;
+  font-size: var(--text-lg);
   font-weight: 400;
   letter-spacing: -0.02em;
   line-height: 1;
@@ -512,14 +512,14 @@
 }
 
 .label {
-  font-size: 0.75em;
+  font-size: var(--text-sm);
   font-weight: 500;
   color: var(--color-black);
 }
 
 .input,
 .textarea {
-  font-size: 0.875em;
+  font-size: var(--text-sm);
   padding: 0.875em 1em;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.25em;
@@ -546,7 +546,7 @@
   align-items: center;
   gap: 0.5em;
   cursor: pointer;
-  font-size: 0.8125em;
+  font-size: var(--text-sm);
 }
 
 .checkbox input {
@@ -619,19 +619,19 @@
 }
 
 .sizeLabel {
-  font-size: 1em;
+  font-size: var(--text-base);
   font-weight: 500;
   letter-spacing: -0.01em;
 }
 
 .sizeDesc {
-  font-size: 0.75em;
+  font-size: var(--text-sm);
   line-height: 1.3;
   color: rgba(0, 0, 0, 0.55);
 }
 
 .sizePrice {
-  font-size: 1.125em;
+  font-size: var(--text-md);
   font-weight: 500;
   color: var(--color-accent);
   margin-top: 0.25em;
@@ -684,13 +684,13 @@
 
 .addOnLabel {
   flex: 1;
-  font-size: 0.8125em;
+  font-size: var(--text-sm);
   line-height: 1.3;
   color: var(--color-black);
 }
 
 .addOnPrice {
-  font-size: 0.8125em;
+  font-size: var(--text-sm);
   font-weight: 500;
   color: var(--color-accent);
   flex-shrink: 0;
@@ -708,7 +708,7 @@
 }
 
 .totalLabel {
-  font-size: 0.75em;
+  font-size: var(--text-sm);
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -716,7 +716,7 @@
 }
 
 .totalPrice {
-  font-size: 1.5em;
+  font-size: var(--text-md);
   font-weight: 500;
   letter-spacing: -0.02em;
   color: var(--color-accent);
@@ -748,7 +748,7 @@
 }
 
 .btnPrimary {
-  font-size: 0.875em;
+  font-size: var(--text-sm);
   font-weight: 400;
   letter-spacing: -0.02em;
   padding: 0.875em 2em;
@@ -774,7 +774,7 @@
 }
 
 .btnOutline {
-  font-size: 0.875em;
+  font-size: var(--text-sm);
   font-weight: 400;
   letter-spacing: -0.02em;
   padding: 0.875em 2em;
@@ -814,14 +814,14 @@
 }
 
 .confirmTitle {
-  font-size: 2.5em;
+  font-size: var(--text-lg);
   font-weight: 400;
   letter-spacing: -0.04em;
   margin: 0 0 0.5em 0;
 }
 
 .confirmText {
-  font-size: 1em;
+  font-size: var(--text-base);
   color: rgba(0, 0, 0, 0.6);
   margin: 0 0 2em 0;
   max-width: 24em;
@@ -843,7 +843,7 @@
 }
 
 .dayTimeHint {
-  font-size: 0.8125em;
+  font-size: var(--text-sm);
   color: rgba(0, 0, 0, 0.5);
   line-height: 1.4;
   margin: 0;
@@ -871,12 +871,12 @@
 .dayTimeLabel {
   flex: 1;
   min-width: 0;
-  font-size: 0.8125em;
+  font-size: var(--text-sm);
   color: var(--color-black);
 }
 
 .dayTimeSelect {
-  font-size: 0.8125em;
+  font-size: var(--text-sm);
   padding: 0.5em 0.75em;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.25em;
@@ -902,7 +902,7 @@
   border: none;
   border-radius: 50%;
   color: rgba(0, 0, 0, 0.4);
-  font-size: 1.125em;
+  font-size: var(--text-md);
   line-height: 1;
   cursor: pointer;
   flex-shrink: 0;
@@ -939,7 +939,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.375em;
-  font-size: 0.75em;
+  font-size: var(--text-sm);
   background: var(--color-accent);
   color: var(--color-white);
   padding: 0.375em 0.625em;
@@ -950,7 +950,7 @@
   background: none;
   border: none;
   color: var(--color-white);
-  font-size: 1.125em;
+  font-size: var(--text-md);
   line-height: 1;
   cursor: pointer;
   padding: 0;
@@ -975,7 +975,7 @@
 }
 
 .summaryTitle {
-  font-size: 1.25em;
+  font-size: var(--text-md);
   font-weight: 400;
   letter-spacing: -0.03em;
   margin: 0 0 1em 0;
@@ -997,13 +997,13 @@
 }
 
 .summaryLabel {
-  font-size: 0.75em;
+  font-size: var(--text-sm);
   color: rgba(0, 0, 0, 0.5);
   flex-shrink: 0;
 }
 
 .summaryValue {
-  font-size: 0.75em;
+  font-size: var(--text-sm);
   font-weight: 500;
   color: var(--color-black);
   text-align: right;
@@ -1054,7 +1054,7 @@
 
 .errorMessage {
   color: #c0392b;
-  font-size: 0.875em;
+  font-size: var(--text-sm);
   margin: 0.5em 0 0 0;
   line-height: 1.4;
 }

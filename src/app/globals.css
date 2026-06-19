@@ -33,7 +33,7 @@ html.lenis, html.lenis body {
 /* Desktop */
 :root {
   /* Scaling */
-  --size-unit: 16;
+  --size-unit: 15;
   --size-container-ideal: 1440;
   --size-container-min: 992px;
   --size-container-max: 1920px;
@@ -63,13 +63,13 @@ html.lenis, html.lenis body {
   /* Spacing */
   --padding-section: 2em;
 
-  /* Typography — 3 headings, 3 paragraphs */
-  --font-h1: 4em;
-  --font-h2: 2.5em;
-  --font-h3: 1.5em;
-  --font-par-lg: 1.125em;
-  --font-par: 1em;
-  --font-par-sm: 0.875em;
+  /* Typography — 6-step scale (klein → hero) */
+  --text-sm: 0.875em;   /* labels, badges, captions, kleine UI */
+  --text-base: 1em;     /* bodytekst */
+  --text-md: 1.25em;    /* lead paragraaf, kleine kop */
+  --text-lg: 2em;       /* card-kop, subkop */
+  --text-xl: 3em;       /* sectiekop */
+  --text-2xl: 5em;      /* hero / display */
 }
 
 /* Tablet */
@@ -84,10 +84,10 @@ html.lenis, html.lenis body {
 /* Mobile Landscape */
 @media screen and (max-width: 767px) {
   :root {
+    --size-unit: 14;
     --size-container-ideal: 550;
     --size-container-min: 480px;
     --size-container-max: 767px;
-    --font-par-lg: 1.25em;
     --padding-section: 0.625em;
   }
 }
@@ -147,7 +147,7 @@ a {
   justify-content: center;
   align-items: center;
   font-family: var(--font);
-  font-size: var(--font-par-sm);
+  font-size: var(--text-sm);
   font-weight: 400;
   letter-spacing: -0.02em;
   color: var(--color-black);

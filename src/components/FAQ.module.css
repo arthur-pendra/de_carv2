@@ -14,7 +14,7 @@
 }
 
 .title {
-  font-size: 4em;
+  font-size: var(--text-xl);
   font-weight: 400;
   color: var(--color-white);
   letter-spacing: -0.04em;
@@ -46,7 +46,7 @@
   border: none;
   cursor: pointer;
   text-align: left;
-  font-size: 1.125em;
+  font-size: var(--text-md);
   font-weight: 400;
   color: var(--color-white);
   letter-spacing: -0.02em;
@@ -97,7 +97,7 @@
 }
 
 .answer p {
-  font-size: 1em;
+  font-size: var(--text-base);
   font-weight: 400;
   color: var(--color-white);
   line-height: 1.6;
@@ -113,6 +113,6 @@
   }
 
   .title {
-    font-size: 3em;
+    font-size: var(--text-xl);
   }
 }

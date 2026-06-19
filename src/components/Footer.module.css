@@ -75,13 +75,13 @@
 }
 
 .socialText {
-  font-size: 0.875em;
+  font-size: var(--text-sm);
   color: var(--color-white);
   margin-left: 0.5em;
 }
 
 .ctaTitle {
-  font-size: 3em;
+  font-size: var(--text-xl);
   font-weight: 400;
   color: var(--color-white);
   letter-spacing: -0.04em;
@@ -90,7 +90,7 @@
 }
 
 .ctaText {
-  font-size: 1em;
+  font-size: var(--text-base);
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.5;
   margin: 0 0 2em;
@@ -112,7 +112,7 @@
   background: var(--color-black);
   color: var(--color-white);
   border-radius: 0.5em;
-  font-size: 0.875em;
+  font-size: var(--text-sm);
   font-weight: 400;
   letter-spacing: -0.02em;
   text-decoration: none;
@@ -129,7 +129,7 @@
   color: var(--color-black);
   border: none;
   border-radius: 0.5em;
-  font-size: 0.875em;
+  font-size: var(--text-sm);
   font-weight: 400;
   letter-spacing: -0.02em;
   text-decoration: none;
@@ -160,7 +160,7 @@
 }
 
 .newsletterTitle {
-  font-size: 1.125em;
+  font-size: var(--text-md);
   font-weight: 400;
   color: var(--color-black);
   letter-spacing: -0.02em;
@@ -184,7 +184,7 @@
   background: transparent;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.25em;
-  font-size: 0.875em;
+  font-size: var(--text-sm);
   color: var(--color-black);
   outline: none;
   transition: border-color 0.3s ease;
@@ -243,7 +243,7 @@
 }
 
 .checkboxText {
-  font-size: 0.8125em;
+  font-size: var(--text-sm);
   color: rgba(0, 0, 0, 0.6);
 }
 
@@ -258,7 +258,7 @@
   color: var(--color-white);
   border: none;
   border-radius: 0.25em;
-  font-size: 0.875em;
+  font-size: var(--text-sm);
   font-weight: 400;
   letter-spacing: -0.02em;
   cursor: pointer;
@@ -283,7 +283,7 @@
 }
 
 .heading {
-  font-size: 0.875em;
+  font-size: var(--text-sm);
   font-weight: 400;
   color: var(--color-black);
   letter-spacing: -0.02em;
@@ -298,7 +298,7 @@
 }
 
 .list li {
-  font-size: 0.875em;
+  font-size: var(--text-sm);
   color: rgba(0, 0, 0, 0.6);
 }
 
@@ -322,7 +322,7 @@
 }
 
 .copyright {
-  font-size: 0.8125em;
+  font-size: var(--text-sm);
   color: rgba(0, 0, 0, 0.4);
   margin: 0;
 }
@@ -376,7 +376,7 @@
   }
 
   .ctaTitle {
-    font-size: 2em;
+    font-size: var(--text-lg);
   }
 
   .ctaContent {
@@ -417,14 +417,14 @@
 }
 
 .newsletterDone {
-  font-size: 0.9375em;
+  font-size: var(--text-base);
   color: var(--color-cream);
   margin: 0.5em 0 0 0;
   line-height: 1.5;
 }
 
 .newsletterError {
-  font-size: 0.8125em;
+  font-size: var(--text-sm);
   color: #ff8a8a;
   margin: 0.75em 0 0 0;
   line-height: 1.4;

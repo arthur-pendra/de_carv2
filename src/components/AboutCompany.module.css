@@ -14,14 +14,14 @@
 }
 
 .eyebrow {
-  font-size: 1em;
+  font-size: var(--text-base);
   font-weight: 400;
   font-style: italic;
   color: var(--color-accent);
 }
 
 .title {
-  font-size: var(--font-h1);
+  font-size: var(--text-xl);
   font-weight: 400;
   color: var(--color-black);
   letter-spacing: -0.04em;
@@ -36,7 +36,7 @@
 }
 
 .text p {
-  font-size: var(--font-par-lg);
+  font-size: var(--text-md);
   font-weight: 400;
   color: rgba(0, 0, 0, 0.7);
   line-height: 1.6;
@@ -53,6 +53,6 @@
   }
 
   .title {
-    font-size: var(--font-h2);
+    font-size: var(--text-lg);
   }
 }

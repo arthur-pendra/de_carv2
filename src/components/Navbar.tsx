@@ -103,8 +103,8 @@ export default function Navbar() {
               </TransitionLink>
 
               {/* Right - Button */}
-              <TransitionLink href="/start" className={styles.cta}>
-                Start nu
+              <TransitionLink href="/#contact" className={styles.cta}>
+                Contact
               </TransitionLink>
 
               <div className={styles.topLine} />
