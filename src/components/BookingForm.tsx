@@ -389,7 +389,12 @@ export default function BookingForm() {
         {/* Step 1b: Kies je pakket */}
         {step === 0 && categorySelected && (
           <div className={styles.stepContent}>
-            <h2 className={styles.stepTitle}>Kies je pakket</h2>
+            <h2 className={styles.stepTitle}>
+              {categoryLabels.find((c) => c.key === activeCategory)?.label} detailing
+            </h2>
+            <p className={styles.stepIntro}>
+              {categoryLabels.find((c) => c.key === activeCategory)?.intro}
+            </p>
 
             <div className={styles.serviceGrid}>
               {packages[activeCategory].map((pkg, i) => (

@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import TransitionLink from './TransitionLink';
 import Button from './Button';
 import styles from './Footer.module.css';
+import { business } from '@/config/business';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Footer() {
@@ -207,9 +208,9 @@ export default function Footer() {
             <div className={styles.links}>
               <h4 className={styles.heading}>Contact</h4>
               <ul className={styles.list}>
-                <li><a href="tel:+31612345678">+31 6 12345678</a></li>
-                <li><a href="mailto:info@gdcarcare.nl">info@gdcarcare.nl</a></li>
-                <li><a href="https://www.instagram.com/gdcarcare/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                <li><a href={business.phoneHref}>{business.phone}</a></li>
+                <li><a href={`mailto:${business.email}`}>{business.email}</a></li>
+                <li><a href={business.social.instagram} target="_blank" rel="noopener noreferrer">Instagram</a></li>
               </ul>
             </div>
           </div>

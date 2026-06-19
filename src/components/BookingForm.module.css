@@ -195,6 +195,15 @@
   margin: 0 0 1.5em 0;
 }
 
+.stepIntro {
+  font-size: var(--text-base);
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.6);
+  text-align: center;
+  max-width: 40em;
+  margin: -1em auto 2.5em;
+}
+
 /* ========================= Category Tabs ========================= */
 
 .categoryTabs {
@@ -572,13 +581,13 @@
 .checkbox input:checked + .checkmark::after {
   content: '';
   position: absolute;
-  top: 0.15em;
-  left: 0.375em;
-  width: 0.375em;
-  height: 0.625em;
+  left: 50%;
+  top: 50%;
+  width: 0.3em;
+  height: 0.55em;
   border: solid var(--color-white);
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
+  border-width: 0 0.13em 0.13em 0;
+  transform: translate(-50%, -58%) rotate(45deg);
 }
 
 .checkboxText {
@@ -673,13 +682,13 @@
 .addOnItem input:checked + .checkmark::after {
   content: '';
   position: absolute;
-  top: 0.15em;
-  left: 0.375em;
-  width: 0.375em;
-  height: 0.625em;
+  left: 50%;
+  top: 50%;
+  width: 0.3em;
+  height: 0.55em;
   border: solid var(--color-white);
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
+  border-width: 0 0.13em 0.13em 0;
+  transform: translate(-50%, -58%) rotate(45deg);
 }
 
 .addOnLabel {

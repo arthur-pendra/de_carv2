@@ -1,10 +1,28 @@
 export type Category = 'exterieur' | 'interieur' | 'combi'
 export type Size = 'klein' | 'middel' | 'groot'
 
-export const categories: { key: Category; label: string; image: string; description: string }[] = [
-  { key: 'exterieur', label: 'Exterieur', image: '/img/diensten/exterieur.webp', description: 'Velgen, lak en glas volledig gereinigd en beschermd' },
-  { key: 'interieur', label: 'Interieur', image: '/img/diensten/interieur.webp', description: 'Bekleding, dashboard en stoelen grondig gereinigd' },
-  { key: 'combi', label: 'Combi', image: '/img/diensten/combi.webp', description: 'Exterieur en interieur compleet met combivoordeel' },
+export const categories: { key: Category; label: string; image: string; description: string; intro: string }[] = [
+  {
+    key: 'exterieur',
+    label: 'Exterieur',
+    image: '/img/diensten/exterieur.webp',
+    description: 'Velgen, lak en glas volledig gereinigd en beschermd',
+    intro: 'Wij reinigen en beschermen de complete buitenkant van je auto: velgen, banden, lak en glas. Kies hieronder je niveau. In de volgende stap stel je de voertuiggrootte en eventuele extra opties in.',
+  },
+  {
+    key: 'interieur',
+    label: 'Interieur',
+    image: '/img/diensten/interieur.webp',
+    description: 'Bekleding, dashboard en stoelen grondig gereinigd',
+    intro: 'Een grondige reiniging van het volledige interieur: bekleding, dashboard, vloer en ramen. Kies hieronder je niveau. Daarna stel je de voertuiggrootte en extra opties in.',
+  },
+  {
+    key: 'combi',
+    label: 'Combi',
+    image: '/img/diensten/combi.webp',
+    description: 'Exterieur en interieur compleet met combivoordeel',
+    intro: 'Exterieur en interieur compleet in één behandeling, met combivoordeel op de prijs. Kies hieronder je niveau. Daarna stel je de voertuiggrootte en extra opties in.',
+  },
 ]
 
 export const sizes: { key: Size; label: string; description: string }[] = [
@@ -209,4 +227,13 @@ packages.combi.forEach((combo, i) => {
     { heading: 'Exterieur', items: fullServices(packages.exterieur, i) },
     { heading: 'Interieur', items: fullServices(packages.interieur, i) },
   ]
+})
+
+// Losse exterieur/interieur pakketten: hogere tiers tonen samengevat ("Voordelen van ...").
+// De uitklap toont de volledige behandeling, zodat altijd duidelijk is wat je krijgt.
+;(['exterieur', 'interieur'] as const).forEach((cat) => {
+  packages[cat].forEach((pkg, i) => {
+    if (i === 0) return // basispakket toont alle diensten al op de card
+    pkg.details = [{ heading: 'Volledige behandeling', items: fullServices(packages[cat], i) }]
+  })
 })
