@@ -46,6 +46,16 @@ const faqs = [
   },
 ];
 
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.question,
+    acceptedAnswer: { '@type': 'Answer', text: f.answer },
+  })),
+};
+
 export default function FAQ() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
@@ -55,6 +65,10 @@ export default function FAQ() {
 
   return (
     <section id="faq" className={styles.faq}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className={styles.container}>
         <div className={styles.header}>
           <h2 className={styles.title}>
