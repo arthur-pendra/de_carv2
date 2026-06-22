@@ -10,7 +10,7 @@ export default function About() {
           <div className={styles.imageWrap}>
             <img
               src="/img/cars/car-09.webp"
-              alt="Auto detailing"
+              alt="Auto detailing in Heerlen door GD Carcare"
               className={styles.image}
             />
           </div>
@@ -58,7 +58,7 @@ export default function About() {
           <div className={styles.imageWrap}>
             <img
               src="/img/cars/car-12.webp"
-              alt="Guyliamo aan het werk"
+              alt="Guyliamo, car detailer bij GD Carcare in Heerlen"
               className={styles.image}
             />
           </div>

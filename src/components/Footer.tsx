@@ -193,10 +193,10 @@ export default function Footer() {
             <div className={styles.links}>
               <h4 className={styles.heading}>Diensten</h4>
               <ul className={styles.list}>
-                <li><a href="#diensten">Premium Wasbeurt</a></li>
-                <li><a href="#diensten">Interieur Reiniging</a></li>
-                <li><a href="#diensten">Polijsten</a></li>
-                <li><a href="#diensten">Keramische Coating</a></li>
+                <li><TransitionLink href="/diensten/exterieur-detailing">Exterieur detailing</TransitionLink></li>
+                <li><TransitionLink href="/diensten/interieur-detailing">Interieur detailing</TransitionLink></li>
+                <li><TransitionLink href="/diensten/lakcorrectie-polijsten">Lakcorrectie & polijsten</TransitionLink></li>
+                <li><TransitionLink href="/diensten/keramische-coating">Keramische coating</TransitionLink></li>
               </ul>
             </div>
 

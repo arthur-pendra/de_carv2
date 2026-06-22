@@ -14,8 +14,8 @@ export default function Hero() {
 
         <div className={styles.content}>
           <div className={styles.titleGroup}>
-            <span className={styles.eyebrow}>Professionele autoreiniging in Heerlen</span>
-            <h1 className={styles.title}>Excellence in every detail.</h1>
+            <h1 className={styles.eyebrow}>Car detailing in Heerlen, Parkstad &amp; Limburg</h1>
+            <p className={styles.title}>Excellence in every detail.</p>
           </div>
           <p className={styles.subtitle}>
             Detailing, Lakcorrectie &amp; Keramische coatings
