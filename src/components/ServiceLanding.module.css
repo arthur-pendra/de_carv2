@@ -132,47 +132,6 @@
   margin: 0;
 }
 
-/* ===== CTA ===== */
-.cta {
-  margin-top: 4em;
-  padding: 3em 2.5em;
-  border-radius: 1em;
-  background: var(--color-dark);
-  text-align: center;
-}
-
-.ctaTitle {
-  font-size: var(--text-lg);
-  font-weight: 400;
-  color: var(--color-white);
-  letter-spacing: -0.03em;
-  line-height: 1.1;
-  margin: 0 0 0.5em;
-}
-
-.ctaText {
-  font-size: var(--text-base);
-  color: rgba(255, 255, 255, 0.75);
-  line-height: 1.6;
-  margin: 0 auto;
-  max-width: 32em;
-}
-
-.cta .btn {
-  border-color: rgba(255, 255, 255, 0.25);
-  color: var(--color-white);
-}
-
-.cta .btn:hover {
-  border-color: var(--color-white);
-}
-
-.cta .btnPrimary {
-  background: var(--color-white);
-  border-color: var(--color-white);
-  color: var(--color-accent);
-}
-
 /* ===== Responsive ===== */
 @media screen and (max-width: 767px) {
   .hero {

@@ -77,22 +77,6 @@ export default function ServiceLanding({ service }: { service: ServiceContent })
               </article>
             ))}
           </div>
-
-          <div className={styles.cta}>
-            <h2 className={styles.ctaTitle}>Klaar om je auto te laten behandelen?</h2>
-            <p className={styles.ctaText}>
-              Plan online je afspraak bij GD Carcare in Heerlen, of neem vrijblijvend contact op voor
-              persoonlijk advies.
-            </p>
-            <div className={styles.buttons}>
-              <TransitionLink href="/start" className={`${styles.btn} ${styles.btnPrimary}`}>
-                Boek een afspraak
-              </TransitionLink>
-              <TransitionLink href="/#contact" className={styles.btn}>
-                Contact
-              </TransitionLink>
-            </div>
-          </div>
         </div>
       </section>
     </main>
