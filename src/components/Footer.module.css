@@ -411,13 +411,19 @@
     flex-direction: column;
     gap: 2em;
   }
+
+  /* Donker footer-blok full-bleed tegen de rand op mobile */
+  .footerContent {
+    margin: 0;
+    border-radius: 0;
+  }
 }
 
 /* Small Mobile */
 @media screen and (max-width: 480px) {
   .wheelSpin {
-    width: 18em;
-    height: 18em;
+    width: 25em;
+    height: 25em;
   }
 }
 
