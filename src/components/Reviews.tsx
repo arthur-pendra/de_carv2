@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
 import styles from './Reviews.module.css';
 import DragCursor from './DragCursor';
 
@@ -106,31 +107,6 @@ export default function Reviews() {
   const sectionRef = useRef<HTMLElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
-  const angleRef = useRef(0);
-  const isDragging = useRef(false);
-  const lastX = useRef(0);
-  const velocityRef = useRef(0);
-  const radiusRef = useRef(1600);
-
-  const yOffsetRef = useRef(250);
-
-  // Calculate responsive radius based on viewport
-  const getRadius = () => {
-    if (typeof window === 'undefined') return 1150;
-    const width = window.innerWidth;
-    if (width <= 480) return 620;
-    if (width <= 767) return 780;
-    if (width <= 991) return 900;
-    return 1150;
-  };
-
-  // Vertical offset of the arc, decoupled from radius
-  const getYOffset = () => {
-    if (typeof window === 'undefined') return 250;
-    const width = window.innerWidth;
-    if (width <= 767) return 100;
-    return 250;
-  };
 
   useEffect(() => {
     const container = containerRef.current;
@@ -138,142 +114,141 @@ export default function Reviews() {
     const wrap = wrapRef.current;
     if (!container || !section || !wrap) return;
 
-    const cards = container.querySelectorAll(`.${styles.card}`) as NodeListOf<HTMLElement>;
-    const totalCards = cards.length;
-    radiusRef.current = getRadius();
-    yOffsetRef.current = getYOffset();
-    const angleStep = 360 / totalCards;
+    const cards = Array.from(
+      container.querySelectorAll<HTMLElement>(`.${styles.card}`)
+    );
+    const total = cards.length;
+    if (!total) return;
 
-    // Update radius on resize
-    const handleResize = () => {
-      radiusRef.current = getRadius();
-      yOffsetRef.current = getYOffset();
+    const angleStep = 360 / total;
+    const DEG = Math.PI / 180;
+
+    // Responsive arc radius + vertical offset
+    const getRadius = () => {
+      const w = window.innerWidth;
+      if (w <= 480) return 620;
+      if (w <= 767) return 780;
+      if (w <= 991) return 900;
+      return 1150;
     };
-    window.addEventListener('resize', handleResize);
+    const getYOffset = () => (window.innerWidth <= 767 ? 100 : 250);
 
-    let animationId: number | null = null;
+    let radius = getRadius();
+    let yOffset = getYOffset();
 
-    const updatePositions = () => {
-      // Apply velocity with decay
-      if (!isDragging.current) {
-        angleRef.current += velocityRef.current;
-        velocityRef.current *= 0.96;
+    // Carousel state (local — no re-renders needed)
+    let angle = 0;
+    let velocity = 0;
+    let dragging = false;
+    let lastX = 0;
+    let pointerId: number | null = null;
 
-        // Snap to nearest card when velocity is low
-        if (Math.abs(velocityRef.current) < 0.2) {
-          const normalizedAngle = ((angleRef.current % 360) + 360) % 360;
-          const nearestCardIndex = Math.round(normalizedAngle / angleStep);
-          const targetAngle = nearestCardIndex * angleStep;
+    const render = () => {
+      for (let i = 0; i < total; i++) {
+        const deg = angle + i * angleStep;
+        const a = deg * DEG;
+        const cos = Math.cos(a);
+        const x = Math.sin(a) * radius;
+        const y = (1 - cos) * radius - yOffset;
+        const opacity = Math.max(0, Math.min(1, cos * 2 - 0.5));
 
-          // Smooth snap with easing
-          const diff = targetAngle - normalizedAngle;
-          const shortestDiff = ((diff + 180) % 360) - 180;
-          angleRef.current += shortestDiff * 0.04;
+        const card = cards[i];
+        card.style.transform = `translate3d(${x}px, ${y}px, 0) rotate(${deg}deg)`;
+        card.style.opacity = `${opacity}`;
+        card.style.zIndex = `${Math.round((1 - cos) * 50)}`;
+        card.style.visibility = opacity <= 0.01 ? 'hidden' : 'visible';
+      }
+    };
+
+    // Single ticker step — shared with GSAP/Lenis instead of a rival rAF loop
+    const tick = () => {
+      if (!dragging) {
+        angle += velocity;
+        velocity *= 0.95;
+
+        // Ease toward the nearest card once the throw settles
+        if (Math.abs(velocity) < 0.15) {
+          velocity = 0;
+          const normalized = ((angle % 360) + 360) % 360;
+          const target = Math.round(normalized / angleStep) * angleStep;
+          const shortest = ((target - normalized + 180) % 360) - 180;
+          if (Math.abs(shortest) > 0.01) angle += shortest * 0.12;
         }
       }
-
-      cards.forEach((card, index) => {
-        const angle = (angleRef.current + index * angleStep) * (Math.PI / 180);
-        const radius = radiusRef.current;
-
-        // Vertical offset of the arc (decoupled from radius)
-        const yOffset = yOffsetRef.current;
-
-        // Position on arc (bottom arc - smile shape)
-        const x = Math.sin(angle) * radius;
-        const y = (1 - Math.cos(angle)) * radius - yOffset;
-
-        // Rotation follows curve
-        const rotation = angle * (180 / Math.PI);
-
-        // Z-index based on position (front cards on top)
-        const zIndex = Math.round((1 - Math.cos(angle)) * 50);
-
-        // Opacity fade: cards at top of arc (cos ≈ 1) are fully visible,
-        // cards further down the arc fade out
-        const cosVal = Math.cos(angle);
-        const opacity = Math.max(0, Math.min(1, cosVal * 2 - 0.5));
-
-        card.style.transform = `translate(${x}px, ${y}px) rotate(${rotation}deg)`;
-        card.style.zIndex = `${zIndex}`;
-        card.style.opacity = `${opacity}`;
-        card.style.visibility = opacity <= 0.01 ? 'hidden' : 'visible';
-      });
-
-      animationId = requestAnimationFrame(updatePositions);
+      render();
     };
 
-    // Only run the carousel animation while the section is in view —
-    // a perpetual rAF transforming every card competes with smooth scroll.
+    render();
+
+    // Only spin while the section is on screen
+    let running = false;
+    const start = () => {
+      if (running) return;
+      gsap.ticker.add(tick);
+      running = true;
+    };
+    const stop = () => {
+      if (!running) return;
+      gsap.ticker.remove(tick);
+      running = false;
+    };
+
     const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          if (animationId === null) animationId = requestAnimationFrame(updatePositions);
-        } else if (animationId !== null) {
-          cancelAnimationFrame(animationId);
-          animationId = null;
-        }
-      },
+      ([entry]) => (entry.isIntersecting ? start() : stop()),
       { threshold: 0 }
     );
     io.observe(section);
 
-    // Drag handlers
-    const handleMouseDown = (e: MouseEvent) => {
-      isDragging.current = true;
-      lastX.current = e.clientX;
-      velocityRef.current = 0;
-      wrap.style.cursor = 'none';
+    // Unified pointer dragging — mouse, pen and touch in one path.
+    // touch-action: pan-y on the wrap keeps vertical page scroll smooth.
+    const onPointerDown = (e: PointerEvent) => {
+      dragging = true;
+      velocity = 0;
+      lastX = e.clientX;
+      pointerId = e.pointerId;
+      wrap.setPointerCapture(e.pointerId);
     };
 
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!isDragging.current) return;
-      const deltaX = e.clientX - lastX.current;
-      angleRef.current += deltaX * 0.06;
-      velocityRef.current = deltaX * 0.03;
-      lastX.current = e.clientX;
+    const onPointerMove = (e: PointerEvent) => {
+      if (!dragging || e.pointerId !== pointerId) return;
+      const dx = e.clientX - lastX;
+      lastX = e.clientX;
+      angle += dx * 0.05;
+      velocity = dx * 0.05;
     };
 
-    const handleMouseUp = () => {
-      isDragging.current = false;
-      wrap.style.cursor = 'none';
+    const endDrag = (e: PointerEvent) => {
+      if (e.pointerId !== pointerId) return;
+      dragging = false;
+      pointerId = null;
+      if (wrap.hasPointerCapture(e.pointerId)) wrap.releasePointerCapture(e.pointerId);
     };
 
-    const handleTouchStart = (e: TouchEvent) => {
-      isDragging.current = true;
-      lastX.current = e.touches[0].clientX;
-      velocityRef.current = 0;
-    };
+    wrap.addEventListener('pointerdown', onPointerDown);
+    wrap.addEventListener('pointermove', onPointerMove);
+    wrap.addEventListener('pointerup', endDrag);
+    wrap.addEventListener('pointercancel', endDrag);
 
-    const handleTouchMove = (e: TouchEvent) => {
-      if (!isDragging.current) return;
-      const deltaX = e.touches[0].clientX - lastX.current;
-      angleRef.current += deltaX * 0.06;
-      velocityRef.current = deltaX * 0.03;
-      lastX.current = e.touches[0].clientX;
+    let resizeTimer = 0;
+    const onResize = () => {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(() => {
+        radius = getRadius();
+        yOffset = getYOffset();
+        render();
+      }, 150);
     };
-
-    const handleTouchEnd = () => {
-      isDragging.current = false;
-    };
-
-    wrap.addEventListener('mousedown', handleMouseDown);
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('mouseup', handleMouseUp);
-    wrap.addEventListener('touchstart', handleTouchStart, { passive: true });
-    window.addEventListener('touchmove', handleTouchMove, { passive: true });
-    window.addEventListener('touchend', handleTouchEnd);
+    window.addEventListener('resize', onResize);
 
     return () => {
+      stop();
       io.disconnect();
-      if (animationId !== null) cancelAnimationFrame(animationId);
-      window.removeEventListener('resize', handleResize);
-      wrap.removeEventListener('mousedown', handleMouseDown);
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseup', handleMouseUp);
-      wrap.removeEventListener('touchstart', handleTouchStart);
-      window.removeEventListener('touchmove', handleTouchMove);
-      window.removeEventListener('touchend', handleTouchEnd);
+      window.removeEventListener('resize', onResize);
+      window.clearTimeout(resizeTimer);
+      wrap.removeEventListener('pointerdown', onPointerDown);
+      wrap.removeEventListener('pointermove', onPointerMove);
+      wrap.removeEventListener('pointerup', endDrag);
+      wrap.removeEventListener('pointercancel', endDrag);
     };
   }, []);
 

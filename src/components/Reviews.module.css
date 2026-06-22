@@ -70,6 +70,8 @@
   height: 45em;
   pointer-events: auto;
   cursor: grab;
+  /* Verticaal scrollen blijft native; horizontaal slepen draait de carousel */
+  touch-action: pan-y;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -102,6 +104,8 @@
   flex-direction: column;
   gap: 1em;
   user-select: none;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
 }
 
 .cardHead {
@@ -242,7 +246,7 @@
   }
 
   .stickyWrap {
-    min-height: 100svh;
+    min-height: 84svh;
     justify-content: center;
     gap: 1em;
   }

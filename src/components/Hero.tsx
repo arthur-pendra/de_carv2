@@ -5,11 +5,14 @@ export default function Hero() {
   return (
     <section className={styles.hero}>
       <div className={styles.frame}>
-        <img
-          src="/img/hero-audi.webp"
-          alt="Grijze Audi in GD Carcare detailgarage met hexagon-verlichting"
-          className={styles.image}
-        />
+        <picture>
+          <source media="(max-width: 767px)" srcSet="/img/hero-audi-mobile.png" />
+          <img
+            src="/img/hero-audi.webp"
+            alt="Grijze Audi in GD Carcare detailgarage met hexagon-verlichting"
+            className={styles.image}
+          />
+        </picture>
         <div className={styles.overlay} />
 
         <div className={styles.content}>
@@ -22,7 +25,6 @@ export default function Hero() {
           </p>
           <div className={styles.buttons}>
             <Button href="/#diensten">Onze Diensten</Button>
-            <Button href="/start">Boek een afspraak</Button>
           </div>
         </div>
       </div>

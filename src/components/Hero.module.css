@@ -75,7 +75,7 @@
 }
 
 .subtitle {
-  font-size: var(--text-lg);
+  font-size: var(--text-base);
   font-weight: 400;
   color: var(--color-white);
   max-width: 30em;
@@ -154,10 +154,6 @@
     flex-direction: row;
     flex-wrap: nowrap;
     gap: 0;
-    width: 100%;
-  }
-
-  .buttons > * {
-    flex: 1;
+    width: auto;
   }
 }
