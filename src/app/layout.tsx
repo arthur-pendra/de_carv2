@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { TransitionProvider, TransitionContent } from "@/components/PageTransition";
+import SmoothScroll from "@/components/SmoothScroll";
 import Navbar from "@/components/Navbar";
 import StructuredData from "@/components/StructuredData";
 import { business } from "@/config/business";
@@ -43,12 +44,14 @@ export default function RootLayout({
     <html lang="nl">
       <body>
         <StructuredData />
-        <TransitionProvider>
-          <Navbar />
-          <TransitionContent>
-            {children}
-          </TransitionContent>
-        </TransitionProvider>
+        <SmoothScroll>
+          <TransitionProvider>
+            <Navbar />
+            <TransitionContent>
+              {children}
+            </TransitionContent>
+          </TransitionProvider>
+        </SmoothScroll>
       </body>
     </html>
   );
