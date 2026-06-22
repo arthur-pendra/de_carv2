@@ -17,7 +17,24 @@ export const business = {
     { days: ['Saturday'], opens: '09:00', closes: '16:00' },
   ],
   priceRange: '€€',
-  areaServed: ['Heerlen', 'Limburg', 'Parkstad'],
+  description:
+    'Professionele car detailing in Heerlen en heel Limburg. Interieur- en exterieurreiniging, lakcorrectie, polijsten en keramische coatings, met vaste pakketprijzen.',
+  areaServed: ['Heerlen', 'Parkstad', 'Limburg'],
+  // Servicegebied-bedrijf (mobiel/op locatie) in Heerlen
+  address: {
+    locality: 'Heerlen',
+    region: 'Limburg',
+    country: 'NL',
+  },
+  geo: { latitude: 50.8882, longitude: 5.9795 },
+  services: [
+    'Exterieur detailing',
+    'Interieur detailing',
+    'Combi detailing',
+    'Lakcorrectie',
+    'Polijsten',
+    'Keramische coating',
+  ],
   social: {
     instagram: 'https://www.instagram.com/gdcarcare/',
     facebook: 'https://facebook.com',

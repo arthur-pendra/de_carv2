@@ -6,7 +6,7 @@ export default function Hero() {
     <section className={styles.hero}>
       <div className={styles.frame}>
         <img
-          src="/img/hero-audi.png"
+          src="/img/hero-audi.webp"
           alt="Grijze Audi in GD Carcare detailgarage met hexagon-verlichting"
           className={styles.image}
         />

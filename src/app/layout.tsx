@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     description:
       "Professionele car detailing in Heerlen en Limburg. Direct online boeken met vaste pakketprijzen.",
     url: business.url,
-    images: [{ url: "/img/hero.png", width: 1200, height: 630, alt: "GD Carcare detailing" }],
+    images: [{ url: "/img/og.jpg", width: 1200, height: 630, alt: "GD Carcare detailgarage in Heerlen" }],
   },
 };
 
