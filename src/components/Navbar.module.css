@@ -142,6 +142,7 @@
   align-items: center;
   display: flex;
   text-decoration: none;
+  perspective: 600px;
 }
 
 .logoSvg {
@@ -149,11 +150,20 @@
   width: auto;
   color: var(--color-white);
   display: block;
-  transition: color var(--animation-default);
+  transform: rotateY(0deg);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transition: color var(--animation-default),
+    transform 0.8s cubic-bezier(0.625, 0.05, 0, 1);
 }
 
 [data-nav-theme="dark"]:not([data-nav-status="active"]) .logoSvg {
   color: var(--color-black);
+}
+
+/* Logo maakt een 3D-draai wanneer het menu opent */
+[data-nav-status="active"] .logoSvg {
+  transform: rotateY(360deg);
 }
 
 /* ========================= Toggle Button ========================= */

@@ -6,6 +6,24 @@
   font-display: swap;
 }
 
+/* ========================= Scrollbar verbergen ========================= */
+
+/* Firefox */
+html {
+  scrollbar-width: none;
+}
+
+/* IE / oude Edge */
+html {
+  -ms-overflow-style: none;
+}
+
+/* Chrome, Safari, Edge */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
 /* ========================= Lenis smooth scroll ========================= */
 
 html.lenis,

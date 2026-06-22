@@ -69,14 +69,14 @@ export default function Footer() {
       },
     });
 
-    // Fade: dirty fades out when section is further into the viewport (later)
+    // Fade: dirty fades out gradually across a long scroll range -> slow transition to clean
     gsap.fromTo(dirty, { opacity: 1 }, {
       opacity: 0,
       ease: 'none',
       scrollTrigger: {
         trigger: section,
-        start: 'top 50%',
-        end: 'top 10%',
+        start: 'top 85%',
+        end: 'bottom 40%',
         scrub: true,
       },
     });
