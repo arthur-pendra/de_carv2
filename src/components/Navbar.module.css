@@ -157,8 +157,26 @@
     transform 0.8s cubic-bezier(0.625, 0.05, 0, 1);
 }
 
+/* ===== Geïnverteerde navbar over donkere secties (witte pill) ===== */
+[data-nav-theme="dark"]:not([data-nav-status="active"]) .backBg {
+  background-color: var(--color-white);
+}
+
 [data-nav-theme="dark"]:not([data-nav-status="active"]) .logoSvg {
   color: var(--color-black);
+}
+
+[data-nav-theme="dark"]:not([data-nav-status="active"]) .toggleBar {
+  background-color: var(--color-black);
+}
+
+[data-nav-theme="dark"]:not([data-nav-status="active"]) .cta {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+[data-nav-theme="dark"]:not([data-nav-status="active"]) .cta:hover {
+  background-color: color-mix(in srgb, var(--color-black) 85%, white);
 }
 
 /* Logo maakt een 3D-draai wanneer het menu opent */
@@ -188,7 +206,7 @@
   width: 1.875em;
   height: 0.125em;
   position: absolute;
-  transition: transform var(--animation-default);
+  transition: transform var(--animation-default), background-color var(--animation-ease);
   transform: translateY(-0.25em) rotate(0.001deg);
 }
 

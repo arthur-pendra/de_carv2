@@ -1,9 +1,14 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styles from './Navbar.module.css';
 import TransitionLink from './TransitionLink';
+import { usePageTransition } from './PageTransition';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const NAV_ITEMS = [
   { label: 'Home', href: '/' },
@@ -25,8 +30,11 @@ const NAV_IMAGES = [
 
 export default function Navbar() {
   const pathname = usePathname();
+  const { isTransitioning } = usePageTransition();
   const [isActive, setIsActive] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState(0);
+  const navRef = useRef<HTMLElement>(null);
+  const barRef = useRef<HTMLDivElement>(null);
 
   const openNav = () => {
     setIsActive(true);
@@ -45,6 +53,62 @@ export default function Navbar() {
     setIsActive(false);
   }, [pathname]);
 
+  // Invert the navbar (white pill, dark logo/buttons) while it overlaps a
+  // dark section. Rebuilt per route, after the page transition settles so the
+  // section positions are measured correctly.
+  useEffect(() => {
+    if (isTransitioning) return;
+    const nav = navRef.current;
+    const bar = barRef.current;
+    if (!nav || !bar) return;
+
+    const sections = Array.from(
+      document.querySelectorAll<HTMLElement>('[data-nav-invert]')
+    );
+    if (!sections.length) {
+      nav.removeAttribute('data-nav-theme');
+      return;
+    }
+
+    // Vertical centre of the navbar pill (nav is fixed, so this is stable)
+    const navCenter = () => {
+      const r = bar.getBoundingClientRect();
+      return r.top + r.height / 2;
+    };
+
+    const activeSections = new Set<Element>();
+    const sync = () => {
+      if (activeSections.size > 0) nav.setAttribute('data-nav-theme', 'dark');
+      else nav.removeAttribute('data-nav-theme');
+    };
+
+    const triggers = sections.map((section) =>
+      ScrollTrigger.create({
+        trigger: section,
+        start: () => `top top+=${navCenter()}`,
+        end: () => `bottom top+=${navCenter()}`,
+        onToggle: (self) => {
+          if (self.isActive) activeSections.add(section);
+          else activeSections.delete(section);
+          sync();
+        },
+      })
+    );
+
+    ScrollTrigger.refresh();
+    // Sync initial state in case a dark section already sits under the navbar
+    triggers.forEach((t) => {
+      if (t.isActive) activeSections.add(t.trigger as Element);
+    });
+    sync();
+
+    return () => {
+      triggers.forEach((t) => t.kill());
+      activeSections.clear();
+      nav.removeAttribute('data-nav-theme');
+    };
+  }, [pathname, isTransitioning]);
+
   // ESC key closes nav
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -59,6 +123,7 @@ export default function Navbar() {
 
   return (
     <nav
+      ref={navRef}
       className={styles.nav}
       data-nav-status={isActive ? 'active' : 'not-active'}
     >
@@ -70,7 +135,7 @@ export default function Navbar() {
 
       <div className={styles.wrap}>
         <div className={styles.width}>
-          <div className={styles.bar}>
+          <div className={styles.bar} ref={barRef}>
             {/* Background */}
             <div className={styles.back}>
               <div className={styles.backBg} />

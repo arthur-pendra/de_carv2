@@ -241,8 +241,8 @@
 @media screen and (max-width: 767px) {
   .reviews {
     padding: 0 1em;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
   }
 
   .stickyWrap {

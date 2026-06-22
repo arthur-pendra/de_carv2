@@ -166,4 +166,10 @@
   .row {
     flex-direction: column;
   }
+
+  /* Voorkom dat iOS inzoomt op velden (font-size moet >= 16px zijn) */
+  .input,
+  .textarea {
+    font-size: 16px;
+  }
 }

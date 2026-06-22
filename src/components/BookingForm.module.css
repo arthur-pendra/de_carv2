@@ -1107,6 +1107,13 @@
     aspect-ratio: 16 / 15;
   }
 
+  /* Voorkom dat iOS inzoomt op velden (font-size moet >= 16px zijn) */
+  .input,
+  .textarea,
+  .dayTimeSelect {
+    font-size: 16px;
+  }
+
   .fieldRow {
     flex-direction: column;
   }

@@ -3,7 +3,7 @@ import Button from './Button';
 
 export default function About() {
   return (
-    <section className={styles.about}>
+    <section className={styles.about} data-nav-invert>
       <div className={styles.container}>
         <div className={styles.grid}>
           {/* Image */}

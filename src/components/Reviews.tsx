@@ -253,7 +253,7 @@ export default function Reviews() {
   }, []);
 
   return (
-    <section id="reviews" className={styles.reviews} ref={sectionRef} data-nav-theme="dark">
+    <section id="reviews" className={styles.reviews} ref={sectionRef}>
       <DragCursor />
       <div className={styles.stickyWrap}>
         <div className={styles.header}>

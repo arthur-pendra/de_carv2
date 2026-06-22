@@ -17,7 +17,7 @@ export default function Home() {
         <Services />
         <WhyUs />
         <LogoMarquee />
-        <div className={styles.darkBlock}>
+        <div className={styles.darkBlock} data-nav-invert>
           <Reviews />
           <FAQ />
         </div>

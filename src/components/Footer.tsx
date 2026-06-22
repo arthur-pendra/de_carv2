@@ -118,7 +118,7 @@ export default function Footer() {
             <span className={styles.socialText}>50+ tevreden klanten</span>
           </div>
           <h2 className={styles.ctaTitle}>
-            Klaar om jouw auto naar een<br />hoger niveau te tillen?
+            Klaar om jouw auto naar een hoger niveau te tillen?
           </h2>
           <p className={styles.ctaText}>
             Professionele verzorging, duurzame bescherming en zichtbare resultaten. Neem contact op voor een behandeling op maat.
@@ -134,7 +134,7 @@ export default function Footer() {
       <ContactSection />
 
       {/* Footer Content */}
-      <div className={styles.footerContent}>
+      <div className={styles.footerContent} data-nav-invert>
         <div className={styles.container}>
           {/* Newsletter */}
           <div className={styles.newsletter}>
