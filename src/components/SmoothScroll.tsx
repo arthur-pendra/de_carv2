@@ -16,7 +16,7 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
       touchMultiplier: 1,
       syncTouch: false,
     });
-    (window as Window & { lenis?: Lenis }).lenis = lenis;
+    (window as unknown as { lenis?: Lenis }).lenis = lenis;
 
     lenis.on('scroll', ScrollTrigger.update);
 
@@ -30,7 +30,7 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
     return () => {
       gsap.ticker.remove(onTick);
       lenis.destroy();
-      delete (window as Window & { lenis?: Lenis }).lenis;
+      delete (window as unknown as { lenis?: Lenis }).lenis;
     };
   }, []);
 
