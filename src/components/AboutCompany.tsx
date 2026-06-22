@@ -5,18 +5,21 @@ export default function AboutCompany() {
   return (
     <section id="over-ons" className={styles.about}>
       <div className={styles.inner}>
-        <span className={styles.eyebrow}>Over het bedrijf</span>
-        <h2 className={styles.title}>GD Carcare</h2>
+        <span className={styles.eyebrow}>Over ons</span>
+        <h2 className={styles.title}>Ontstaan uit passie</h2>
         <div className={styles.text}>
           <p>
-            Bij GD Carcare bieden we een totaalpakket aan professionele auto detailing diensten. Van een grondige reiniging en lakcorrectie tot het polijsten en beschermen van je wagen met een keramische coating. Altijd met hetzelfde doel: jouw auto terug in absolute showroomstaat brengen.
+            Bij GD Carcare geloven we dat een auto meer is dan alleen een middel om van A naar B te komen. Het is een weerspiegeling van wie je bent. Daarom verdient jouw voertuig een verzorging die verder gaat dan een standaard wasbeurt. Met oog voor detail, hoogwaardige producten en passie voor het vak zorgen wij ervoor dat elke wagen de behandeling krijgt die hij verdient.
           </p>
           <p>
-            Benieuwd wat ons team voor jouw wagen kan betekenen? Neem vrijblijvend contact op voor advies of een afspraak op maat. Samen kijken we naar de beste aanpak voor jouw voertuig.
+            GD Carcare is ontstaan uit een liefde voor auto&apos;s en een streven naar perfectie. Vandaag combineren we die passie met professioneel vakmanschap om voertuigen te reinigen, beschermen en verfijnen tot in het kleinste detail.
+          </p>
+          <p>
+            Want perfectie zit niet in het grote geheel, maar in de details. Excellence in Every Detail.
           </p>
         </div>
         <div className={styles.buttons}>
-          <Button href="/#contact">Neem contact op</Button>
+          <Button href="/about">Leer ons Kennen</Button>
         </div>
       </div>
     </section>

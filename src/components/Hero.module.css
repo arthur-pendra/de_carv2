@@ -10,7 +10,7 @@
 .frame {
   position: relative;
   flex: 1;
-  border-radius: 1.5em;
+  border-radius: 1em;
   overflow: hidden;
 }
 
@@ -30,10 +30,10 @@
   background:
     linear-gradient(
       to top,
-      rgba(7, 7, 7, 0.9) 0%,
-      rgba(7, 7, 7, 0) 55%
+      rgba(7, 7, 7, 0.95) 0%,
+      rgba(7, 7, 7, 0) 75%
     ),
-    rgba(7, 7, 7, 0.3);
+    rgba(7, 7, 7, 0.42);
   z-index: 2;
 }
 
@@ -45,9 +45,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   text-align: center;
-  padding: var(--padding-section);
+  padding: var(--padding-section) var(--padding-section) 14em;
   gap: 1.5em;
 }
 
@@ -69,13 +69,13 @@
   font-size: var(--text-2xl);
   font-weight: 400;
   color: var(--color-white);
-  letter-spacing: -0.06em;
-  line-height: 1;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
   margin: 0;
 }
 
 .subtitle {
-  font-size: var(--text-md);
+  font-size: var(--text-lg);
   font-weight: 400;
   color: var(--color-white);
   max-width: 30em;
@@ -85,7 +85,7 @@
 
 .buttons {
   display: flex;
-  gap: 2.25em;
+  gap: 1em;
   margin-top: 1.5em;
 }
 

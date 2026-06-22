@@ -116,12 +116,12 @@ export default function Reviews() {
 
   // Calculate responsive radius based on viewport
   const getRadius = () => {
-    if (typeof window === 'undefined') return 1600;
+    if (typeof window === 'undefined') return 1150;
     const width = window.innerWidth;
-    if (width <= 480) return 660;
-    if (width <= 767) return 850;
-    if (width <= 991) return 1000;
-    return 1600;
+    if (width <= 480) return 620;
+    if (width <= 767) return 780;
+    if (width <= 991) return 900;
+    return 1150;
   };
 
   // Vertical offset of the arc, decoupled from radius
@@ -151,7 +151,7 @@ export default function Reviews() {
     };
     window.addEventListener('resize', handleResize);
 
-    let animationId: number;
+    let animationId: number | null = null;
 
     const updatePositions = () => {
       // Apply velocity with decay
@@ -203,7 +203,20 @@ export default function Reviews() {
       animationId = requestAnimationFrame(updatePositions);
     };
 
-    updatePositions();
+    // Only run the carousel animation while the section is in view —
+    // a perpetual rAF transforming every card competes with smooth scroll.
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          if (animationId === null) animationId = requestAnimationFrame(updatePositions);
+        } else if (animationId !== null) {
+          cancelAnimationFrame(animationId);
+          animationId = null;
+        }
+      },
+      { threshold: 0 }
+    );
+    io.observe(section);
 
     // Drag handlers
     const handleMouseDown = (e: MouseEvent) => {
@@ -252,7 +265,8 @@ export default function Reviews() {
     window.addEventListener('touchend', handleTouchEnd);
 
     return () => {
-      cancelAnimationFrame(animationId);
+      io.disconnect();
+      if (animationId !== null) cancelAnimationFrame(animationId);
       window.removeEventListener('resize', handleResize);
       wrap.removeEventListener('mousedown', handleMouseDown);
       window.removeEventListener('mousemove', handleMouseMove);

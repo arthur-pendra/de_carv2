@@ -6,14 +6,14 @@ export const categories: { key: Category; label: string; image: string; descript
     key: 'exterieur',
     label: 'Exterieur',
     image: '/img/diensten/exterieur.webp',
-    description: 'Velgen, lak en glas volledig gereinigd en beschermd',
+    description: 'Professionele reiniging en bescherming',
     intro: 'Wij reinigen en beschermen de complete buitenkant van je auto: velgen, banden, lak en glas. Kies hieronder je niveau. In de volgende stap stel je de voertuiggrootte en eventuele extra opties in.',
   },
   {
     key: 'interieur',
     label: 'Interieur',
     image: '/img/diensten/interieur.webp',
-    description: 'Bekleding, dashboard en stoelen grondig gereinigd',
+    description: 'Diepgaande reiniging voor een frisse en verzorgde rijervaring',
     intro: 'Een grondige reiniging van het volledige interieur: bekleding, dashboard, vloer en ramen. Kies hieronder je niveau. Daarna stel je de voertuiggrootte en extra opties in.',
   },
   {

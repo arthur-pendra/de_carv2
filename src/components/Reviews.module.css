@@ -3,6 +3,8 @@
   padding: 0em var(--padding-section);
   background-color: var(--color-dark);
   overflow: hidden;
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
 }
 
 .reviews::after {
@@ -206,6 +208,11 @@
 
 /* Tablet */
 @media screen and (max-width: 991px) {
+  .reviews {
+    border-top-left-radius: 1.25em;
+    border-top-right-radius: 1.25em;
+  }
+
   .header {
     padding: 3em 1em 0;
   }
@@ -230,6 +237,8 @@
 @media screen and (max-width: 767px) {
   .reviews {
     padding: 0 1em;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
   }
 
   .stickyWrap {

@@ -5,6 +5,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import TransitionLink from './TransitionLink';
 import Button from './Button';
+import ContactSection from './ContactSection';
 import styles from './Footer.module.css';
 import { business } from '@/config/business';
 gsap.registerPlugin(ScrollTrigger);
@@ -68,14 +69,14 @@ export default function Footer() {
       },
     });
 
-    // Fade: dirty fades out when section enters viewport
+    // Fade: dirty fades out when section is further into the viewport (later)
     gsap.fromTo(dirty, { opacity: 1 }, {
       opacity: 0,
       ease: 'none',
       scrollTrigger: {
         trigger: section,
-        start: 'top 80%',
-        end: 'top 20%',
+        start: 'top 50%',
+        end: 'top 10%',
         scrub: true,
       },
     });
@@ -86,7 +87,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer id="contact" className={styles.footer}>
+    <footer className={styles.footer}>
       {/* CTA Section */}
       <div className={styles.ctaSection} ref={sectionRef}>
         {/* Wheel before/after */}
@@ -117,17 +118,20 @@ export default function Footer() {
             <span className={styles.socialText}>50+ tevreden klanten</span>
           </div>
           <h2 className={styles.ctaTitle}>
-            Klaar voor een<br />showroom finish?
+            Klaar om jouw auto naar een<br />hoger niveau te tillen?
           </h2>
           <p className={styles.ctaText}>
-            Boek vandaag nog een afspraak en geef je auto de behandeling die het verdient.
+            Professionele verzorging, duurzame bescherming en zichtbare resultaten. Neem contact op voor een behandeling op maat.
           </p>
           <div className={styles.ctaButtons}>
-            <Button href="/start">Afspraak maken</Button>
-            <Button href="/#diensten">Bekijk prijzen</Button>
+            <Button href="/start">Boek een afspraak</Button>
+            <Button href="/#diensten">Onze Diensten</Button>
           </div>
         </div>
       </div>
+
+      {/* Contact Section */}
+      <ContactSection />
 
       {/* Footer Content */}
       <div className={styles.footerContent}>

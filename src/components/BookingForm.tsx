@@ -77,12 +77,7 @@ export default function BookingForm() {
 
   // Bij elke stap- of dienstkeuze terug naar boven scrollen
   useEffect(() => {
-    const lenis = (window as Window & { lenis?: { scrollTo: (t: number, o?: { immediate?: boolean }) => void } }).lenis;
-    if (lenis) {
-      lenis.scrollTo(0, { immediate: true });
-    } else {
-      window.scrollTo({ top: 0 });
-    }
+    window.scrollTo({ top: 0 });
   }, [step, categorySelected]);
 
   const [carBrand, setCarBrand] = useState('');

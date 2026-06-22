@@ -67,7 +67,7 @@
   pointer-events: auto;
   color: var(--color-white);
   width: 100%;
-  max-width: 30em;
+  max-width: 44em;
   position: relative;
   transition: max-width var(--animation-default-long) 0.2s;
 }
@@ -105,10 +105,10 @@
 .top {
   z-index: 1;
   justify-content: space-between;
-  align-items: center;
+  align-items: stretch;
   width: 100%;
   height: 3em;
-  padding: 0.75em 1em;
+  padding: 0.4em;
   display: flex;
   position: relative;
 }
@@ -135,10 +135,11 @@
 .logo {
   position: absolute;
   left: 50%;
+  top: 0;
+  bottom: 0;
   transform: translateX(-50%);
   justify-content: center;
   align-items: center;
-  height: 100%;
   display: flex;
   text-decoration: none;
 }
@@ -166,7 +167,7 @@
   justify-content: center;
   align-items: center;
   width: 2.5em;
-  height: 2.5em;
+  height: auto;
   padding: 0;
   display: flex;
   position: relative;
@@ -208,7 +209,9 @@
   color: var(--color-black);
   font-size: var(--text-sm);
   font-weight: 400;
-  padding: 0.75em 1.25em;
+  padding: 0 1.25em;
+  display: inline-flex;
+  align-items: center;
   border-radius: 0.25em;
   text-decoration: none;
   letter-spacing: -0.02em;

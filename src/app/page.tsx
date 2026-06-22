@@ -17,8 +17,10 @@ export default function Home() {
         <Services />
         <WhyUs />
         <LogoMarquee />
-        <Reviews />
-        <FAQ />
+        <div className={styles.darkBlock}>
+          <Reviews />
+          <FAQ />
+        </div>
       </main>
       <Footer />
     </>

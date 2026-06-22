@@ -3,6 +3,18 @@
   background-color: var(--color-cream);
 }
 
+/* Donker blok (reviews + meer vragen) met dezelfde inset als de hero */
+.darkBlock {
+  padding: 0.75em;
+  background-color: var(--color-cream);
+}
+
+@media screen and (max-width: 767px) {
+  .darkBlock {
+    padding: 0;
+  }
+}
+
 .testSection {
   height: 100vh;
   padding: 6em 2em;

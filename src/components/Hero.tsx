@@ -6,23 +6,23 @@ export default function Hero() {
     <section className={styles.hero}>
       <div className={styles.frame}>
         <img
-          src="/img/hero.png"
-          alt="GD Carcare detailing"
+          src="/img/hero-audi.png"
+          alt="Grijze Audi in GD Carcare detailgarage met hexagon-verlichting"
           className={styles.image}
         />
         <div className={styles.overlay} />
 
         <div className={styles.content}>
           <div className={styles.titleGroup}>
-            <span className={styles.eyebrow}>Professionele car detailing in Heerlen</span>
+            <span className={styles.eyebrow}>Professionele autoreiniging in Heerlen</span>
             <h1 className={styles.title}>Excellence in every detail.</h1>
           </div>
           <p className={styles.subtitle}>
-            Car detailing in Heerlen en heel Limburg. Van grondige interieur- en exterieurreiniging tot lakcorrectie en keramische coatings. Direct online te boeken met vaste pakketprijzen.
+            Detailing, Lakcorrectie &amp; Keramische coatings
           </p>
           <div className={styles.buttons}>
-            <Button href="/start">Direct afspraak maken</Button>
-            <Button href="/#diensten">Bekijk pakketten</Button>
+            <Button href="/#diensten">Onze Diensten</Button>
+            <Button href="/start">Boek een afspraak</Button>
           </div>
         </div>
       </div>

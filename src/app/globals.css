@@ -6,28 +6,6 @@
   font-display: swap;
 }
 
-/* ========================= Lenis Smooth Scroll ========================= */
-
-html.lenis, html.lenis body {
-  height: auto;
-}
-
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-.lenis.lenis-smooth iframe {
-  pointer-events: none;
-}
-
 /* ========================= Scaling System by Osmo [https://osmo.supply/] ========================= */
 
 /* Desktop */
@@ -48,7 +26,8 @@ html.lenis, html.lenis body {
   --color-dark: #121212;
   --color-black-light: #1f1f1f;
   --color-white: #FFFFFF;
-  --color-cream: #F7F6F3;
+  /* Test: wit i.p.v. crème. Zet terug op #F7F6F3 voor crème. */
+  --color-cream: #FFFFFF;
   --color-accent: #012296;
   --color-success: #0F8E2E;
 
